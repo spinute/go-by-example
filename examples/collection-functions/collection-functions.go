@@ -1,111 +1,97 @@
-// We often need our programs to perform operations on
-// collections of data, like selecting all items that
-// satisfy a given predicate or mapping all items to a new
-// collection with a custom function.
+// データのコレクションを操作したいことがよくある。
+// これは例えば、ある条件を満たすアイテムだけを抽出したり、すべてのアイテムに関数を適用したりといった場合である。
 
-// In some languages it's idiomatic to use [generic](http://en.wikipedia.org/wiki/Generic_programming)
-// data structures and algorithms. Go does not support
-// generics; in Go it's common to provide collection
-// functions if and when they are specifically needed for
-// your program and data types.
+// 汎用データ構造や汎用アルゴリズムを使う慣習がある言語もある（参考：http://en.wikipedia.org/wiki/Generic_programming）。
+// Go はそうではない。
+// プログラムやデータ型に特に必要なときに限って、コレクション操作のための関数を提供するのが Go のやり方だ。
 
-// Here are some example collection functions for slices
-// of `strings`. You can use these examples to build your
-// own functions. Note that in some cases it may be
-// clearest to just inline the collection-manipulating
-// code directly, instead of creating and calling a
-// helper function.
+// `strings` のスライスを操作するためのコレクション操作関数を定義してみる。
+// この例を元に自分で関数を作るのもいいだろう。
+// なお、ヘルパー関数を作らず、コレクションを操作するコードをインラインで書く方がわかりやすいこともある。
 
 package main
 
 import "strings"
 import "fmt"
 
-// Index returns the first index of the target string `t`, or
-// -1 if no match is found.
+// Index は文字列 `t` を始めに見つけたインデックスを返す。
+// もし見つからなければ -1 を返す。
 func Index(vs []string, t string) int {
-    for i, v := range vs {
-        if v == t {
-            return i
-        }
-    }
-    return -1
+	for i, v := range vs {
+		if v == t {
+			return i
+		}
+	}
+	return -1
 }
 
-// Include returns `true` if the target string t is in the
-// slice.
+// Include はスライスの中に文字列 `t` が含まれるなら `true` を返す。
 func Include(vs []string, t string) bool {
-    return Index(vs, t) >= 0
+	return Index(vs, t) >= 0
 }
 
-// Any returns `true` if one of the strings in the slice
-// satisfies the predicate `f`.
+// Any はスライスの中に述語が真になる文字列があれば `true` を返す。
 func Any(vs []string, f func(string) bool) bool {
-    for _, v := range vs {
-        if f(v) {
-            return true
-        }
-    }
-    return false
+	for _, v := range vs {
+		if f(v) {
+			return true
+		}
+	}
+	return false
 }
 
-// All returns `true` if all of the strings in the slice
-// satisfy the predicate `f`.
+// Any はスライスに含まれる文字列がいずれも述語を真にするなら `true` を返す。
 func All(vs []string, f func(string) bool) bool {
-    for _, v := range vs {
-        if !f(v) {
-            return false
-        }
-    }
-    return true
+	for _, v := range vs {
+		if !f(v) {
+			return false
+		}
+	}
+	return true
 }
 
-// Filter returns a new slice containing all strings in the
-// slice that satisfy the predicate `f`.
+// Filter は、元のスライスのうち述語 `f` が真になる文字列だけを含む、新たなスライスを返す。
 func Filter(vs []string, f func(string) bool) []string {
-    vsf := make([]string, 0)
-    for _, v := range vs {
-        if f(v) {
-            vsf = append(vsf, v)
-        }
-    }
-    return vsf
+	vsf := make([]string, 0)
+	for _, v := range vs {
+		if f(v) {
+			vsf = append(vsf, v)
+		}
+	}
+	return vsf
 }
 
-// Map returns a new slice containing the results of applying
-// the function `f` to each string in the original slice.
+// Map は、元のスライスの要素である各文字列に、関数 `f` を適用した結果を含む新たなスライスを返す。
 func Map(vs []string, f func(string) string) []string {
-    vsm := make([]string, len(vs))
-    for i, v := range vs {
-        vsm[i] = f(v)
-    }
-    return vsm
+	vsm := make([]string, len(vs))
+	for i, v := range vs {
+		vsm[i] = f(v)
+	}
+	return vsm
 }
 
 func main() {
 
-    // Here we try out our various collection functions.
-    var strs = []string{"peach", "apple", "pear", "plum"}
+	// コレクション関数を色々使ってみる。
+	var strs = []string{"peach", "apple", "pear", "plum"}
 
-    fmt.Println(Index(strs, "pear"))
+	fmt.Println(Index(strs, "pear"))
 
-    fmt.Println(Include(strs, "grape"))
+	fmt.Println(Include(strs, "grape"))
 
-    fmt.Println(Any(strs, func(v string) bool {
-        return strings.HasPrefix(v, "p")
-    }))
+	fmt.Println(Any(strs, func(v string) bool {
+		return strings.HasPrefix(v, "p")
+	}))
 
-    fmt.Println(All(strs, func(v string) bool {
-        return strings.HasPrefix(v, "p")
-    }))
+	fmt.Println(All(strs, func(v string) bool {
+		return strings.HasPrefix(v, "p")
+	}))
 
-    fmt.Println(Filter(strs, func(v string) bool {
-        return strings.Contains(v, "e")
-    }))
+	fmt.Println(Filter(strs, func(v string) bool {
+		return strings.Contains(v, "e")
+	}))
 
-    // The above examples all used anonymous functions,
-    // but you can also use named functions of the correct
-    // type.
-    fmt.Println(Map(strs, strings.ToUpper))
+	// 上の例ではいずれも無名関数を使っているが、型が適合すれば名前付き関数を使ってもよい。
+	fmt.Println(Map(strs, strings.ToUpper))
 
 }
