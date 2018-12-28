@@ -1,9 +1,6 @@
-// By default channels are _unbuffered_, meaning that they
-// will only accept sends (`chan <-`) if there is a
-// corresponding receive (`<- chan`) ready to receive the
-// sent value. _Buffered channels_ accept a limited
-// number of  values without a corresponding receiver for
-// those values.
+// デフォルトではチャネルに_バッファ_は付いていない。
+// すなわち、チャネルが送信（`chan <-`）を受け入れるのは、受信（`<- chan`）の準備が既にできているときだけだ。
+// _バッファ付きチャネル_は受信者がまだいなくても、一定の個数までなら送信を受け入れる。
 
 package main
 
@@ -11,17 +8,14 @@ import "fmt"
 
 func main() {
 
-    // Here we `make` a channel of strings buffering up to
-    // 2 values.
-    messages := make(chan string, 2)
+	// `make` を使って、2つまで値を溜められるバッファ付きチャネルを作る。
+	messages := make(chan string, 2)
 
-    // Because this channel is buffered, we can send these
-    // values into the channel without a corresponding
-    // concurrent receive.
-    messages <- "buffered"
-    messages <- "channel"
+	// このチャネルにはバッファが付いているので、まだ受信者がいないにもかかわらずこれらの値を送れる。
+	messages <- "buffered"
+	messages <- "channel"
 
-    // Later we can receive these two values as usual.
-    fmt.Println(<-messages)
-    fmt.Println(<-messages)
+	// これらの値は後から読み出せる
+	fmt.Println(<-messages)
+	fmt.Println(<-messages)
 }
