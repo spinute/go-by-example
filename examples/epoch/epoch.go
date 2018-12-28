@@ -1,7 +1,4 @@
-// A common requirement in programs is getting the number
-// of seconds, milliseconds, or nanoseconds since the
-// [Unix epoch](http://en.wikipedia.org/wiki/Unix_time).
-// Here's how to do it in Go.
+// Go で [Unix エポック（epoch）](http://en.wikipedia.org/wiki/Unix_time) からの経過時間を秒、ミリ秒、ナノ秒単位を取得する方法を紹介する。
 
 package main
 
@@ -10,24 +7,20 @@ import "time"
 
 func main() {
 
-    // Use `time.Now` with `Unix` or `UnixNano` to get
-    // elapsed time since the Unix epoch in seconds or
-    // nanoseconds, respectively.
-    now := time.Now()
-    secs := now.Unix()
-    nanos := now.UnixNano()
-    fmt.Println(now)
+	// `time.Now` と、`Unix` か `UnixNano` を使って、Unix エポックからの経過時間を秒、ナノ秒単位で取得する。
+	now := time.Now()
+	secs := now.Unix()
+	nanos := now.UnixNano()
+	fmt.Println(now)
 
-    // Note that there is no `UnixMillis`, so to get the
-    // milliseconds since epoch you'll need to manually
-    // divide from nanoseconds.
-    millis := nanos / 1000000
-    fmt.Println(secs)
-    fmt.Println(millis)
-    fmt.Println(nanos)
+	// `UnixMillis` はない。
+	// そのため、エポックからの経過時間をミリ秒単位で知りたいときはナノ秒の結果を割る必要がある。
+	millis := nanos / 1000000
+	fmt.Println(secs)
+	fmt.Println(millis)
+	fmt.Println(nanos)
 
-    // You can also convert integer seconds or nanoseconds
-    // since the epoch into the corresponding `time`.
-    fmt.Println(time.Unix(secs, 0))
-    fmt.Println(time.Unix(0, nanos))
+	// 逆に、エポックからの秒、ナノ秒での経過時間を`time` に変換することもできる。
+	fmt.Println(time.Unix(secs, 0))
+	fmt.Println(time.Unix(0, nanos))
 }
