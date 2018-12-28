@@ -1,7 +1,6 @@
-// [Environment variables](http://en.wikipedia.org/wiki/Environment_variable)
-// are a universal mechanism for [conveying configuration
-// information to Unix programs](http://www.12factor.net/config).
-// Let's look at how to set, get, and list environment variables.
+// [環境変数](http://en.wikipedia.org/wiki/Environment_variable)は
+// [設定情報を Unix 上で動くプログラムに伝える](http://www.12factor.net/config)一般的な仕組みである。
+// 環境変数を読んだり、書いたりしてみよう。
 
 package main
 
@@ -11,21 +10,21 @@ import "fmt"
 
 func main() {
 
-    // To set a key/value pair, use `os.Setenv`. To get a
-    // value for a key, use `os.Getenv`. This will return
-    // an empty string if the key isn't present in the
-    // environment.
-    os.Setenv("FOO", "1")
-    fmt.Println("FOO:", os.Getenv("FOO"))
-    fmt.Println("BAR:", os.Getenv("BAR"))
+	// キーと値のペアをセットするには `os.Setenv` を使う。
+	// キーから値を読み出すには `os.Getenv を使う。
+	// もしキーが設定されていなければ空の文字列を返す。
+	os.Setenv("FOO", "1")
+	fmt.Println("FOO:", os.Getenv("FOO"))
+	fmt.Println("BAR:", os.Getenv("BAR"))
 
-    // Use `os.Environ` to list all key/value pairs in the
-    // environment. This returns a slice of strings in the
-    // form `KEY=value`. You can `strings.Split` them to
-    // get the key and value. Here we print all the keys.
-    fmt.Println()
-    for _, e := range os.Environ() {
-        pair := strings.Split(e, "=")
-        fmt.Println(pair[0])
-    }
+	// 定義されているキーと値の一覧は `os.Environ` で取得する。
+	// この関数は `KEY=value` という形式の文字列からなるスライスを返す。
+	// `strings.Split` を使って、このスライスからキーと値を取り出せる。
+	// ここではすべてのキーを表示している。
+	fmt.Println()
+	for _, e := range os.Environ() {
+		pair := strings.Split(e, "=")
+		fmt.Println(pair[0])
+	}
+
 }
