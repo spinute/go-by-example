@@ -1,7 +1,5 @@
-// In a [previous](range) example we saw how `for` and
-// `range` provide iteration over basic data structures.
-// We can also use this syntax to iterate over
-// values received from a channel.
+// [前の例](range)で、`for` と `range` を使って基本的なデータ構造上の繰り返しが書けることを紹介した。
+// この記法を使って、チャネルから値を繰り返し受信することもできる。
 
 package main
 
@@ -9,17 +7,15 @@ import "fmt"
 
 func main() {
 
-    // We'll iterate over 2 values in the `queue` channel.
-    queue := make(chan string, 2)
-    queue <- "one"
-    queue <- "two"
-    close(queue)
+	// この例では queue チャネルに送信された2つの値を処理する。
+	queue := make(chan string, 2)
+	queue <- "one"
+	queue <- "two"
+	close(queue)
 
-    // This `range` iterates over each element as it's
-    // received from `queue`. Because we `close`d the
-    // channel above, the iteration terminates after
-    // receiving the 2 elements.
-    for elem := range queue {
-        fmt.Println(elem)
-    }
+	// この `range` は `queue` から要素を繰り返し取得する。
+	// 既に上でチャネルを `close` しているので、この繰り返しは2つ要素を受信すると終わる。
+	for elem := range queue {
+		fmt.Println(elem)
+	}
 }
