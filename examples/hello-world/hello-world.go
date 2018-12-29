@@ -1,9 +1,9 @@
-// Our first program will print the classic "hello world"
-// message. Here's the full source code.
+// はじめのプログラムは "hello world" を表示するものだ。
+// ソースコードのここにあるものですべてだ。
 package main
 
 import "fmt"
 
 func main() {
-    fmt.Println("hello world")
+	fmt.Println("hello world")
 }
