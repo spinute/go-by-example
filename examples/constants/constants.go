@@ -1,33 +1,28 @@
-// Go supports _constants_ of character, string, boolean,
-// and numeric values.
+// Go は文字、文字列、真偽値、数値の_定数（constant）_をサポートしている。
 
 package main
 
 import "fmt"
 import "math"
 
-// `const` declares a constant value.
+// `const` を使って定数を宣言できる。
 const s string = "constant"
 
 func main() {
-    fmt.Println(s)
+	fmt.Println(s)
 
-    // A `const` statement can appear anywhere a `var`
-    // statement can.
-    const n = 500000000
+	// `const` 文は `var` 文が書けるところならどこでも書ける。
+	const n = 500000000
 
-    // Constant expressions perform arithmetic with
-    // arbitrary precision.
-    const d = 3e20 / n
-    fmt.Println(d)
+	// 定数式では任意精度で算術を実行する。
+	const d = 3e20 / n
+	fmt.Println(d)
 
-    // A numeric constant has no type until it's given
-    // one, such as by an explicit cast.
-    fmt.Println(int64(d))
+	// 数値の定数は、明示的にキャストするなどして型が決まるまでは、型を持たない。
+	fmt.Println(int64(d))
 
-    // A number can be given a type by using it in a
-    // context that requires one, such as a variable
-    // assignment or function call. For example, here
-    // `math.Sin` expects a `float64`.
-    fmt.Println(math.Sin(n))
+	// 数値のは型を必要とするコンテキストによって与えられる。
+	// 変数の代入や、関数呼び出しが型を必要とする場面の例である。
+	// 例えばここでは、`math.Sin` は `float64` 型の引数を受け取る。
+	fmt.Println(math.Sin(n))
 }
