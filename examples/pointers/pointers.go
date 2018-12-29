@@ -1,42 +1,38 @@
-// Go supports <em><a href="http://en.wikipedia.org/wiki/Pointer_(computer_programming)">pointers</a></em>,
-// allowing you to pass references to values and records
-// within your program.
+// Go は<em><a href="http://en.wikipedia.org/wiki/Pointer_(computer_programming)">ポインタ</a></em>をサポートしている。
+// ポインタを使うと、プログラム中で値やレコードへの参照を渡すことができる。
 
 package main
 
 import "fmt"
 
-// We'll show how pointers work in contrast to values with
-// 2 functions: `zeroval` and `zeroptr`. `zeroval` has an
-// `int` parameter, so arguments will be passed to it by
-// value. `zeroval` will get a copy of `ival` distinct
-// from the one in the calling function.
+// ここではポインタと値の振る舞いの違いを、`zeroval` と `zeroptr` の2つの関数を使って見てもらう。
+// `zeroval` は `int` 型の引数を取るので、引数は値として渡される。
+// `zeroval` は `ival` のコピーを渡されるが、この実体は関数を呼び出す側で引数に渡した変数とは別のものである。
 func zeroval(ival int) {
-    ival = 0
+	ival = 0
 }
 
-// `zeroptr` in contrast has an `*int` parameter, meaning
-// that it takes an `int` pointer. The `*iptr` code in the
-// function body then _dereferences_ the pointer from its
-// memory address to the current value at that address.
-// Assigning a value to a dereferenced pointer changes the
-// value at the referenced address.
+// 一方、`zeroptr` の引数の型は `*int` である。
+// すなわち、引数は `int` 型のポインタとして渡される。
+// 関数の中の `*iptr` と書いた箇所では、ポインタの_参照を剥がし_ている。
+// これは、メモリ上のアドレスから、その番地にある現在の値にアクセスする操作だ。
+// 剥がされたポインタに値を代入すると、ポインタが参照していたアドレスに書かれた値が書き換わる。
 func zeroptr(iptr *int) {
-    *iptr = 0
+	*iptr = 0
 }
 
 func main() {
-    i := 1
-    fmt.Println("initial:", i)
+	i := 1
+	fmt.Println("initial:", i)
 
-    zeroval(i)
-    fmt.Println("zeroval:", i)
+	zeroval(i)
+	fmt.Println("zeroval:", i)
 
-    // The `&i` syntax gives the memory address of `i`,
-    // i.e. a pointer to `i`.
-    zeroptr(&i)
-    fmt.Println("zeroptr:", i)
+	// `&i` という記法で、`i` のメモリアドレスを取得できる。
+	// このメモリアドレスは、`i` のポインタである。
+	zeroptr(&i)
+	fmt.Println("zeroptr:", i)
 
-    // Pointers can be printed too.
-    fmt.Println("pointer:", &i)
+	// ポインタも表示できる。
+	fmt.Println("pointer:", &i)
 }
