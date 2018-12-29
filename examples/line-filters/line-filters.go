@@ -1,41 +1,37 @@
-// A _line filter_ is a common type of program that reads
-// input on stdin, processes it, and then prints some
-// derived result to stdout. `grep` and `sed` are common
-// line filters.
+// _行フィルタ_はよくある種類のプログラムで、標準入力を読んで、それを処理し、結果を標準出力に書き出す。
+// `grep` や `sed` はよく使われる行フィルタの例である。
 
-// Here's an example line filter in Go that writes a
-// capitalized version of all input text. You can use this
-// pattern to write your own Go line filters.
+// ここでは Go で行フィルタを実装してみる。
+// このプログラムは入力テキストをいずれも大文字にしたものを出力する。
+// このパターンを真似れば、自分で好きな行フィルタを実装できるだろう。
 package main
 
 import (
-    "bufio"
-    "fmt"
-    "os"
-    "strings"
+	"bufio"
+	"fmt"
+	"os"
+	"strings"
 )
 
 func main() {
 
-    // Wrapping the unbuffered `os.Stdin` with a buffered
-    // scanner gives us a convenient `Scan` method that
-    // advances the scanner to the next token; which is
-    // the next line in the default scanner.
-    scanner := bufio.NewScanner(os.Stdin)
+	// バッファの付いていない `os.Stdin` をバッファ付きのスキャナでラップすると、便利な `Scan` メソッドを使ってトークンごとに入力を読み進められる。
+	// デフォルトのスキャナは Stdin を行ごとに読み出すのだ。
+	scanner := bufio.NewScanner(os.Stdin)
 
-    for scanner.Scan() {
-        // `Text` returns the current token, here the next line,
-        // from the input.
-        ucl := strings.ToUpper(scanner.Text())
+	for scanner.Scan() {
+		// `Text` は現在のトークンを返す。
+		// 今の場合は、入力から読み出した次の行である。
+		ucl := strings.ToUpper(scanner.Text())
 
-        // Write out the uppercased line.
-        fmt.Println(ucl)
-    }
+		// 大文字にした行を書き出す。
+		fmt.Println(ucl)
+	}
 
-    // Check for errors during `Scan`. End of file is
-    // expected and not reported by `Scan` as an error.
-    if err := scanner.Err(); err != nil {
-        fmt.Fprintln(os.Stderr, "error:", err)
-        os.Exit(1)
-    }
+	// `Scan` でエラーが無かったか確認する。
+	// なお、終端記号（EOF）が見つかっても、`Scan` はエラーとして扱わない。
+	if err := scanner.Err(); err != nil {
+		fmt.Fprintln(os.Stderr, "error:", err)
+		os.Exit(1)
+	}
 }
