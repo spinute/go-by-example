@@ -1,62 +1,55 @@
-// _Interfaces_ are named collections of method
-// signatures.
+// _インターフェース_とは、メソッドのシグネチャの集まりに名前を付けたものである。
 
 package main
 
 import "fmt"
 import "math"
 
-// Here's a basic interface for geometric shapes.
+// これは幾何学図形のインターフェースである
 type geometry interface {
-    area() float64
-    perim() float64
+	area() float64
+	perim() float64
 }
 
-// For our example we'll implement this interface on
-// `rect` and `circle` types.
+// `rect` 型と `circle` 型で、このインターフェースを実装してみせる。
 type rect struct {
-    width, height float64
+	width, height float64
 }
 type circle struct {
-    radius float64
+	radius float64
 }
 
-// To implement an interface in Go, we just need to
-// implement all the methods in the interface. Here we
-// implement `geometry` on `rect`s.
+// Go のインターフェースを実装するには、インターフェースに含まれるメソッドをすべて実装すればよい。
+// ここでは `rect` 型で `geometry` インターフェースを実装してみせる。
 func (r rect) area() float64 {
-    return r.width * r.height
+	return r.width * r.height
 }
 func (r rect) perim() float64 {
-    return 2*r.width + 2*r.height
+	return 2*r.width + 2*r.height
 }
 
-// The implementation for `circle`s.
+// `circle` 型についても `geometry` を実装する。
 func (c circle) area() float64 {
-    return math.Pi * c.radius * c.radius
+	return math.Pi * c.radius * c.radius
 }
 func (c circle) perim() float64 {
-    return 2 * math.Pi * c.radius
+	return 2 * math.Pi * c.radius
 }
 
-// If a variable has an interface type, then we can call
-// methods that are in the named interface. Here's a
-// generic `measure` function taking advantage of this
-// to work on any `geometry`.
+// 変数がインターフェース型を持つなら、そのインターフェースのメソッドを呼ぶことができる。
+// この `measure` 関数は汎用である。すなわち `geometry` 型の変数であればこの関数を使える。
 func measure(g geometry) {
-    fmt.Println(g)
-    fmt.Println(g.area())
-    fmt.Println(g.perim())
+	fmt.Println(g)
+	fmt.Println(g.area())
+	fmt.Println(g.perim())
 }
 
 func main() {
-    r := rect{width: 3, height: 4}
-    c := circle{radius: 5}
+	r := rect{width: 3, height: 4}
+	c := circle{radius: 5}
 
-    // The `circle` and `rect` struct types both
-    // implement the `geometry` interface so we can use
-    // instances of
-    // these structs as arguments to `measure`.
-    measure(r)
-    measure(c)
+	// 構造体型 `circle` と `rect` はいずれも `geometry` インターフェースを実装している。
+	// そのためこれらの型のインスタンスを `measure` の引数にすることができる。
+	measure(r)
+	measure(c)
 }
