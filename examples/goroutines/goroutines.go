@@ -1,37 +1,33 @@
-// A _goroutine_ is a lightweight thread of execution.
+// _ゴルーチン_は軽量なスレッドである。
 
 package main
 
 import "fmt"
 
 func f(from string) {
-    for i := 0; i < 3; i++ {
-        fmt.Println(from, ":", i)
-    }
+	for i := 0; i < 3; i++ {
+		fmt.Println(from, ":", i)
+	}
 }
 
 func main() {
 
-    // Suppose we have a function call `f(s)`. Here's how
-    // we'd call that in the usual way, running it
-    // synchronously.
-    f("direct")
+	// `f(s)` という関数を呼ぶとしよう。
+	// 普通にこのように書けばよく、関数は同期的に実行される。
+	f("direct")
 
-    // To invoke this function in a goroutine, use
-    // `go f(s)`. This new goroutine will execute
-    // concurrently with the calling one.
-    go f("goroutine")
+	// `go f(s)` と書くと、この関数をゴルーチンの中で実行する。
+	// こうすると、新たなゴルーチンが呼び出し側と平行に実行される。
+	go f("goroutine")
 
-    // You can also start a goroutine for an anonymous
-    // function call.
-    go func(msg string) {
-        fmt.Println(msg)
-    }("going")
+	// 無名関数のゴルーチンを起動することもできる。
+	go func(msg string) {
+		fmt.Println(msg)
+	}("going")
 
-    // Our two function calls are running asynchronously in
-    // separate goroutines now, so execution falls through
-    // to here. This `Scanln` requires we press a key
-    // before the program exits.
-    fmt.Scanln()
-    fmt.Println("done")
+	// 2つの関数呼び出しは、別々のゴルーチンにおいて非同期的に実行されている。
+	// そのため処理はここまで抜けてくる。
+	// ここにある `Scanln` はキーを押すまでブロックするため、プログラムが終了するのを妨げてくれる。
+	fmt.Scanln()
+	fmt.Println("done")
 }
