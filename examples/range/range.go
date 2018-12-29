@@ -1,6 +1,5 @@
-// _range_ iterates over elements in a variety of data
-// structures. Let's see how to use `range` with some
-// of the data structures we've already learned.
+// _range_ は様々なデータ構造の要素の値を繰り返し取得するのに役立つ。
+// これまで学んだデータ構造に `range` を使う方法を紹介する。
 
 package main
 
@@ -8,41 +7,38 @@ import "fmt"
 
 func main() {
 
-    // Here we use `range` to sum the numbers in a slice.
-    // Arrays work like this too.
-    nums := []int{2, 3, 4}
-    sum := 0
-    for _, num := range nums {
-        sum += num
-    }
-    fmt.Println("sum:", sum)
+	// ここでは `range` を使ってスライスの要素の和を計算している。
+	// 配列でも同様に `range` を使える。
+	nums := []int{2, 3, 4}
+	sum := 0
+	for _, num := range nums {
+		sum += num
+	}
+	fmt.Println("sum:", sum)
 
-    // `range` on arrays and slices provides both the
-    // index and value for each entry. Above we didn't
-    // need the index, so we ignored it with the
-    // blank identifier `_`. Sometimes we actually want
-    // the indexes though.
-    for i, num := range nums {
-        if num == 3 {
-            fmt.Println("index:", i)
-        }
-    }
+	// 配列、スライスに対する `range` から、インデックスと値の両方を読み出せる。
+	// 上ではインデックスを使わなかったので、ブランク識別子 `_` を使ってインデックスを無視した。
+	// しかし、インデックスを使いたい場面ももちろんある。
+	for i, num := range nums {
+		if num == 3 {
+			fmt.Println("index:", i)
+		}
+	}
 
-    // `range` on map iterates over key/value pairs.
-    kvs := map[string]string{"a": "apple", "b": "banana"}
-    for k, v := range kvs {
-        fmt.Printf("%s -> %s\n", k, v)
-    }
+	// マップに `range` を使うと、キーと値の組みを繰り返し読み出す。
+	kvs := map[string]string{"a": "apple", "b": "banana"}
+	for k, v := range kvs {
+		fmt.Printf("%s -> %s\n", k, v)
+	}
 
-    // `range` can also iterate over just the keys of a map.
-    for k := range kvs {
-        fmt.Println("key:", k)
-    }
+	// マップのキーだけを繰り返し読み出すこともできる。
+	for k := range kvs {
+		fmt.Println("key:", k)
+	}
 
-    // `range` on strings iterates over Unicode code
-    // points. The first value is the starting byte index
-    // of the `rune` and the second the `rune` itself.
-    for i, c := range "go" {
-        fmt.Println(i, c)
-    }
+	// 文字列に `range` を使うと、Unicode のコードポイントを繰り返し読み出す。
+	// 1つ目の返り値は、その `rune` 型の値のはじめのバイトのインデックスであり、2つ目の返り値は `rune` 型の値そのものである。
+	for i, c := range "go" {
+		fmt.Println(i, c)
+	}
 }
