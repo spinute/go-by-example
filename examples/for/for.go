@@ -1,5 +1,5 @@
-// `for` is Go's only looping construct. Here are
-// three basic types of `for` loops.
+// `for` は Go においてループを書くための唯一のキーワードである。
+// 基本的な `for` ループの書き方が3種類ある。
 
 package main
 
@@ -7,32 +7,29 @@ import "fmt"
 
 func main() {
 
-    // The most basic type, with a single condition.
-    i := 1
-    for i <= 3 {
-        fmt.Println(i)
-        i = i + 1
-    }
+	// 1つだけ条件を書く最も基本的な書き方
+	i := 1
+	for i <= 3 {
+		fmt.Println(i)
+		i = i + 1
+	}
 
-    // A classic initial/condition/after `for` loop.
-    for j := 7; j <= 9; j++ {
-        fmt.Println(j)
-    }
+	// 初期化、条件、ループ間処理を書く古典的な `for` ループ
+	for j := 7; j <= 9; j++ {
+		fmt.Println(j)
+	}
 
-    // `for` without a condition will loop repeatedly
-    // until you `break` out of the loop or `return` from
-    // the enclosing function.
-    for {
-        fmt.Println("loop")
-        break
-    }
+	// 条件を書かない `for` ループは、`break` でループから抜けるか、`return` で関数から抜けるまで繰り返し続ける。
+	for {
+		fmt.Println("loop")
+		break
+	}
 
-    // You can also `continue` to the next iteration of
-    // the loop.
-    for n := 0; n <= 5; n++ {
-        if n%2 == 0 {
-            continue
-        }
-        fmt.Println(n)
-    }
+	// `coutinue` と書くと、ループ内の次の繰り返しに進む。
+	for n := 0; n <= 5; n++ {
+		if n%2 == 0 {
+			continue
+		}
+		fmt.Println(n)
+	}
 }
