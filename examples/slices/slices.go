@@ -1,5 +1,5 @@
-// _Slices_ are a key data type in Go, giving a more
-// powerful interface to sequences than arrays.
+// _スライス_ は Go のデータ型の中でも特に重要だ。
+// スライスは値の列を表す、配列よりも強力なインターフェースである。
 
 package main
 
@@ -7,70 +7,61 @@ import "fmt"
 
 func main() {
 
-    // Unlike arrays, slices are typed only by the
-    // elements they contain (not the number of elements).
-    // To create an empty slice with non-zero length, use
-    // the builtin `make`. Here we make a slice of
-    // `string`s of length `3` (initially zero-valued).
-    s := make([]string, 3)
-    fmt.Println("emp:", s)
+	// 配列とは違い、スライスの型はは要素の型だけを含む（つまり、要素数は含まない）。
+	// 空でない（長さ0でない）スライスを作るには、組み込みの `make` を使う。
+	// ここでは、文字列が3つ入るスライスを作っている（初期値はゼロ値である）。
+	s := make([]string, 3)
+	fmt.Println("emp:", s)
 
-    // We can set and get just like with arrays.
-    s[0] = "a"
-    s[1] = "b"
-    s[2] = "c"
-    fmt.Println("set:", s)
-    fmt.Println("get:", s[2])
+	// 値の読み書きは配列と同様に行える。
+	s[0] = "a"
+	s[1] = "b"
+	s[2] = "c"
+	fmt.Println("set:", s)
+	fmt.Println("get:", s[2])
 
-    // `len` returns the length of the slice as expected.
-    fmt.Println("len:", len(s))
+	// `len` はスライスの長さを返す。
+	fmt.Println("len:", len(s))
 
-    // In addition to these basic operations, slices
-    // support several more that make them richer than
-    // arrays. One is the builtin `append`, which
-    // returns a slice containing one or more new values.
-    // Note that we need to accept a return value from
-    // `append` as we may get a new slice value.
-    s = append(s, "d")
-    s = append(s, "e", "f")
-    fmt.Println("apd:", s)
+	// 配列にあった基本的な操作に加えて、スライスにはより豊富な操作が可能である。
+	// 例えば組み込みの `append` は一つかそれ以上の新たな値を含むスライスを返す。
+	// ここで、新たな値を得るには、`make` の返り値を受け取る必要があることに注意する。
+	s = append(s, "d")
+	s = append(s, "e", "f")
+	fmt.Println("apd:", s)
 
-    // Slices can also be `copy`'d. Here we create an
-    // empty slice `c` of the same length as `s` and copy
-    // into `c` from `s`.
-    c := make([]string, len(s))
-    copy(c, s)
-    fmt.Println("cpy:", c)
+	// スライスはコピー（`copy`）することもできる。
+	// ここでは、`s` と同じ長さの空のスライス `c` を作り、`s` の内容を `c` にコピーしている。
+	c := make([]string, len(s))
+	copy(c, s)
+	fmt.Println("cpy:", c)
 
-    // Slices support a "slice" operator with the syntax
-    // `slice[low:high]`. For example, this gets a slice
-    // of the elements `s[2]`, `s[3]`, and `s[4]`.
-    l := s[2:5]
-    fmt.Println("sl1:", l)
+	// スライスを「スライス」する `slice[low:high]` という記法もある。
+	// 例えばこの例では、`s[2]`、`s[3]`、`s[4]` からなるスライスを取得している。
+	l := s[2:5]
+	fmt.Println("sl1:", l)
 
-    // This slices up to (but excluding) `s[5]`.
-    l = s[:5]
-    fmt.Println("sl2:", l)
+	// これは `s[5]` までの要素（`s[5]` を含まない）をスライスしている。
+	l = s[:5]
+	fmt.Println("sl2:", l)
 
-    // And this slices up from (and including) `s[2]`.
-    l = s[2:]
-    fmt.Println("sl3:", l)
+	// これは `s[2]` から先の要素（`s[2]` を含む）をスライスしている。
+	l = s[2:]
+	fmt.Println("sl3:", l)
 
-    // We can declare and initialize a variable for slice
-    // in a single line as well.
-    t := []string{"g", "h", "i"}
-    fmt.Println("dcl:", t)
+	// スライスの宣言と定義も、一行で済ませられる。
+	t := []string{"g", "h", "i"}
+	fmt.Println("dcl:", t)
 
-    // Slices can be composed into multi-dimensional data
-    // structures. The length of the inner slices can
-    // vary, unlike with multi-dimensional arrays.
-    twoD := make([][]int, 3)
-    for i := 0; i < 3; i++ {
-        innerLen := i + 1
-        twoD[i] = make([]int, innerLen)
-        for j := 0; j < innerLen; j++ {
-            twoD[i][j] = i + j
-        }
-    }
-    fmt.Println("2d: ", twoD)
+	// スライスを組み合わせて多次元のデータ構造を作れる。
+	// 内側のスライスの長さは同じでなくてもよく、これは配列の場合とは異なる。
+	twoD := make([][]int, 3)
+	for i := 0; i < 3; i++ {
+		innerLen := i + 1
+		twoD[i] = make([]int, innerLen)
+		for j := 0; j < innerLen; j++ {
+			twoD[i][j] = i + j
+		}
+	}
+	fmt.Println("2d: ", twoD)
 }
