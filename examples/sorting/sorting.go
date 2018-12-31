@@ -1,6 +1,5 @@
-// Go's `sort` package implements sorting for builtins
-// and user-defined types. We'll look at sorting for
-// builtins first.
+// Go の `sort` パッケージは、組み込み型もユーザー定義型もソートできる。
+// まずは、組み込み型のソートを見てみよう。
 
 package main
 
@@ -9,21 +8,19 @@ import "sort"
 
 func main() {
 
-    // Sort methods are specific to the builtin type;
-    // here's an example for strings. Note that sorting is
-    // in-place, so it changes the given slice and doesn't
-    // return a new one.
-    strs := []string{"c", "a", "b"}
-    sort.Strings(strs)
-    fmt.Println("Strings:", strs)
+	// ソートメソッドは組み込み型ごとに別々である。
+	// ここでは文字列をソートするメソッドを使っている。
+	// ソートは in-place である。つまり、引数に渡したスライスを変更し、新たなスライスを返すわけではない。
+	strs := []string{"c", "a", "b"}
+	sort.Strings(strs)
+	fmt.Println("Strings:", strs)
 
-    // An example of sorting `int`s.
-    ints := []int{7, 2, 4}
-    sort.Ints(ints)
-    fmt.Println("Ints:   ", ints)
+	// `int` 型のスライスをソートする例
+	ints := []int{7, 2, 4}
+	sort.Ints(ints)
+	fmt.Println("Ints:   ", ints)
 
-    // We can also use `sort` to check if a slice is
-    // already in sorted order.
-    s := sort.IntsAreSorted(ints)
-    fmt.Println("Sorted: ", s)
+	// `sort` パッケージを使って、スライスがソート済みかどうかを確認することもできる。
+	s := sort.IntsAreSorted(ints)
+	fmt.Println("Sorted: ", s)
 }
