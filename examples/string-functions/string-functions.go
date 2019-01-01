@@ -1,49 +1,39 @@
-// The standard library's `strings` package provides many
-// useful string-related functions. Here are some examples
-// to give you a sense of the package.
+// 標準ライブラリの `strings` パッケージには文字列を扱うための便利な関数が含まれている。
+// ここではこのパッケージをどういう感じで使えるのかがわかる例を紹介する。
 
 package main
 
 import s "strings"
 import "fmt"
 
-// We alias `fmt.Println` to a shorter name as we'll use
-// it a lot below.
+// `fmt.Println` を繰り返し使うので、短い別名を与える。
 var p = fmt.Println
 
 func main() {
 
-    // Here's a sample of the functions available in
-    // `strings`. Since these are functions from the
-    // package, not methods on the string object itself,
-    // we need pass the string in question as the first
-    // argument to the function. You can find more
-    // functions in the [`strings`](http://golang.org/pkg/strings/)
-    // package docs.
-    p("Contains:  ", s.Contains("test", "es"))
-    p("Count:     ", s.Count("test", "t"))
-    p("HasPrefix: ", s.HasPrefix("test", "te"))
-    p("HasSuffix: ", s.HasSuffix("test", "st"))
-    p("Index:     ", s.Index("test", "e"))
-    p("Join:      ", s.Join([]string{"a", "b"}, "-"))
-    p("Repeat:    ", s.Repeat("a", 5))
-    p("Replace:   ", s.Replace("foo", "o", "0", -1))
-    p("Replace:   ", s.Replace("foo", "o", "0", 1))
-    p("Split:     ", s.Split("a-b-c-d-e", "-"))
-    p("ToLower:   ", s.ToLower("TEST"))
-    p("ToUpper:   ", s.ToUpper("test"))
-    p()
+	// `strings` の関数のサンプルを出そう。
+	// これらの関数はパッケージの関数であって、メソッドではないので、第一引数として対象となる文字列を渡す。
+	// [`strings` のドキュメント](http://golang.org/pkg/strings/)を見れば他にも色々な関数があることがわかる。
+	p("Contains:  ", s.Contains("test", "es"))
+	p("Count:     ", s.Count("test", "t"))
+	p("HasPrefix: ", s.HasPrefix("test", "te"))
+	p("HasSuffix: ", s.HasSuffix("test", "st"))
+	p("Index:     ", s.Index("test", "e"))
+	p("Join:      ", s.Join([]string{"a", "b"}, "-"))
+	p("Repeat:    ", s.Repeat("a", 5))
+	p("Replace:   ", s.Replace("foo", "o", "0", -1))
+	p("Replace:   ", s.Replace("foo", "o", "0", 1))
+	p("Split:     ", s.Split("a-b-c-d-e", "-"))
+	p("ToLower:   ", s.ToLower("TEST"))
+	p("ToUpper:   ", s.ToUpper("test"))
+	p()
 
-    // Not part of `strings`, but worth mentioning here, are
-    // the mechanisms for getting the length of a string in
-    // bytes and getting a byte by index.
-    p("Len: ", len("hello"))
-    p("Char:", "hello"[1])
+	// `strings` パッケージの一部ではないが、文字列の長さを求める機能、インデックスを指定してバイトを読み出す機能もここで紹介しておくべきだろう。
+	p("Len: ", len("hello"))
+	p("Char:", "hello"[1])
 }
 
-// Note that `len` and indexing above work at the byte level.
-// Go uses UTF-8 encoded strings, so this is often useful
-// as-is. If you're working with potentially multi-byte
-// characters you'll want to use encoding-aware operations.
-// See [strings, bytes, runes and characters in Go](https://blog.golang.org/strings)
-// for more information.
+// 上で紹介した `len` やインデックスはバイト列として文字列を見ていることに注意する。
+// Go は文字列のエンコーディングとして UTF-8 を使うので、普通はこれでうまくいく。
+// もし多バイト文字を使う可能性があれば、エンコーディングを意識して各操作を実行したくなるだろう。
+// より詳しい情報は [strings, bytes, runes and characters in Go](https://blog.golang.org/strings) を見てほしい。
