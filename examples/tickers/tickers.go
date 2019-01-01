@@ -1,8 +1,6 @@
-// [Timers](timers) are for when you want to do
-// something once in the future - _tickers_ are for when
-// you want to do something repeatedly at regular
-// intervals. Here's an example of a ticker that ticks
-// periodically until we stop it.
+// [タイマー](timers)を使えば、将来のあるタイミングで何かを実行できる。
+// 一方、_ticker_ を使えば、定期的に何かを繰り返し実行できる。
+// この例では、ticker を使って定期的にメッセージを送る方法を紹介する。
 
 package main
 
@@ -11,21 +9,19 @@ import "fmt"
 
 func main() {
 
-    // Tickers use a similar mechanism to timers: a
-    // channel that is sent values. Here we'll use the
-    // `range` builtin on the channel to iterate over
-    // the values as they arrive every 500ms.
-    ticker := time.NewTicker(500 * time.Millisecond)
-    go func() {
-        for t := range ticker.C {
-            fmt.Println("Tick at", t)
-        }
-    }()
+	// タイマーと同様に ticker も値を送るチャネルを使う。
+	// ここでは組み込みの `range` をチャネルに使い、500ミリ秒ごとに届く値を繰り返し受け取っている。
+	ticker := time.NewTicker(500 * time.Millisecond)
+	go func() {
+		for t := range ticker.C {
+			fmt.Println("Tick at", t)
+		}
+	}()
 
-    // Tickers can be stopped like timers. Once a ticker
-    // is stopped it won't receive any more values on its
-    // channel. We'll stop ours after 1600ms.
-    time.Sleep(1600 * time.Millisecond)
-    ticker.Stop()
-    fmt.Println("Ticker stopped")
+	// ticker の止め方はタイマーと同様だ。
+	// ticker を止めると、それ以降そのチャネルは値を受信しなくなる。
+	// ここでは1600ミリ秒待って ticker を停止している。
+	time.Sleep(1600 * time.Millisecond)
+	ticker.Stop()
+	fmt.Println("Ticker stopped")
 }
