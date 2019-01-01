@@ -1,6 +1,5 @@
-// Go offers excellent support for string formatting in
-// the `printf` tradition. Here are some examples of
-// common string formatting tasks.
+// 伝統的な `printf` によく似た、良く出来た文字列フォーマット機能が Go にはある。
+// ここでは、文字列をフォーマットする例をいくつか紹介する。
 
 package main
 
@@ -8,101 +7,85 @@ import "fmt"
 import "os"
 
 type point struct {
-    x, y int
+	x, y int
 }
 
 func main() {
 
-    // Go offers several printing "verbs" designed to
-    // format general Go values. For example, this prints
-    // an instance of our `point` struct.
-    p := point{1, 2}
-    fmt.Printf("%v\n", p)
+	// 一般的な Go の値をフォーマットする、verb と呼ばれるフォーマット文字列がある。
+	// ここでは、`point` 構造体のインスタンスを表示している。
+	p := point{1, 2}
+	fmt.Printf("%v\n", p)
 
-    // If the value is a struct, the `%+v` variant will
-    // include the struct's field names.
-    fmt.Printf("%+v\n", p)
+	// 構造体をフォーマットするとき、`%+v` を使えば構造体のフィールド名をフォーマット結果に含められる。
+	fmt.Printf("%+v\n", p)
 
-    // The `%#v` variant prints a Go syntax representation
-    // of the value, i.e. the source code snippet that
-    // would produce that value.
-    fmt.Printf("%#v\n", p)
+	// `%#v` と書くと、Go の文法でその値を表す文字列が得られる。
+	// これは、その値を生成するコードが得られるということだ。
+	fmt.Printf("%#v\n", p)
 
-    // To print the type of a value, use `%T`.
-    fmt.Printf("%T\n", p)
+	// `%T` でその値の方を表示できる。
+	fmt.Printf("%T\n", p)
 
-    // Formatting booleans is straight-forward.
-    fmt.Printf("%t\n", true)
+	// 真偽値も表示できる。
+	fmt.Printf("%t\n", true)
 
-    // There are many options for formatting integers.
-    // Use `%d` for standard, base-10 formatting.
-    fmt.Printf("%d\n", 123)
+	// 整数値を表示する際のオプションが色々ある。
+	// 普通に10進記数法で表示するには `%d` を使う。
+	fmt.Printf("%d\n", 123)
 
-    // This prints a binary representation.
-    fmt.Printf("%b\n", 14)
+	// こうすると2進記数法になる。
+	fmt.Printf("%b\n", 14)
 
-    // This prints the character corresponding to the
-    // given integer.
-    fmt.Printf("%c\n", 33)
+	// これは整数に対応する文字を表示する。
+	fmt.Printf("%c\n", 33)
 
-    // `%x` provides hex encoding.
-    fmt.Printf("%x\n", 456)
+	// `%x` は16進記数法
+	fmt.Printf("%x\n", 456)
 
-    // There are also several formatting options for
-    // floats. For basic decimal formatting use `%f`.
-    fmt.Printf("%f\n", 78.9)
+	// 実数をフォーマットする際のオプションも色々ある。
+	// `%f` を使うと標準的な10進記数法でフォーマットする。
+	fmt.Printf("%f\n", 78.9)
 
-    // `%e` and `%E` format the float in (slightly
-    // different versions of) scientific notation.
-    fmt.Printf("%e\n", 123400000.0)
-    fmt.Printf("%E\n", 123400000.0)
+	// `%e` か `%E` を使うと科学で使う記法でフォーマットする（形式が少し違う）。
+	fmt.Printf("%e\n", 123400000.0)
+	fmt.Printf("%E\n", 123400000.0)
 
-    // For basic string printing use `%s`.
-    fmt.Printf("%s\n", "\"string\"")
+	// 文字列を普通に表示するには `%s` を使う。
+	fmt.Printf("%s\n", "\"string\"")
 
-    // To double-quote strings as in Go source, use `%q`.
-    fmt.Printf("%q\n", "\"string\"")
+	// Go のソースコードのようにダブルクオートを文字列に入れるには、`%q` を使う。
+	fmt.Printf("%q\n", "\"string\"")
 
-    // As with integers seen earlier, `%x` renders
-    // the string in base-16, with two output characters
-    // per byte of input.
-    fmt.Printf("%x\n", "hex this")
+	// 整数をフォーマットするときに見たように、`%x` を使うと文字列を16進記数法でフォーマットする。
+	// この場合、出力2文字が入力1バイトを表す。
+	fmt.Printf("%x\n", "hex this")
 
-    // To print a representation of a pointer, use `%p`.
-    fmt.Printf("%p\n", &p)
+	// ポインタを表示するときは、`%p` を使う。
+	fmt.Printf("%p\n", &p)
 
-    // When formatting numbers you will often want to
-    // control the width and precision of the resulting
-    // figure. To specify the width of an integer, use a
-    // number after the `%` in the verb. By default the
-    // result will be right-justified and padded with
-    // spaces.
-    fmt.Printf("|%6d|%6d|\n", 12, 345)
+	// 数をフォーマットするとき、結果の幅や精度を制御したいことがよくある。
+	// 幅を指定するには `%` の直後に数を書けばよい。
+	// デフォルトでは結果は右詰めで、空きはスペースで埋められる。
+	fmt.Printf("|%6d|%6d|\n", 12, 345)
 
-    // You can also specify the width of printed floats,
-    // though usually you'll also want to restrict the
-    // decimal precision at the same time with the
-    // width.precision syntax.
-    fmt.Printf("|%6.2f|%6.2f|\n", 1.2, 3.45)
+	// 実数の表示幅も指定できるが、実数の場合は普通幅だけでなく、精度も同時に指定する。
+	fmt.Printf("|%6.2f|%6.2f|\n", 1.2, 3.45)
 
-    // To left-justify, use the `-` flag.
-    fmt.Printf("|%-6.2f|%-6.2f|\n", 1.2, 3.45)
+	// 左詰めにしたければ、フラグ `-` を使う。
+	fmt.Printf("|%-6.2f|%-6.2f|\n", 1.2, 3.45)
 
-    // You may also want to control width when formatting
-    // strings, especially to ensure that they align in
-    // table-like output. For basic right-justified width.
-    fmt.Printf("|%6s|%6s|\n", "foo", "b")
+	// 表を作るときなどは、文字列の幅を制御したいこともあるだろう。
+	// 右詰めで幅を指定するには以下のようにする。
+	fmt.Printf("|%6s|%6s|\n", "foo", "b")
 
-    // To left-justify use the `-` flag as with numbers.
-    fmt.Printf("|%-6s|%-6s|\n", "foo", "b")
+	// 左詰めにするには、フラグ`-`を使う。
+	fmt.Printf("|%-6s|%-6s|\n", "foo", "b")
 
-    // So far we've seen `Printf`, which prints the
-    // formatted string to `os.Stdout`. `Sprintf` formats
-    // and returns a string without printing it anywhere.
-    s := fmt.Sprintf("a %s", "string")
-    fmt.Println(s)
+	// ここまでフォーマットした文字列を `os.Stdout` に出力する `Printf` を見てきたが、`Sprintf` を使えばフォーマット結果の文字列を表示することなく、単に返すことができる。
+	s := fmt.Sprintf("a %s", "string")
+	fmt.Println(s)
 
-    // You can format+print to `io.Writers` other than
-    // `os.Stdout` using `Fprintf`.
-    fmt.Fprintf(os.Stderr, "an %s\n", "error")
+	// `Fprintf` を使えば、`os.Stdout` 以外の `io.Writers` に対してフォーマットした文字を書き出せる。
+	fmt.Fprintf(os.Stderr, "an %s\n", "error")
 }
