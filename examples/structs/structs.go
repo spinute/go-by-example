@@ -1,41 +1,40 @@
-// Go's _structs_ are typed collections of fields.
-// They're useful for grouping data together to form
-// records.
+// Go の構造体は型がついたフィールドの集まりにである。
+// 構造体を使うとデータをまとめて扱うのに便利である。
 
 package main
 
 import "fmt"
 
-// This `person` struct type has `name` and `age` fields.
+// 構造体型 `person` はフィールド `name`、`age` を持つ。
 type person struct {
-    name string
-    age  int
+	name string
+	age  int
 }
 
 func main() {
 
-    // This syntax creates a new struct.
-    fmt.Println(person{"Bob", 20})
+	// 新たな構造体はこう作る。
+	fmt.Println(person{"Bob", 20})
 
-    // You can name the fields when initializing a struct.
-    fmt.Println(person{name: "Alice", age: 30})
+	// 構造体を初期化するときに、フィールド名を指定してもよい。
+	fmt.Println(person{name: "Alice", age: 30})
 
-    // Omitted fields will be zero-valued.
-    fmt.Println(person{name: "Fred"})
+	// 明記しないフィールドの値はゼロ値になる。
+	fmt.Println(person{name: "Fred"})
 
-    // An `&` prefix yields a pointer to the struct.
-    fmt.Println(&person{name: "Ann", age: 40})
+	// `&` を前に付けると構造体のポインタを作れる。
+	fmt.Println(&person{name: "Ann", age: 40})
 
-    // Access struct fields with a dot.
-    s := person{name: "Sean", age: 50}
-    fmt.Println(s.name)
+	// 構造体のフィールドにアクセスするにはドット演算子を使う。
+	s := person{name: "Sean", age: 50}
+	fmt.Println(s.name)
 
-    // You can also use dots with struct pointers - the
-    // pointers are automatically dereferenced.
-    sp := &s
-    fmt.Println(sp.age)
+	// 構造体のポインタにもドット演算子を使える。
+	// このとき、ポインタは自動的に参照を剥がされる。
+	sp := &s
+	fmt.Println(sp.age)
 
-    // Structs are mutable.
-    sp.age = 51
-    fmt.Println(sp.age)
+	// 構造体は可変である。
+	sp.age = 51
+	fmt.Println(sp.age)
 }
