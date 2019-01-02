@@ -1,33 +1,27 @@
-// [_Variadic functions_](http://en.wikipedia.org/wiki/Variadic_function)
-// can be called with any number of trailing arguments.
-// For example, `fmt.Println` is a common variadic
-// function.
+// [_可変長引数関数_](http://en.wikipedia.org/wiki/Variadic_function)は、末尾の引数に何個でも変数を受け取れる関数である。
+// 例えば、`fmt.Println` はよく使う可変長引数関数である。
 
 package main
 
 import "fmt"
 
-// Here's a function that will take an arbitrary number
-// of `int`s as arguments.
+// これは何個でも `int` 型の引数を取る関数である。
 func sum(nums ...int) {
-    fmt.Print(nums, " ")
-    total := 0
-    for _, num := range nums {
-        total += num
-    }
-    fmt.Println(total)
+	fmt.Print(nums, " ")
+	total := 0
+	for _, num := range nums {
+		total += num
+	}
+	fmt.Println(total)
 }
 
 func main() {
 
-    // Variadic functions can be called in the usual way
-    // with individual arguments.
-    sum(1, 2)
-    sum(1, 2, 3)
+	// 可変長引数関数は普通の関数と同様に呼び出せる。
+	sum(1, 2)
+	sum(1, 2, 3)
 
-    // If you already have multiple args in a slice,
-    // apply them to a variadic function using
-    // `func(slice...)` like this.
-    nums := []int{1, 2, 3, 4}
-    sum(nums...)
+	// 複数の引数をスライスとして持っているなら、以下の `func(slice...)` という形式で可変長引数関数にスライスの中身を渡せる。
+	nums := []int{1, 2, 3, 4}
+	sum(nums...)
 }
