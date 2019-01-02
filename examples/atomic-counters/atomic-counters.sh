@@ -1,7 +1,5 @@
-# Running the program shows that we executed about
-# 40,000 operations.
+# プログラムを実行すると約40000回操作を実行したことがわかる。
 $ go run atomic-counters.go
 ops: 41419
 
-# Next we'll look at mutexes, another tool for managing
-# state.
+# 次の例では、状態管理のためのもう一つのツールである、ミューテックスを紹介する。
