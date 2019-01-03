@@ -4,5 +4,4 @@ $ go run closures.go
 3
 1
 
-# The last feature of functions we'll look at for now is
-# recursion.
+# 関数の特徴をここまで見てきたが、最後には再帰を紹介する。

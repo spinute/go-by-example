@@ -1,10 +1,8 @@
-# To experiment with command-line arguments it's best to
-# build a binary with `go build` first.
+# コマンドライン引数の実験をするには、`go build` を実行してバイナリを先に作っておくのがいい。
 $ go build command-line-arguments.go
 $ ./command-line-arguments a b c d
 [./command-line-arguments a b c d]       
 [a b c d]
 c
 
-# Next we'll look at more advanced command-line processing
-# with flags.
+# 続いては、フラグを使ってより高度なコマンドライン処理の仕方を見ていく。

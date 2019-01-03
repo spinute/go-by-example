@@ -1,10 +1,7 @@
-# To experiment with the command-line flags program it's
-# best to first compile it and then run the resulting
-# binary directly.
+# コマンドラインフラグの実験をするときは、まずプログラムをコンパイルし、その後バイナリを直接実行するとよい。
 $ go build command-line-flags.go
 
-# Try out the built program by first giving it values for
-# all flags.
+# ビルドしたプログラムを、すべてのフラグに値を与えて実行する。
 $ ./command-line-flags -word=opt -numb=7 -fork -svar=flag
 word: opt
 numb: 7
@@ -12,8 +9,7 @@ fork: true
 svar: flag
 tail: []
 
-# Note that if you omit flags they automatically take
-# their default values.
+# フラグを書かなければ、自動的にデフォルト値を使うことに注意する。
 $ ./command-line-flags -word=opt
 word: opt
 numb: 42
@@ -21,16 +17,14 @@ fork: false
 svar: bar
 tail: []
 
-# Trailing positional arguments can be provided after
-# any flags.
+# フラグの後に引数を並べられる。
 $ ./command-line-flags -word=opt a1 a2 a3
 word: opt
 ...
 tail: [a1 a2 a3]
 
-# Note that the `flag` package requires all flags to
-# appear before positional arguments (otherwise the flags
-# will be interpreted as positional arguments).
+# `flag` パッケージでは、すべてのフラグは単なる引数の前に書かなければならない。
+# （さもなければ、フラグはただの引数として解釈されてしまう。）
 $ ./command-line-flags -word=opt a1 a2 a3 -numb=7
 word: opt
 numb: 42
@@ -38,8 +32,7 @@ fork: false
 svar: bar
 tail: [a1 a2 a3 -numb=7]
 
-# Use `-h` or `--help` flags to get automatically
-# generated help text for the command-line program.
+# `-h` か `--help` を使うと、自動生成したコマンドラインのヘルプを表示する。
 $ ./command-line-flags -h
 Usage of ./command-line-flags:
   -fork=false: a bool
@@ -47,13 +40,10 @@ Usage of ./command-line-flags:
   -svar="bar": a string var
   -word="foo": a string
 
-# If you provide a flag that wasn't specified to the
-# `flag` package, the program will print an error message
-# and show the help text again.
+# `flag` パッケージで指定していないフラグをプログラムに渡すと、プログラムはエラーメッセージを表示し、この場合もヘルプを表示する。
 $ ./command-line-flags -wat
 flag provided but not defined: -wat
 Usage of ./command-line-flags:
 ...
 
-# Next we'll look at environment variables, another common
-# way to parameterize programs.
+# 続いて、プログラムにパラメータを渡す別の方法である、環境変数を紹介する。
