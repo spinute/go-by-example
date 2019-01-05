@@ -2,32 +2,19 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: String Functions</title>
+    <title>サンプルで学ぶ Go 言語：String Functions</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="string-functions">
-      <h2><a href="./">Go by Example</a>: String Functions</h2>
+      <h2><a href="./">サンプルで学ぶ Go 言語</a>：String Functions</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>The standard library&rsquo;s <code>strings</code> package provides many
-useful string-related functions. Here are some examples
-to give you a sense of the package.</p>
+            <p>標準ライブラリの <code>strings</code> パッケージには文字列を扱うための便利な関数が含まれている。
+ここではこのパッケージをどういう感じで使えるのかがわかる例を紹介する。</p>
 
           </td>
           <td class="code empty leading">
@@ -41,7 +28,7 @@ to give you a sense of the package.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/Lf5_Zbg6or"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/iY7oPEf3fTc"><img title="コードを実行する" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -63,8 +50,7 @@ to give you a sense of the package.</p>
         
         <tr>
           <td class="docs">
-            <p>We alias <code>fmt.Println</code> to a shorter name as we&rsquo;ll use
-it a lot below.</p>
+            <p><code>fmt.Println</code> を繰り返し使うので、短い別名を与える。</p>
 
           </td>
           <td class="code leading">
@@ -89,13 +75,9 @@ it a lot below.</p>
         
         <tr>
           <td class="docs">
-            <p>Here&rsquo;s a sample of the functions available in
-<code>strings</code>. Since these are functions from the
-package, not methods on the string object itself,
-we need pass the string in question as the first
-argument to the function. You can find more
-functions in the <a href="http://golang.org/pkg/strings/"><code>strings</code></a>
-package docs.</p>
+            <p><code>strings</code> の関数のサンプルを出そう。
+これらの関数はパッケージの関数であって、メソッドではないので、第一引数として対象となる文字列を渡す。
+<a href="http://golang.org/pkg/strings/"><code>strings</code> のドキュメント</a>を見れば他にも色々な関数があることがわかる。</p>
 
           </td>
           <td class="code leading">
@@ -120,9 +102,7 @@ package docs.</p>
         
         <tr>
           <td class="docs">
-            <p>Not part of <code>strings</code>, but worth mentioning here, are
-the mechanisms for getting the length of a string in
-bytes and getting a byte by index.</p>
+            <p><code>strings</code> パッケージの一部ではないが、文字列の長さを求める機能、インデックスを指定してバイトを読み出す機能もここで紹介しておくべきだろう。</p>
 
           </td>
           <td class="code leading">
@@ -137,12 +117,10 @@ bytes and getting a byte by index.</p>
         
         <tr>
           <td class="docs">
-            <p>Note that <code>len</code> and indexing above work at the byte level.
-Go uses UTF-8 encoded strings, so this is often useful
-as-is. If you&rsquo;re working with potentially multi-byte
-characters you&rsquo;ll want to use encoding-aware operations.
-See <a href="https://blog.golang.org/strings">strings, bytes, runes and characters in Go</a>
-for more information.</p>
+            <p>上で紹介した <code>len</code> やインデックスはバイト列として文字列を見ていることに注意する。
+Go は文字列のエンコーディングとして UTF-8 を使うので、普通はこれでうまくいく。
+もし多バイト文字を使う可能性があれば、エンコーディングを意識して各操作を実行したくなるだろう。
+より詳しい情報は <a href="https://blog.golang.org/strings">strings, bytes, runes and characters in Go</a> を見てほしい。</p>
 
           </td>
           <td class="code empty">
@@ -196,11 +174,11 @@ for more information.</p>
       
       
       <p class="next">
-        Next example: <a href="string-formatting">String Formatting</a>.
+        次の例：<a href="string-formatting">String Formatting</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/string-functions">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinutids@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/examples/string-functions">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
   </body>

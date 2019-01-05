@@ -2,32 +2,19 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Multiple Return Values</title>
+    <title>サンプルで学ぶ Go 言語：Multiple Return Values</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="multiple-return-values">
-      <h2><a href="./">Go by Example</a>: Multiple Return Values</h2>
+      <h2><a href="./">サンプルで学ぶ Go 言語</a>：Multiple Return Values</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>Go has built-in support for <em>multiple return values</em>.
-This feature is used often in idiomatic Go, for example
-to return both result and error values from a function.</p>
+            <p>Go は<em>多値の返り値</em>を組み込みでサポートしている。
+この機能は Go のイディオムで使われることが多く、例えば結果とエラーの療法を関数から返す場合に使う。</p>
 
           </td>
           <td class="code empty leading">
@@ -41,7 +28,7 @@ to return both result and error values from a function.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/chwFmr5dG1"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/Xf315ptoiKJ"><img title="コードを実行する" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -62,8 +49,7 @@ to return both result and error values from a function.</p>
         
         <tr>
           <td class="docs">
-            <p>The <code>(int, int)</code> in this function signature shows that
-the function returns 2 <code>int</code>s.</p>
+            <p>この関数のシグネチャにおける <code>(int, int)</code> は、この関数が2つの <code>int</code> 型の値を返すことを表している。</p>
 
           </td>
           <td class="code leading">
@@ -90,8 +76,7 @@ the function returns 2 <code>int</code>s.</p>
         
         <tr>
           <td class="docs">
-            <p>Here we use the 2 different return values from the
-call with <em>multiple assignment</em>.</p>
+            <p>ここでは2つの返り値を<em>多重代入</em>を使って受け取っている。</p>
 
           </td>
           <td class="code leading">
@@ -106,8 +91,7 @@ call with <em>multiple assignment</em>.</p>
         
         <tr>
           <td class="docs">
-            <p>If you only want a subset of the returned values,
-use the blank identifier <code>_</code>.</p>
+            <p>もし返り値のうちの一部だけが必要なら、ブランク識別子 <code>_</code> を使えばよい。</p>
 
           </td>
           <td class="code">
@@ -141,8 +125,7 @@ use the blank identifier <code>_</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>Accepting a variable number of arguments is another nice
-feature of Go functions; we&rsquo;ll look at this next.</p>
+            <p>Go の関数の素敵な機能として、引数を何個でも受け取れる関数の書き方を次に紹介する。</p>
 
           </td>
           <td class="code empty">
@@ -155,11 +138,11 @@ feature of Go functions; we&rsquo;ll look at this next.</p>
       
       
       <p class="next">
-        Next example: <a href="variadic-functions">Variadic Functions</a>.
+        次の例：<a href="variadic-functions">Variadic Functions</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/multiple-return-values">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinutids@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/examples/multiple-return-values">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
   </body>

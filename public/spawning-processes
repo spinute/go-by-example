@@ -2,35 +2,20 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Spawning Processes</title>
+    <title>サンプルで学ぶ Go 言語：Spawning Processes</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="spawning-processes">
-      <h2><a href="./">Go by Example</a>: Spawning Processes</h2>
+      <h2><a href="./">サンプルで学ぶ Go 言語</a>：Spawning Processes</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>Sometimes our Go programs need to spawn other, non-Go
-processes. For example, the syntax highlighting on this
-site is <a href="https://github.com/mmcgrana/gobyexample/blob/master/tools/generate.go">implemented</a>
-by spawning a <a href="http://pygments.org/"><code>pygmentize</code></a>
-process from a Go program. Let&rsquo;s look at a few examples
-of spawning processes from Go.</p>
+            <p>Go のプログラムから Go ではない外部プロセスを spawn したくなることがある。
+例えば、このサイトのシンタックスハイライトは Go で書いたプログラムから <a href="http://pygments.org/"><code>pygments</code></a> を実行するプロセスを spawn <a href="https://github.com/mmcgrana/gobyexample/blob/master/tools/generate.go">している</a>。
+Go からプロセスを spawn する例を他にも見てみよう。</p>
 
           </td>
           <td class="code empty leading">
@@ -44,7 +29,7 @@ of spawning processes from Go.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/y6SB6Mf2VQ"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/jJdlnrzPzFu"><img title="コードを実行する" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -79,10 +64,8 @@ of spawning processes from Go.</p>
         
         <tr>
           <td class="docs">
-            <p>We&rsquo;ll start with a simple command that takes no
-arguments or input and just prints something to
-stdout. The <code>exec.Command</code> helper creates an object
-to represent this external process.</p>
+            <p>まずは引数も入力も取らず、標準出力に何かを書くだけの単純なコマンドから始めよう。
+ヘルパーコマンド <code>exec.Command</code> は外部プロセスを表すオブジェクトを作る。</p>
 
           </td>
           <td class="code leading">
@@ -95,10 +78,8 @@ to represent this external process.</p>
         
         <tr>
           <td class="docs">
-            <p><code>.Output</code> is another helper that handles the common
-case of running a command, waiting for it to finish,
-and collecting its output. If there were no errors,
-<code>dateOut</code> will hold bytes with the date info.</p>
+            <p>他に <code>.Output</code> というヘルパーもあり、これはコマンドを実行し、その終了を待ちながら、出力を集める。
+エラーが起きなければ、<code>dateOut</code> は日時情報を表すバイト列を保持する。</p>
 
           </td>
           <td class="code leading">
@@ -116,9 +97,7 @@ and collecting its output. If there were no errors,
         
         <tr>
           <td class="docs">
-            <p>Next we&rsquo;ll look at a slightly more involved case
-where we pipe data to the external process on its
-<code>stdin</code> and collect the results from its <code>stdout</code>.</p>
+            <p>続いて、パイプを使って外部プロセスの標準入力にデータを渡し、標準出力から結果を収集する方法を見てみる。</p>
 
           </td>
           <td class="code leading">
@@ -131,10 +110,7 @@ where we pipe data to the external process on its
         
         <tr>
           <td class="docs">
-            <p>Here we explicitly grab input/output pipes, start
-the process, write some input to it, read the
-resulting output, and finally wait for the process
-to exit.</p>
+            <p>ここでは明示的に入力・出力パイプを得て、プロセスを開始し、入力を書き込み、結果を読み出し、プロセスが終了するのを待っている。</p>
 
           </td>
           <td class="code leading">
@@ -153,11 +129,8 @@ to exit.</p>
         
         <tr>
           <td class="docs">
-            <p>We ommited error checks in the above example, but
-you could use the usual <code>if err != nil</code> pattern for
-all of them. We also only collect the <code>StdoutPipe</code>
-results, but you could collect the <code>StderrPipe</code> in
-exactly the same way.</p>
+            <p>上の例ではエラーチェックを省いたが、いつものように <code>if err != nil</code> のパターンでエラーチェックをしてもよい。
+また、<code>StdoutPipe</code> だけを見ていたが、<code>StderrPipe</code> も全く同じやり方で読み出せる。</p>
 
           </td>
           <td class="code leading">
@@ -171,12 +144,8 @@ exactly the same way.</p>
         
         <tr>
           <td class="docs">
-            <p>Note that when spawning commands we need to
-provide an explicitly delineated command and
-argument array, vs. being able to just pass in one
-command-line string. If you want to spawn a full
-command with a string, you can use <code>bash</code>&rsquo;s <code>-c</code>
-option:</p>
+            <p>コマンドを spawn するときは、コマンドラインに打ち込む文字列を丸ごと渡すのではなく、コマンドとその引数の配列を明示的に並べなければならない。
+もしコマンド全体を単に文字列で書きたいなら、<code>bash</code> の <code>-c</code> オプションを使えばよい。</p>
 
           </td>
           <td class="code">
@@ -200,8 +169,7 @@ option:</p>
         
         <tr>
           <td class="docs">
-            <p>The spawned programs return output that is the same
-as if we had run them directly from the command-line.</p>
+            <p>span したプログラムは、コマンドラインから直接実行するときと同様の出力を返す。</p>
 
           </td>
           <td class="code leading">
@@ -246,11 +214,11 @@ as if we had run them directly from the command-line.</p>
       
       
       <p class="next">
-        Next example: <a href="execing-processes">Exec'ing Processes</a>.
+        次の例：<a href="execing-processes">Exec'ing Processes</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/spawning-processes">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinutids@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/examples/spawning-processes">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
   </body>

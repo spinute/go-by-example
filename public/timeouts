@@ -2,33 +2,19 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Timeouts</title>
+    <title>サンプルで学ぶ Go 言語：Timeouts</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="timeouts">
-      <h2><a href="./">Go by Example</a>: Timeouts</h2>
+      <h2><a href="./">サンプルで学ぶ Go 言語</a>：Timeouts</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p><em>Timeouts</em> are important for programs that connect to
-external resources or that otherwise need to bound
-execution time. Implementing timeouts in Go is easy and
-elegant thanks to channels and <code>select</code>.</p>
+            <p>外部のリソースに接続したり、実行時間に上限を設けたりするプログラムには<em>タイムアウト</em>が必要になる。
+Go ではチャネルと <code>select</code> を使ってタイムアウトをうまく実現できる。</p>
 
           </td>
           <td class="code empty leading">
@@ -42,7 +28,7 @@ elegant thanks to channels and <code>select</code>.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/MgcfA-xpJO9"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/sD8O4wdyph_Z"><img title="コードを実行する" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -76,9 +62,7 @@ elegant thanks to channels and <code>select</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>For our example, suppose we&rsquo;re executing an external
-call that returns its result on a channel <code>c1</code>
-after 2s.</p>
+            <p>チャネル <code>c1</code> に2秒後に結果を返す外部機能を呼び出したいとする。</p>
 
           </td>
           <td class="code leading">
@@ -95,12 +79,9 @@ after 2s.</p>
         
         <tr>
           <td class="docs">
-            <p>Here&rsquo;s the <code>select</code> implementing a timeout.
-<code>res := &lt;-c1</code> awaits the result and <code>&lt;-Time.After</code>
-awaits a value to be sent after the timeout of
-1s. Since <code>select</code> proceeds with the first
-receive that&rsquo;s ready, we&rsquo;ll take the timeout case
-if the operation takes more than the allowed 1s.</p>
+            <p><code>select</code> を使ってタイムアウトを実装する。
+<code>res := &lt;-c1</code> は結果を待ち受け、&lt;-Time.After<code>は1秒のタイムアウト後に送られる値を受け取る。
+</code>select` は最初に準備できた値を受信するので、操作が許容時間1秒よりも長い時間を使うと、タイムアウトのケースに進む。</p>
 
           </td>
           <td class="code leading">
@@ -118,8 +99,7 @@ if the operation takes more than the allowed 1s.</p>
         
         <tr>
           <td class="docs">
-            <p>If we allow a longer timeout of 3s, then the receive
-from <code>c2</code> will succeed and we&rsquo;ll print the result.</p>
+            <p>もっと長いタイムアウトとして3秒を使えば、<code>c2</code> からの受信は成功し、結果を表示する。</p>
 
           </td>
           <td class="code">
@@ -147,8 +127,7 @@ from <code>c2</code> will succeed and we&rsquo;ll print the result.</p>
         
         <tr>
           <td class="docs">
-            <p>Running this program shows the first operation timing
-out and the second succeeding.</p>
+            <p>このプログラムを実行すると、1つ目の操作はタイムアウトし、2つ目の操作は成功することを確認できる。</p>
 
           </td>
           <td class="code leading">
@@ -163,11 +142,10 @@ out and the second succeeding.</p>
         
         <tr>
           <td class="docs">
-            <p>Using this <code>select</code> timeout pattern requires
-communicating results over channels. This is a good
-idea in general because other important Go features are
-based on channels and <code>select</code>. We&rsquo;ll look at two
-examples of this next: timers and tickers.</p>
+            <p>この <code>select</code> でタイムアウトを実装するパターンでは、結果をチャネルを通じて返す必要がある。
+これは一般によいやり方である。
+なぜなら他の Go の重要な機能もチャネルと <code>select</code> に基づくものだからだ。
+このような例として、タイマーと ticker の2つを続いて紹介する。</p>
 
           </td>
           <td class="code empty">
@@ -180,11 +158,11 @@ examples of this next: timers and tickers.</p>
       
       
       <p class="next">
-        Next example: <a href="non-blocking-channel-operations">Non-Blocking Channel Operations</a>.
+        次の例：<a href="non-blocking-channel-operations">Non-Blocking Channel Operations</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/timeouts">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinutids@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/examples/timeouts">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
   </body>

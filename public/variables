@@ -2,32 +2,18 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Variables</title>
+    <title>サンプルで学ぶ Go 言語：Variables</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="variables">
-      <h2><a href="./">Go by Example</a>: Variables</h2>
+      <h2><a href="./">サンプルで学ぶ Go 言語</a>：Variables</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>In Go, <em>variables</em> are explicitly declared and used by
-the compiler to e.g. check type-correctness of function
-calls.</p>
+            <p>Go の<em>変数</em>は明示的に宣言され、コンパイラによってチェックされる（例えば、関数呼び出しの型安全性など）。</p>
 
           </td>
           <td class="code empty leading">
@@ -41,7 +27,7 @@ calls.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/1FnG0dJfxs8"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/0OX8-2UZ0Xs"><img title="コードを実行する" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -74,7 +60,7 @@ calls.</p>
         
         <tr>
           <td class="docs">
-            <p><code>var</code> declares 1 or more variables.</p>
+            <p><code>var</code> を使って、1つまたはそれ以上の変数を宣言できる。</p>
 
           </td>
           <td class="code leading">
@@ -88,7 +74,7 @@ calls.</p>
         
         <tr>
           <td class="docs">
-            <p>You can declare multiple variables at once.</p>
+            <p>複数の変数を一度に宣言することもできる。</p>
 
           </td>
           <td class="code leading">
@@ -102,7 +88,7 @@ calls.</p>
         
         <tr>
           <td class="docs">
-            <p>Go will infer the type of initialized variables.</p>
+            <p>変数を初期化すれば Go は変数の型を推測する。</p>
 
           </td>
           <td class="code leading">
@@ -116,9 +102,8 @@ calls.</p>
         
         <tr>
           <td class="docs">
-            <p>Variables declared without a corresponding
-initialization are <em>zero-valued</em>. For example, the
-zero value for an <code>int</code> is <code>0</code>.</p>
+            <p>明示的に初期化していない変数の値は<em>ゼロ値</em>である。
+例えば、<code>int</code> のゼロ値は <code>0</code> である。</p>
 
           </td>
           <td class="code leading">
@@ -132,9 +117,8 @@ zero value for an <code>int</code> is <code>0</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>The <code>:=</code> syntax is shorthand for declaring and
-initializing a variable, e.g. for
-<code>var f string = &quot;short&quot;</code> in this case.</p>
+            <p><code>:=</code> は宣言と初期化を行うための省略記法である。
+ここの例は <code>var f string = &quot;short&quot;</code> と書くのと同じ意味である。</p>
 
           </td>
           <td class="code">
@@ -172,11 +156,11 @@ initializing a variable, e.g. for
       
       
       <p class="next">
-        Next example: <a href="constants">Constants</a>.
+        次の例：<a href="constants">Constants</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/variables">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinutids@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/examples/variables">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
   </body>

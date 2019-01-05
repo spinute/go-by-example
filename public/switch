@@ -2,31 +2,18 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Switch</title>
+    <title>サンプルで学ぶ Go 言語：Switch</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="switch">
-      <h2><a href="./">Go by Example</a>: Switch</h2>
+      <h2><a href="./">サンプルで学ぶ Go 言語</a>：Switch</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p><em>Switch statements</em> express conditionals across many
-branches.</p>
+            <p><em>switch 文</em>は多くの分岐からなる条件を表す。</p>
 
           </td>
           <td class="code empty leading">
@@ -40,7 +27,7 @@ branches.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/TJ4Az0KuLfL"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/QjsUIibBSBQ"><img title="コードを実行する" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -74,7 +61,7 @@ branches.</p>
         
         <tr>
           <td class="docs">
-            <p>Here&rsquo;s a basic <code>switch</code>.</p>
+            <p><code>switch</code> の基本的な使い方</p>
 
           </td>
           <td class="code leading">
@@ -96,9 +83,8 @@ branches.</p>
         
         <tr>
           <td class="docs">
-            <p>You can use commas to separate multiple expressions
-in the same <code>case</code> statement. We use the optional
-<code>default</code> case in this example as well.</p>
+            <p>コンマを使うと一つの <code>case</code> 文に複数の式を書ける。
+この例では <code>default</code> のケースも使っている。</p>
 
           </td>
           <td class="code leading">
@@ -116,9 +102,8 @@ in the same <code>case</code> statement. We use the optional
         
         <tr>
           <td class="docs">
-            <p><code>switch</code> without an expression is an alternate way
-to express if/else logic. Here we also show how the
-<code>case</code> expressions can be non-constants.</p>
+            <p><code>switch</code> の直後に式を書かなければ、それは単なる if/else の別の書き方である。
+また、定数でないものを使って <code>case</code> 式を書ける。</p>
 
           </td>
           <td class="code leading">
@@ -137,10 +122,9 @@ to express if/else logic. Here we also show how the
         
         <tr>
           <td class="docs">
-            <p>A type <code>switch</code> compares types instead of values.  You
-can use this to discover the type of an interface
-value.  In this example, the variable <code>t</code> will have the
-type corresponding to its clause.</p>
+            <p><code>switch</code> は値だけでなく型について分岐することもできる。
+これを使って、インターフェースの型を調べることができる。
+この例では、変数 <code>t</code> は対応する節に書かれた型を持つ。</p>
 
           </td>
           <td class="code">
@@ -190,11 +174,11 @@ type corresponding to its clause.</p>
       
       
       <p class="next">
-        Next example: <a href="arrays">Arrays</a>.
+        次の例：<a href="arrays">Arrays</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/switch">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinutids@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/examples/switch">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
   </body>

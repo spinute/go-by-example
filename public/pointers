@@ -2,32 +2,19 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Pointers</title>
+    <title>サンプルで学ぶ Go 言語：Pointers</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="pointers">
-      <h2><a href="./">Go by Example</a>: Pointers</h2>
+      <h2><a href="./">サンプルで学ぶ Go 言語</a>：Pointers</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>Go supports <em><a href="http://en.wikipedia.org/wiki/Pointer_(computer_programming)">pointers</a></em>,
-allowing you to pass references to values and records
-within your program.</p>
+            <p>Go は<em><a href="http://en.wikipedia.org/wiki/Pointer_(computer_programming)">ポインタ</a></em>をサポートしている。
+ポインタを使うと、プログラム中で値やレコードへの参照を渡すことができる。</p>
 
           </td>
           <td class="code empty leading">
@@ -41,7 +28,7 @@ within your program.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/KdE4TBbUL2"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/ZYGlNiQkCVQ"><img title="コードを実行する" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -62,11 +49,9 @@ within your program.</p>
         
         <tr>
           <td class="docs">
-            <p>We&rsquo;ll show how pointers work in contrast to values with
-2 functions: <code>zeroval</code> and <code>zeroptr</code>. <code>zeroval</code> has an
-<code>int</code> parameter, so arguments will be passed to it by
-value. <code>zeroval</code> will get a copy of <code>ival</code> distinct
-from the one in the calling function.</p>
+            <p>ここではポインタと値の振る舞いの違いを、<code>zeroval</code> と <code>zeroptr</code> の2つの関数を使って見てもらう。
+<code>zeroval</code> は <code>int</code> 型の引数を取るので、引数は値として渡される。
+<code>zeroval</code> は <code>ival</code> のコピーを渡されるが、この実体は関数を呼び出す側で引数に渡した変数とは別のものである。</p>
 
           </td>
           <td class="code leading">
@@ -81,12 +66,11 @@ from the one in the calling function.</p>
         
         <tr>
           <td class="docs">
-            <p><code>zeroptr</code> in contrast has an <code>*int</code> parameter, meaning
-that it takes an <code>int</code> pointer. The <code>*iptr</code> code in the
-function body then <em>dereferences</em> the pointer from its
-memory address to the current value at that address.
-Assigning a value to a dereferenced pointer changes the
-value at the referenced address.</p>
+            <p>一方、<code>zeroptr</code> の引数の型は <code>*int</code> である。
+すなわち、引数は <code>int</code> 型のポインタとして渡される。
+関数の中の <code>*iptr</code> と書いた箇所では、ポインタの<em>参照を剥がし</em>ている。
+これは、メモリ上のアドレスから、その番地にある現在の値にアクセスする操作だ。
+剥がされたポインタに値を代入すると、ポインタが参照していたアドレスに書かれた値が書き換わる。</p>
 
           </td>
           <td class="code leading">
@@ -128,8 +112,8 @@ value at the referenced address.</p>
         
         <tr>
           <td class="docs">
-            <p>The <code>&amp;i</code> syntax gives the memory address of <code>i</code>,
-i.e. a pointer to <code>i</code>.</p>
+            <p><code>&amp;i</code> という記法で、<code>i</code> のメモリアドレスを取得できる。
+このメモリアドレスは、<code>i</code> のポインタである。</p>
 
           </td>
           <td class="code leading">
@@ -143,7 +127,7 @@ i.e. a pointer to <code>i</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>Pointers can be printed too.</p>
+            <p>ポインタも表示できる。</p>
 
           </td>
           <td class="code">
@@ -161,9 +145,9 @@ i.e. a pointer to <code>i</code>.</p>
         
         <tr>
           <td class="docs">
-            <p><code>zeroval</code> doesn&rsquo;t change the <code>i</code> in <code>main</code>, but
-<code>zeroptr</code> does because it has a reference to
-the memory address for that variable.</p>
+            <p><code>zeroval</code> は <code>main</code> の <code>i</code> を書き換えないが、
+<code>zeroptr</code> は <code>i</code> を書き換える。
+これは後者には変数のメモリアドレスへの参照を渡しているからである。</p>
 
           </td>
           <td class="code">
@@ -182,11 +166,11 @@ the memory address for that variable.</p>
       
       
       <p class="next">
-        Next example: <a href="structs">Structs</a>.
+        次の例：<a href="structs">Structs</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/pointers">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinutids@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/examples/pointers">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
   </body>

@@ -2,32 +2,20 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Values</title>
+    <title>サンプルで学ぶ Go 言語：Values</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="values">
-      <h2><a href="./">Go by Example</a>: Values</h2>
+      <h2><a href="./">サンプルで学ぶ Go 言語</a>：Values</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>Go has various value types including strings,
-integers, floats, booleans, etc. Here are a few
-basic examples.</p>
+            <p>Go の値には様々な型がある。
+例えば、文字列、整数、実数、真偽値などである。
+いくつか基本的な例を紹介しよう。</p>
 
           </td>
           <td class="code empty leading">
@@ -41,7 +29,7 @@ basic examples.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/fgGVOyuZdu"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/gSpUdhfuMcb"><img title="コードを実行する" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -74,7 +62,7 @@ basic examples.</p>
         
         <tr>
           <td class="docs">
-            <p>Strings, which can be added together with <code>+</code>.</p>
+            <p>文字列である。<code>+</code> を使って連結できる。</p>
 
           </td>
           <td class="code leading">
@@ -87,7 +75,7 @@ basic examples.</p>
         
         <tr>
           <td class="docs">
-            <p>Integers and floats.</p>
+            <p>整数と実数である。</p>
 
           </td>
           <td class="code leading">
@@ -101,7 +89,7 @@ basic examples.</p>
         
         <tr>
           <td class="docs">
-            <p>Booleans, with boolean operators as you&rsquo;d expect.</p>
+            <p>真偽値である。ブール演算子を使えば、期待した振る舞いをするはずだ。</p>
 
           </td>
           <td class="code">
@@ -141,11 +129,11 @@ basic examples.</p>
       
       
       <p class="next">
-        Next example: <a href="variables">Variables</a>.
+        次の例：<a href="variables">Variables</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/values">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinutids@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/examples/values">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
   </body>

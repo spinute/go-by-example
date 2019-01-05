@@ -2,31 +2,18 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Worker Pools</title>
+    <title>サンプルで学ぶ Go 言語：Worker Pools</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="worker-pools">
-      <h2><a href="./">Go by Example</a>: Worker Pools</h2>
+      <h2><a href="./">サンプルで学ぶ Go 言語</a>：Worker Pools</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>In this example we&rsquo;ll look at how to implement
-a <em>worker pool</em> using goroutines and channels.</p>
+            <p>この例ではゴルーチンとチャネルを使って<em>ワーカープール</em>を実装するやり方を紹介する。</p>
 
           </td>
           <td class="code empty leading">
@@ -40,7 +27,7 @@ a <em>worker pool</em> using goroutines and channels.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/RTRcHA05vV"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/6A_iBD0v-e3"><img title="コードを実行する" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -62,11 +49,9 @@ a <em>worker pool</em> using goroutines and channels.</p>
         
         <tr>
           <td class="docs">
-            <p>Here&rsquo;s the worker, of which we&rsquo;ll run several
-concurrent instances. These workers will receive
-work on the <code>jobs</code> channel and send the corresponding
-results on <code>results</code>. We&rsquo;ll sleep a second per job to
-simulate an expensive task.</p>
+            <p>このワーカーをいくつか平行に動かす。
+各ワーカーは <code>jobs</code> チャネルに仕事を受信し、その結果を <code>results</code> チャネルに送信する。
+実行に時間のかかる処理をシミュレートするために、仕事をするたびに1秒スリープする。</p>
 
           </td>
           <td class="code leading">
@@ -98,9 +83,8 @@ simulate an expensive task.</p>
         
         <tr>
           <td class="docs">
-            <p>In order to use our pool of workers we need to send
-them work and collect their results. We make 2
-channels for this.</p>
+            <p>ワーカープールを使うために、仕事を送り、結果を収集する必要がある。
+そのために使う2つのチャネルを作る。</p>
 
           </td>
           <td class="code leading">
@@ -114,8 +98,8 @@ channels for this.</p>
         
         <tr>
           <td class="docs">
-            <p>This starts up 3 workers, initially blocked
-because there are no jobs yet.</p>
+            <p>ここで3つワーカーを起動する。
+まだジョブがないので、いずれのワーカーもブロックする。</p>
 
           </td>
           <td class="code leading">
@@ -130,8 +114,7 @@ because there are no jobs yet.</p>
         
         <tr>
           <td class="docs">
-            <p>Here we send 5 <code>jobs</code> and then <code>close</code> that
-channel to indicate that&rsquo;s all the work we have.</p>
+            <p><code>jobs</code> に値を5つ送り、その後チャネルを閉じて仕事を送り終えたことを伝える。</p>
 
           </td>
           <td class="code leading">
@@ -147,7 +130,7 @@ channel to indicate that&rsquo;s all the work we have.</p>
         
         <tr>
           <td class="docs">
-            <p>Finally we collect all the results of the work.</p>
+            <p>最後に仕事の結果を集める。</p>
 
           </td>
           <td class="code">
@@ -167,10 +150,9 @@ channel to indicate that&rsquo;s all the work we have.</p>
         
         <tr>
           <td class="docs">
-            <p>Our running program shows the 5 jobs being executed by
-various workers. The program only takes about 2 seconds
-despite doing about 5 seconds of total work because
-there are 3 workers operating concurrently.</p>
+            <p>プログラムを実行すると5つの仕事が色々なワーカーに実行される様子を確認できる。
+仕事は合わせて5秒かかるはずだが、プログラムは2秒ほどしか使わない。
+これは、平行に処理を行うワーカーが3ついるためである。</p>
 
           </td>
           <td class="code leading">
@@ -207,11 +189,11 @@ there are 3 workers operating concurrently.</p>
       
       
       <p class="next">
-        Next example: <a href="rate-limiting">Rate Limiting</a>.
+        次の例：<a href="rate-limiting">Rate Limiting</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/worker-pools">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinutids@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/examples/worker-pools">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
   </body>

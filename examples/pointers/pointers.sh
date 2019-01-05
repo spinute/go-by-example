@@ -1,4 +1,5 @@
-# `zeroval` は `main` の `i` を書き換えないが、`zeroptr` は `i` を書き換える。
+# `zeroval` は `main` の `i` を書き換えないが、
+# `zeroptr` は `i` を書き換える。
 # これは後者には変数のメモリアドレスへの参照を渡しているからである。
 $ go run pointers.go
 initial: 1

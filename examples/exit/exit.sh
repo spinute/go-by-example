@@ -1,4 +1,5 @@
-# `exit.go` を `go run` で実行すると、プログラム終了は `go ` に補足され、画面に表示される。
+# `exit.go` を `go run` で実行すると、
+# プログラム終了は `go ` に補足され、画面に表示される。
 $ go run exit.go
 exit status 3
 

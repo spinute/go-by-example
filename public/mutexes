@@ -2,33 +2,19 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Mutexes</title>
+    <title>サンプルで学ぶ Go 言語：Mutexes</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="mutexes">
-      <h2><a href="./">Go by Example</a>: Mutexes</h2>
+      <h2><a href="./">サンプルで学ぶ Go 言語</a>：Mutexes</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>In the previous example we saw how to manage simple
-counter state using <a href="atomic-counters">atomic operations</a>.
-For more complex state we can use a <em><a href="http://en.wikipedia.org/wiki/Mutual_exclusion">mutex</a></em>
-to safely access data across multiple goroutines.</p>
+            <p>前の例で、単純なカウンタの状態を<a href="atomic-counters">アトミックな操作</a>で管理する方法を紹介した。
+より複雑な状態を管理したいときには、<a href="http://en.wikipedia.org/wiki/Mutual_exclusion"><em>ミューテックス（mutex）</em></a>を使って複数のゴルーチンから安全にデータを読み書きすることもできる。</p>
 
           </td>
           <td class="code empty leading">
@@ -42,7 +28,7 @@ to safely access data across multiple goroutines.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/IRewFKz2OPN"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/Kpz8Gt19Wli"><img title="コードを実行する" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -81,7 +67,7 @@ to safely access data across multiple goroutines.</p>
         
         <tr>
           <td class="docs">
-            <p>For our example the <code>state</code> will be a map.</p>
+            <p>状態の例としてマップを使う。</p>
 
           </td>
           <td class="code leading">
@@ -94,7 +80,7 @@ to safely access data across multiple goroutines.</p>
         
         <tr>
           <td class="docs">
-            <p>This <code>mutex</code> will synchronize access to <code>state</code>.</p>
+            <p>この <code>mutex</code> を使って、<code>state</code> へのアクセスを同期する。</p>
 
           </td>
           <td class="code leading">
@@ -107,8 +93,7 @@ to safely access data across multiple goroutines.</p>
         
         <tr>
           <td class="docs">
-            <p>We&rsquo;ll keep track of how many read and write
-operations we do.</p>
+            <p>読み操作・書き操作がそれぞれ何度行われたかをカウントする。</p>
 
           </td>
           <td class="code leading">
@@ -122,9 +107,7 @@ operations we do.</p>
         
         <tr>
           <td class="docs">
-            <p>Here we start 100 goroutines to execute repeated
-reads against the state, once per millisecond in
-each goroutine.</p>
+            <p>100 個のゴルーチンを作り、それぞれが1ミリ秒ごとに state を繰り返し読み出す。</p>
 
           </td>
           <td class="code leading">
@@ -140,12 +123,8 @@ each goroutine.</p>
         
         <tr>
           <td class="docs">
-            <p>For each read we pick a key to access,
-<code>Lock()</code> the <code>mutex</code> to ensure
-exclusive access to the <code>state</code>, read
-the value at the chosen key,
-<code>Unlock()</code> the mutex, and increment
-the <code>readOps</code> count.</p>
+            <p>読み出しのたびに、アクセスするキーを選ぶ。
+<code>Lock()</code> で <code>mutex</code> をロックし、<code>state</code> への排他的なアクセスを獲得し、値を読み出し、<code>Unlock()</code> で <code>mutex</code> のロックを解除し、最後に <code>readOps</code> の値を1増やす。</p>
 
           </td>
           <td class="code leading">
@@ -162,7 +141,7 @@ the <code>readOps</code> count.</p>
         
         <tr>
           <td class="docs">
-            <p>Wait a bit between reads.</p>
+            <p>読み出しのたびに少し待つ。</p>
 
           </td>
           <td class="code leading">
@@ -178,8 +157,7 @@ the <code>readOps</code> count.</p>
         
         <tr>
           <td class="docs">
-            <p>We&rsquo;ll also start 10 goroutines to simulate writes,
-using the same pattern we did for reads.</p>
+            <p>10個のゴルーチンを起動し、読み出しと同様のパターンで書き込みを行う。</p>
 
           </td>
           <td class="code leading">
@@ -204,8 +182,7 @@ using the same pattern we did for reads.</p>
         
         <tr>
           <td class="docs">
-            <p>Let the 10 goroutines work on the <code>state</code> and
-<code>mutex</code> for a second.</p>
+            <p>10個のゴルイーチンが <code>state</code> や <code>mutex</code> で仕事をできるよう、一秒待つ。</p>
 
           </td>
           <td class="code leading">
@@ -218,7 +195,7 @@ using the same pattern we did for reads.</p>
         
         <tr>
           <td class="docs">
-            <p>Take and report final operation counts.</p>
+            <p>結果を読み出して、読み書き操作のカウントを報告する</p>
 
           </td>
           <td class="code leading">
@@ -234,7 +211,7 @@ using the same pattern we did for reads.</p>
         
         <tr>
           <td class="docs">
-            <p>With a final lock of <code>state</code>, show how it ended up.</p>
+            <p><code>state</code> をロックして、最終的にどうなったかを表示する。</p>
 
           </td>
           <td class="code">
@@ -254,9 +231,7 @@ using the same pattern we did for reads.</p>
         
         <tr>
           <td class="docs">
-            <p>Running the program shows that we executed about
-90,000 total operations against our <code>mutex</code>-synchronized
-<code>state</code>.</p>
+            <p>プログラムを実行した結果、<code>mutex</code> で同期した操作を合計で約90000回実行したことがわかる。</p>
 
           </td>
           <td class="code leading">
@@ -272,8 +247,7 @@ using the same pattern we did for reads.</p>
         
         <tr>
           <td class="docs">
-            <p>Next we&rsquo;ll look at implementing this same state
-management task using only goroutines and channels.</p>
+            <p>続いて、同様の状態管理をゴルーチンとチャネルだけを使って実装する方法を紹介する。</p>
 
           </td>
           <td class="code empty">
@@ -286,11 +260,11 @@ management task using only goroutines and channels.</p>
       
       
       <p class="next">
-        Next example: <a href="stateful-goroutines">Stateful Goroutines</a>.
+        次の例：<a href="stateful-goroutines">Stateful Goroutines</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/mutexes">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinutids@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/examples/mutexes">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
   </body>

@@ -2,31 +2,19 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Base64 Encoding</title>
+    <title>サンプルで学ぶ Go 言語：Base64 Encoding</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="base64-encoding">
-      <h2><a href="./">Go by Example</a>: Base64 Encoding</h2>
+      <h2><a href="./">サンプルで学ぶ Go 言語</a>：Base64 Encoding</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>Go provides built-in support for <a href="http://en.wikipedia.org/wiki/Base64">base64
-encoding/decoding</a>.</p>
+            <p>Go は組み込みで <a href="http://en.wikipedia.org/wiki/Base64">base64</a> という
+エンコード形式をサポートしている。</p>
 
           </td>
           <td class="code empty leading">
@@ -40,7 +28,7 @@ encoding/decoding</a>.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/t6rFm2x4Yr"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/SnDLyTU9769"><img title="コードを実行する" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -49,9 +37,8 @@ encoding/decoding</a>.</p>
         
         <tr>
           <td class="docs">
-            <p>This syntax imports the <code>encoding/base64</code> package with
-the <code>b64</code> name instead of the default <code>base64</code>. It&rsquo;ll
-save us some space below.</p>
+            <p>このように書くと、<code>encoding/base64</code> パッケージを（デフォルトの base64 の代わりに）<code>b64</code> という名前でインポートする。
+これはスペースを節約するのに役立つ。</p>
 
           </td>
           <td class="code leading">
@@ -77,7 +64,7 @@ save us some space below.</p>
         
         <tr>
           <td class="docs">
-            <p>Here&rsquo;s the <code>string</code> we&rsquo;ll encode/decode.</p>
+            <p>今からエンコード・デコードする文字列</p>
 
           </td>
           <td class="code leading">
@@ -90,10 +77,9 @@ save us some space below.</p>
         
         <tr>
           <td class="docs">
-            <p>Go supports both standard and URL-compatible
-base64. Here&rsquo;s how to encode using the standard
-encoder. The encoder requires a <code>[]byte</code> so we
-cast our <code>string</code> to that type.</p>
+            <p>Go は標準の base64 と、URL 文字列として使える base64 をいずれもサポートしている。
+ここでは標準の方を使う。
+エンコーダには <code>[]byte</code> 型の値を渡すので、ここでは <code>string</code> 型からキャストしている。</p>
 
           </td>
           <td class="code leading">
@@ -107,9 +93,8 @@ cast our <code>string</code> to that type.</p>
         
         <tr>
           <td class="docs">
-            <p>Decoding may return an error, which you can check
-if you don&rsquo;t already know the input to be
-well-formed.</p>
+            <p>入力によってはデコードは失敗するかもしれない。
+その可能性があるなら、返り値からエラーの有無を確認できる。</p>
 
           </td>
           <td class="code leading">
@@ -124,8 +109,7 @@ well-formed.</p>
         
         <tr>
           <td class="docs">
-            <p>This encodes/decodes using a URL-compatible base64
-format.</p>
+            <p>根では URL として使える base64 フォーマットを使ってみる。</p>
 
           </td>
           <td class="code">
@@ -146,9 +130,8 @@ format.</p>
         
         <tr>
           <td class="docs">
-            <p>The string encodes to slightly different values with the
-standard and URL base64 encoders (trailing <code>+</code> vs <code>-</code>)
-but they both decode to the original string as desired.</p>
+            <p>文字列をエンコードした結果は、標準の形式と、URL 文字列として扱える形式とで微妙に違う（<code>+</code>と<code>-</code>など）。
+しかし、いずれの形式を使っても、デコードするともとの文字列に戻る。</p>
 
           </td>
           <td class="code leading">
@@ -178,11 +161,11 @@ but they both decode to the original string as desired.</p>
       
       
       <p class="next">
-        Next example: <a href="reading-files">Reading Files</a>.
+        次の例：<a href="reading-files">Reading Files</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/base64-encoding">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinutids@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/examples/base64-encoding">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
   </body>

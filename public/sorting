@@ -2,32 +2,19 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Sorting</title>
+    <title>サンプルで学ぶ Go 言語：Sorting</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="sorting">
-      <h2><a href="./">Go by Example</a>: Sorting</h2>
+      <h2><a href="./">サンプルで学ぶ Go 言語</a>：Sorting</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>Go&rsquo;s <code>sort</code> package implements sorting for builtins
-and user-defined types. We&rsquo;ll look at sorting for
-builtins first.</p>
+            <p>Go の <code>sort</code> パッケージは、組み込み型もユーザー定義型もソートできる。
+まずは、組み込み型のソートを見てみよう。</p>
 
           </td>
           <td class="code empty leading">
@@ -41,7 +28,7 @@ builtins first.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/roQOJXtqAb"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/aI0Rb14O6X4"><img title="コードを実行する" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -75,10 +62,9 @@ builtins first.</p>
         
         <tr>
           <td class="docs">
-            <p>Sort methods are specific to the builtin type;
-here&rsquo;s an example for strings. Note that sorting is
-in-place, so it changes the given slice and doesn&rsquo;t
-return a new one.</p>
+            <p>ソートメソッドは組み込み型ごとに別々である。
+ここでは文字列をソートするメソッドを使っている。
+ソートは in-place である。つまり、引数に渡したスライスを変更し、新たなスライスを返すわけではない。</p>
 
           </td>
           <td class="code leading">
@@ -93,7 +79,7 @@ return a new one.</p>
         
         <tr>
           <td class="docs">
-            <p>An example of sorting <code>int</code>s.</p>
+            <p><code>int</code> 型のスライスをソートする例</p>
 
           </td>
           <td class="code leading">
@@ -108,8 +94,7 @@ return a new one.</p>
         
         <tr>
           <td class="docs">
-            <p>We can also use <code>sort</code> to check if a slice is
-already in sorted order.</p>
+            <p><code>sort</code> パッケージを使って、スライスがソート済みかどうかを確認することもできる。</p>
 
           </td>
           <td class="code">
@@ -128,8 +113,9 @@ already in sorted order.</p>
         
         <tr>
           <td class="docs">
-            <p>Running our program prints the sorted string and int
-slices and <code>true</code> as the result of our <code>AreSorted</code> test.</p>
+            <p>プログラムを実行すると、ソートされた文字列のスライス、
+ソートされた整数のスライスが表示され、
+<code>AreSorted</code> の結果として <code>true</code> が表示される。</p>
 
           </td>
           <td class="code">
@@ -147,11 +133,11 @@ slices and <code>true</code> as the result of our <code>AreSorted</code> test.</
       
       
       <p class="next">
-        Next example: <a href="sorting-by-functions">Sorting by Functions</a>.
+        次の例：<a href="sorting-by-functions">Sorting by Functions</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/sorting">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinutids@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/examples/sorting">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
   </body>

@@ -2,31 +2,19 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Time</title>
+    <title>サンプルで学ぶ Go 言語：Time</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="time">
-      <h2><a href="./">Go by Example</a>: Time</h2>
+      <h2><a href="./">サンプルで学ぶ Go 言語</a>：Time</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>Go offers extensive support for times and durations;
-here are some examples.</p>
+            <p>Go には時刻や経過時間を扱うための機能が多くある。
+ここではその例を示す。</p>
 
           </td>
           <td class="code empty leading">
@@ -40,7 +28,7 @@ here are some examples.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/TTYPzggHg0"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/OhaL5SCtHl0"><img title="コードを実行する" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -75,7 +63,7 @@ here are some examples.</p>
         
         <tr>
           <td class="docs">
-            <p>We&rsquo;ll start by getting the current time.</p>
+            <p>まずは現在時刻を取得する。</p>
 
           </td>
           <td class="code leading">
@@ -89,9 +77,8 @@ here are some examples.</p>
         
         <tr>
           <td class="docs">
-            <p>You can build a <code>time</code> struct by providing the
-year, month, day, etc. Times are always associated
-with a <code>Location</code>, i.e. time zone.</p>
+            <p><code>time</code> 構造体を、年・月・日などを指定して作ることもできる。
+時刻は常に位置（<code>Location</code>）、すなわちタイムゾーンと結びついている。</p>
 
           </td>
           <td class="code leading">
@@ -106,8 +93,7 @@ with a <code>Location</code>, i.e. time zone.</p>
         
         <tr>
           <td class="docs">
-            <p>You can extract the various components of the time
-value as expected.</p>
+            <p>時刻の構成要素の取り出しかたは直感的だ。</p>
 
           </td>
           <td class="code leading">
@@ -127,7 +113,7 @@ value as expected.</p>
         
         <tr>
           <td class="docs">
-            <p>The Monday-Sunday <code>Weekday</code> is also available.</p>
+            <p>曜日（Monday-Sunday）を表す <code>Weekday</code> もある。</p>
 
           </td>
           <td class="code leading">
@@ -140,9 +126,7 @@ value as expected.</p>
         
         <tr>
           <td class="docs">
-            <p>These methods compare two times, testing if the
-first occurs before, after, or at the same time
-as the second, respectively.</p>
+            <p>以下のメソッドは2つの時刻を比べて、1つ目が2つ目より前か、後か、それとも同時刻かをそれぞれテストする。</p>
 
           </td>
           <td class="code leading">
@@ -157,8 +141,7 @@ as the second, respectively.</p>
         
         <tr>
           <td class="docs">
-            <p>The <code>Sub</code> methods returns a <code>Duration</code> representing
-the interval between two times.</p>
+            <p>メソッド <code>Sub</code> は2つの時刻の間隔を表す経過時間 <code>Duration</code> を返す。</p>
 
           </td>
           <td class="code leading">
@@ -172,8 +155,7 @@ the interval between two times.</p>
         
         <tr>
           <td class="docs">
-            <p>We can compute the length of the duration in
-various units.</p>
+            <p>経過時間の長さの単位を変換できる。</p>
 
           </td>
           <td class="code leading">
@@ -189,9 +171,7 @@ various units.</p>
         
         <tr>
           <td class="docs">
-            <p>You can use <code>Add</code> to advance a time by a given
-duration, or with a <code>-</code> to move backwards by a
-duration.</p>
+            <p><code>Add</code> を使って指定した期間だけ時刻を進めることもできる。<code>-</code> を使えば、時刻を戻すこともできる。</p>
 
           </td>
           <td class="code">
@@ -243,8 +223,7 @@ duration.</p>
         
         <tr>
           <td class="docs">
-            <p>Next we&rsquo;ll look at the related idea of time relative to
-the Unix epoch.</p>
+            <p>次は時刻に関連するテーマである Unix エポックに関する例を紹介する。</p>
 
           </td>
           <td class="code empty">
@@ -257,11 +236,11 @@ the Unix epoch.</p>
       
       
       <p class="next">
-        Next example: <a href="epoch">Epoch</a>.
+        次の例：<a href="epoch">Epoch</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/time">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinutids@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/examples/time">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
   </body>

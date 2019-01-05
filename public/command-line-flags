@@ -2,33 +2,20 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Command-Line Flags</title>
+    <title>サンプルで学ぶ Go 言語：Command-Line Flags</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="command-line-flags">
-      <h2><a href="./">Go by Example</a>: Command-Line Flags</h2>
+      <h2><a href="./">サンプルで学ぶ Go 言語</a>：Command-Line Flags</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p><a href="http://en.wikipedia.org/wiki/Command-line_interface#Command-line_option"><em>Command-line flags</em></a>
-are a common way to specify options for command-line
-programs. For example, in <code>wc -l</code> the <code>-l</code> is a
-command-line flag.</p>
+            <p><a href="http://en.wikipedia.org/wiki/Command-line_interface#Command-line_option"><em>コマンドラインフラグ</em></a>
+はコマンドラインからオプションを指定するためによく使われる。
+例えば <code>wc -l</code> の <code>-l</code> はコマンドラインフラグである。</p>
 
           </td>
           <td class="code empty leading">
@@ -42,7 +29,7 @@ command-line flag.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/NASEOq2R3n"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/fSzQ3iNtMjl"><img title="コードを実行する" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -51,9 +38,8 @@ command-line flag.</p>
         
         <tr>
           <td class="docs">
-            <p>Go provides a <code>flag</code> package supporting basic
-command-line flag parsing. We&rsquo;ll use this package to
-implement our example command-line program.</p>
+            <p>Go の <code>flag</code> パッケージを使ってコマンドラインフラグをパースできる。
+実際にコマンドラインプログラムを作って、このパッケージを使ってみよう。</p>
 
           </td>
           <td class="code leading">
@@ -79,12 +65,10 @@ implement our example command-line program.</p>
         
         <tr>
           <td class="docs">
-            <p>Basic flag declarations are available for string,
-integer, and boolean options. Here we declare a
-string flag <code>word</code> with a default value <code>&quot;foo&quot;</code>
-and a short description. This <code>flag.String</code> function
-returns a string pointer (not a string value);
-we&rsquo;ll see how to use this pointer below.</p>
+            <p>文字列、整数、真偽値のオプションを受け取るフラグを宣言できる。
+ここではフラグ <code>word</code> を宣言し、そのデフォルト値を <code>&quot;foo&quot;</code> とし、フラグの短い説明を与えている。
+関数 <code>flag.String</code> は（文字列そのものではなく）文字列のポインタを返す。
+このポインタの使い方は追って説明する。</p>
 
           </td>
           <td class="code leading">
@@ -97,8 +81,7 @@ we&rsquo;ll see how to use this pointer below.</p>
         
         <tr>
           <td class="docs">
-            <p>This declares <code>numb</code> and <code>fork</code> flags, using a
-similar approach to the <code>word</code> flag.</p>
+            <p><code>word</code> と同様のやり方で、フラグ <code>numb</code>、<code>fork</code> を宣言している。</p>
 
           </td>
           <td class="code leading">
@@ -112,10 +95,8 @@ similar approach to the <code>word</code> flag.</p>
         
         <tr>
           <td class="docs">
-            <p>It&rsquo;s also possible to declare an option that uses an
-existing var declared elsewhere in the program.
-Note that we need to pass in a pointer to the flag
-declaration function.</p>
+            <p>プログラム内の別の場所で宣言した変数を使い、オプションを宣言することもできる。
+なお、この場合変数のポインタを渡すことに注意する。</p>
 
           </td>
           <td class="code leading">
@@ -129,8 +110,7 @@ declaration function.</p>
         
         <tr>
           <td class="docs">
-            <p>Once all flags are declared, call <code>flag.Parse()</code>
-to execute the command-line parsing.</p>
+            <p>すべてのフラグを宣言したら、<code>flag.Parse()</code> を呼んでコマンドラインをパースする。</p>
 
           </td>
           <td class="code leading">
@@ -143,10 +123,8 @@ to execute the command-line parsing.</p>
         
         <tr>
           <td class="docs">
-            <p>Here we&rsquo;ll just dump out the parsed options and
-any trailing positional arguments. Note that we
-need to dereference the pointers with e.g. <code>*wordPtr</code>
-to get the actual option values.</p>
+            <p>パースしたオプションと、余りの引数を表示する。
+<code>*wordPtr</code> のように参照を剥がしてオプション値を呼んでいることに注意する。</p>
 
           </td>
           <td class="code">
@@ -168,9 +146,7 @@ to get the actual option values.</p>
         
         <tr>
           <td class="docs">
-            <p>To experiment with the command-line flags program it&rsquo;s
-best to first compile it and then run the resulting
-binary directly.</p>
+            <p>コマンドラインフラグの実験をするときは、まずプログラムをコンパイルし、その後バイナリを直接実行するとよい。</p>
 
           </td>
           <td class="code leading">
@@ -183,8 +159,7 @@ binary directly.</p>
         
         <tr>
           <td class="docs">
-            <p>Try out the built program by first giving it values for
-all flags.</p>
+            <p>ビルドしたプログラムを、すべてのフラグに値を与えて実行する。</p>
 
           </td>
           <td class="code leading">
@@ -202,8 +177,7 @@ all flags.</p>
         
         <tr>
           <td class="docs">
-            <p>Note that if you omit flags they automatically take
-their default values.</p>
+            <p>フラグを書かなければ、自動的にデフォルト値を使うことに注意する。</p>
 
           </td>
           <td class="code leading">
@@ -221,8 +195,7 @@ their default values.</p>
         
         <tr>
           <td class="docs">
-            <p>Trailing positional arguments can be provided after
-any flags.</p>
+            <p>フラグの後に引数を並べられる。</p>
 
           </td>
           <td class="code leading">
@@ -238,9 +211,8 @@ any flags.</p>
         
         <tr>
           <td class="docs">
-            <p>Note that the <code>flag</code> package requires all flags to
-appear before positional arguments (otherwise the flags
-will be interpreted as positional arguments).</p>
+            <p><code>flag</code> パッケージでは、すべてのフラグは単なる引数の前に書かなければならない。
+（さもなければ、フラグはただの引数として解釈されてしまう。）</p>
 
           </td>
           <td class="code leading">
@@ -258,8 +230,7 @@ will be interpreted as positional arguments).</p>
         
         <tr>
           <td class="docs">
-            <p>Use <code>-h</code> or <code>--help</code> flags to get automatically
-generated help text for the command-line program.</p>
+            <p><code>-h</code> か <code>--help</code> を使うと、自動生成したコマンドラインのヘルプを表示する。</p>
 
           </td>
           <td class="code leading">
@@ -277,9 +248,8 @@ generated help text for the command-line program.</p>
         
         <tr>
           <td class="docs">
-            <p>If you provide a flag that wasn&rsquo;t specified to the
-<code>flag</code> package, the program will print an error message
-and show the help text again.</p>
+            <p><code>flag</code> パッケージで指定していないフラグをプログラムに渡すと、
+プログラムはエラーメッセージを表示し、この場合もヘルプを表示する。</p>
 
           </td>
           <td class="code leading">
@@ -295,8 +265,7 @@ and show the help text again.</p>
         
         <tr>
           <td class="docs">
-            <p>Next we&rsquo;ll look at environment variables, another common
-way to parameterize programs.</p>
+            <p>続いて、プログラムにパラメータを渡す別の方法である、環境変数を紹介する。</p>
 
           </td>
           <td class="code empty">
@@ -309,11 +278,11 @@ way to parameterize programs.</p>
       
       
       <p class="next">
-        Next example: <a href="environment-variables">Environment Variables</a>.
+        次の例：<a href="environment-variables">Environment Variables</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/command-line-flags">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinutids@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/examples/command-line-flags">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
   </body>

@@ -2,34 +2,20 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Timers</title>
+    <title>サンプルで学ぶ Go 言語：Timers</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="timers">
-      <h2><a href="./">Go by Example</a>: Timers</h2>
+      <h2><a href="./">サンプルで学ぶ Go 言語</a>：Timers</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>We often want to execute Go code at some point in the
-future, or repeatedly at some interval. Go&rsquo;s built-in
-<em>timer</em> and <em>ticker</em> features make both of these tasks
-easy. We&rsquo;ll look first at timers and then
-at <a href="tickers">tickers</a>.</p>
+            <p>Go のコードを将来のある時点で実行したり、定期的に繰り返し実行したりすることがよくある。
+組み込みの機能 <em>timer</em> 、 <em>ticker</em> を使ってこれらの機能をシンプルに実現できる。
+まずは timer を紹介し、その後で <a href="tickers">ticker</a> を紹介する。</p>
 
           </td>
           <td class="code empty leading">
@@ -43,7 +29,7 @@ at <a href="tickers">tickers</a>.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/pybl9hRvJq2"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/Vkfb8qmo_jY"><img title="コードを実行する" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -77,10 +63,9 @@ at <a href="tickers">tickers</a>.</p>
         
         <tr>
           <td class="docs">
-            <p>Timers represent a single event in the future. You
-tell the timer how long you want to wait, and it
-provides a channel that will be notified at that
-time. This timer will wait 2 seconds.</p>
+            <p>タイマーは将来のあるイベントを表す。
+タイマーは待つ期間を指定して作り、そのときに得られるチャネルには、指定した期間が経つと値が届く。
+ここで作っているタイマーは2秒待つものだ。</p>
 
           </td>
           <td class="code leading">
@@ -93,9 +78,7 @@ time. This timer will wait 2 seconds.</p>
         
         <tr>
           <td class="docs">
-            <p>The <code>&lt;-timer1.C</code> blocks on the timer&rsquo;s channel <code>C</code>
-until it sends a value indicating that the timer
-expired.</p>
+            <p><code>&lt;-timer1.C</code> は、タイマーのチャネル <code>C</code> にタイマーが切れたことを示す値が届くまでブロックする。</p>
 
           </td>
           <td class="code leading">
@@ -109,10 +92,9 @@ expired.</p>
         
         <tr>
           <td class="docs">
-            <p>If you just wanted to wait, you could have used
-<code>time.Sleep</code>. One reason a timer may be useful is
-that you can cancel the timer before it expires.
-Here&rsquo;s an example of that.</p>
+            <p>ただ待ちたいだけなら、<code>time.Sleep</code> を使ってもよかったかもしれない。
+タイマーを使った方が便利な点としては、タイマーは切れる前にキャンセルすることもできる。
+ここではその例を紹介する。</p>
 
           </td>
           <td class="code">
@@ -138,9 +120,8 @@ Here&rsquo;s an example of that.</p>
         
         <tr>
           <td class="docs">
-            <p>The first timer will expire ~2s after we start the
-program, but the second should be stopped before it has
-a chance to expire.</p>
+            <p>プログラムを起動して2秒経つと1つ目のタイマーは切れる。
+しかし、2つ目のタイマーは2秒立つ前に停止するので、時間切れにならない。</p>
 
           </td>
           <td class="code">
@@ -157,11 +138,11 @@ a chance to expire.</p>
       
       
       <p class="next">
-        Next example: <a href="tickers">Tickers</a>.
+        次の例：<a href="tickers">Tickers</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/timers">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinutids@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/examples/timers">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
   </body>

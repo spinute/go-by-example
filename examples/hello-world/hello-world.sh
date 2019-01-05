@@ -1,4 +1,5 @@
-# プログラムを実行するには、`hello-world.go` にコードを書いて、`go run` を実行すればよい。
+# プログラムを実行するには、`hello-world.go` にコードを書いて、
+# `go run` を実行すればよい。
 $ go run hello-world.go
 hello world
 

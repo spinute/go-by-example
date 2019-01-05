@@ -2,31 +2,19 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: URL Parsing</title>
+    <title>サンプルで学ぶ Go 言語：URL Parsing</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="url-parsing">
-      <h2><a href="./">Go by Example</a>: URL Parsing</h2>
+      <h2><a href="./">サンプルで学ぶ Go 言語</a>：URL Parsing</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>URLs provide a <a href="https://adam.herokuapp.com/past/2010/3/30/urls_are_the_uniform_way_to_locate_resources/">uniform way to locate resources</a>.
-Here&rsquo;s how to parse URLs in Go.</p>
+            <p>URL は<a href="https://adam.herokuapp.com/past/2010/3/30/urls_are_the_uniform_way_to_locate_resources/">リソースを特定するための統一されたやり方</a>である。
+この例では、Go で URL をパースするやり方を紹介する。</p>
 
           </td>
           <td class="code empty leading">
@@ -40,7 +28,7 @@ Here&rsquo;s how to parse URLs in Go.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/AL79Lv-9CWo"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/ZVB4nHuacet"><img title="コードを実行する" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -75,9 +63,8 @@ Here&rsquo;s how to parse URLs in Go.</p>
         
         <tr>
           <td class="docs">
-            <p>We&rsquo;ll parse this example URL, which includes a
-scheme, authentication info, host, port, path,
-query params, and query fragment.</p>
+            <p>以下の URL をパースしてみる。
+この URL には、スキーマ、認証情報、ホスト、ポート、パス、クエリパラメータ、クエリフラグメントが含まれている。</p>
 
           </td>
           <td class="code leading">
@@ -90,7 +77,7 @@ query params, and query fragment.</p>
         
         <tr>
           <td class="docs">
-            <p>Parse the URL and ensure there are no errors.</p>
+            <p>URL をパースし、エラーが発生していないことを確認する。</p>
 
           </td>
           <td class="code leading">
@@ -106,7 +93,7 @@ query params, and query fragment.</p>
         
         <tr>
           <td class="docs">
-            <p>Accessing the scheme is straightforward.</p>
+            <p>スキーマは直接的に読み出せる。</p>
 
           </td>
           <td class="code leading">
@@ -119,9 +106,8 @@ query params, and query fragment.</p>
         
         <tr>
           <td class="docs">
-            <p><code>User</code> contains all authentication info; call
-<code>Username</code> and <code>Password</code> on this for individual
-values.</p>
+            <p><code>User</code> は認証に必要なすべての情報を含む。
+<code>UserName</code>、<code>Password</code> を呼べば個々の値を読み出せる。</p>
 
           </td>
           <td class="code leading">
@@ -137,8 +123,8 @@ values.</p>
         
         <tr>
           <td class="docs">
-            <p>The <code>Host</code> contains both the hostname and the port,
-if present. Use <code>SplitHostPort</code> to extract them.</p>
+            <p><code>Host</code> はホスト名と、（あれば）ポートとを含む。
+<code>SplitHostPort</code> を使えばそれぞれを抽出できる。</p>
 
           </td>
           <td class="code leading">
@@ -154,8 +140,7 @@ if present. Use <code>SplitHostPort</code> to extract them.</p>
         
         <tr>
           <td class="docs">
-            <p>Here we extract the <code>path</code> and the fragment after
-the <code>#</code>.</p>
+            <p>ここでは、パスと <code>#</code> に続くフラグメントとを読み出している。</p>
 
           </td>
           <td class="code leading">
@@ -169,11 +154,10 @@ the <code>#</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>To get query params in a string of <code>k=v</code> format,
-use <code>RawQuery</code>. You can also parse query params
-into a map. The parsed query param maps are from
-strings to slices of strings, so index into <code>[0]</code>
-if you only want the first value.</p>
+            <p><code>RawQuery</code> を使うと <code>k=v</code> という形式の文字列としてクエリパラメータを取得できる。
+クエリパラメータをマップとしてパースすることもできる。
+パースして得られるクエリパラメータは、文字列から文字列のスライスへのマップである。
+そのため、ひとつめの値を読み出したいだけなら <code>[0]</code> を使う。</p>
 
           </td>
           <td class="code">
@@ -194,8 +178,7 @@ if you only want the first value.</p>
         
         <tr>
           <td class="docs">
-            <p>Running our URL parsing program shows all the different
-pieces that we extracted.</p>
+            <p>URL をパースするプログラムを実行すると、抽出した様々なデータ片が表示される。</p>
 
           </td>
           <td class="code">
@@ -222,11 +205,11 @@ pieces that we extracted.</p>
       
       
       <p class="next">
-        Next example: <a href="sha1-hashes">SHA1 Hashes</a>.
+        次の例：<a href="sha1-hashes">SHA1 Hashes</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/url-parsing">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinutids@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/examples/url-parsing">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
   </body>

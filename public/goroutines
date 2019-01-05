@@ -2,30 +2,18 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Goroutines</title>
+    <title>サンプルで学ぶ Go 言語：Goroutines</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="goroutines">
-      <h2><a href="./">Go by Example</a>: Goroutines</h2>
+      <h2><a href="./">サンプルで学ぶ Go 言語</a>：Goroutines</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>A <em>goroutine</em> is a lightweight thread of execution.</p>
+            <p><em>ゴルーチン</em>は軽量なスレッドである。</p>
 
           </td>
           <td class="code empty leading">
@@ -39,7 +27,7 @@
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/6Y8t3Yxd1LD"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/dtnKVVNqazY"><img title="コードを実行する" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -88,9 +76,8 @@
         
         <tr>
           <td class="docs">
-            <p>Suppose we have a function call <code>f(s)</code>. Here&rsquo;s how
-we&rsquo;d call that in the usual way, running it
-synchronously.</p>
+            <p><code>f(s)</code> という関数を呼ぶとしよう。
+普通にこのように書けばよく、関数は同期的に実行される。</p>
 
           </td>
           <td class="code leading">
@@ -103,9 +90,8 @@ synchronously.</p>
         
         <tr>
           <td class="docs">
-            <p>To invoke this function in a goroutine, use
-<code>go f(s)</code>. This new goroutine will execute
-concurrently with the calling one.</p>
+            <p><code>go f(s)</code> と書くと、この関数をゴルーチンの中で実行する。
+こうすると、新たなゴルーチンが呼び出し側と平行に実行される。</p>
 
           </td>
           <td class="code leading">
@@ -118,8 +104,7 @@ concurrently with the calling one.</p>
         
         <tr>
           <td class="docs">
-            <p>You can also start a goroutine for an anonymous
-function call.</p>
+            <p>無名関数のゴルーチンを起動することもできる。</p>
 
           </td>
           <td class="code leading">
@@ -134,10 +119,9 @@ function call.</p>
         
         <tr>
           <td class="docs">
-            <p>Our two function calls are running asynchronously in
-separate goroutines now, so execution falls through
-to here. This <code>Scanln</code> requires we press a key
-before the program exits.</p>
+            <p>2つの関数呼び出しは、別々のゴルーチンにおいて非同期的に実行されている。
+そのため処理はここまで抜けてくる。
+ここにある <code>Scanln</code> はキーを押すまでブロックするため、プログラムが終了するのを妨げてくれる。</p>
 
           </td>
           <td class="code">
@@ -156,10 +140,9 @@ before the program exits.</p>
         
         <tr>
           <td class="docs">
-            <p>When we run this program, we see the output of the
-blocking call first, then the interleaved output of the
-two goroutines. This interleaving reflects the
-goroutines being run concurrently by the Go runtime.</p>
+            <p>このプログラムを実行すると、ブロックする呼び出しの出力がまず表示され、
+その後2つのゴルーチンの出力が入り混じって表示される。
+こうなるのは Go のランタイムがゴルーチンを平行に実行しているためである。</p>
 
           </td>
           <td class="code leading">
@@ -181,8 +164,7 @@ goroutines being run concurrently by the Go runtime.</p>
         
         <tr>
           <td class="docs">
-            <p>Next we&rsquo;ll look at a complement to goroutines in
-concurrent Go programs: channels.</p>
+            <p>次は、Go における並行プログラミングをする際にゴルーチンとしばしば一緒に使われるチャネルを紹介する。</p>
 
           </td>
           <td class="code empty">
@@ -195,11 +177,11 @@ concurrent Go programs: channels.</p>
       
       
       <p class="next">
-        Next example: <a href="channels">Channels</a>.
+        次の例：<a href="channels">Channels</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/goroutines">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinutids@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/examples/goroutines">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
   </body>

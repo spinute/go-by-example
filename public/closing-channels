@@ -2,32 +2,19 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Closing Channels</title>
+    <title>サンプルで学ぶ Go 言語：Closing Channels</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="closing-channels">
-      <h2><a href="./">Go by Example</a>: Closing Channels</h2>
+      <h2><a href="./">サンプルで学ぶ Go 言語</a>：Closing Channels</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p><em>Closing</em> a channel indicates that no more values
-will be sent on it. This can be useful to communicate
-completion to the channel&rsquo;s receivers.</p>
+            <p>チャネルを<em>閉じる</em>とそのチャネルにはもう値を送らないことを示せる。
+これはチャネルの受信者に終わりを伝えるのに使える。</p>
 
           </td>
           <td class="code empty leading">
@@ -41,7 +28,7 @@ completion to the channel&rsquo;s receivers.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/eFZ2SeKswH"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/hyoeQZM86JV"><img title="コードを実行する" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -62,10 +49,8 @@ completion to the channel&rsquo;s receivers.</p>
         
         <tr>
           <td class="docs">
-            <p>In this example we&rsquo;ll use a <code>jobs</code> channel to
-communicate work to be done from the <code>main()</code> goroutine
-to a worker goroutine. When we have no more jobs for
-the worker we&rsquo;ll <code>close</code> the <code>jobs</code> channel.</p>
+            <p>この例ではチャネル <code>jobs</code> を使って <code>main()</code> ゴルーチンからワーカーゴルーチンに仕事を送る。
+ワーカーに実行してもらう仕事を送り終えると、チャネル <code>jobs</code> を閉じる。</p>
 
           </td>
           <td class="code leading">
@@ -80,13 +65,11 @@ the worker we&rsquo;ll <code>close</code> the <code>jobs</code> channel.</p>
         
         <tr>
           <td class="docs">
-            <p>Here&rsquo;s the worker goroutine. It repeatedly receives
-from <code>jobs</code> with <code>j, more := &lt;-jobs</code>. In this
-special 2-value form of receive, the <code>more</code> value
-will be <code>false</code> if <code>jobs</code> has been <code>close</code>d and all
-values in the channel have already been received.
-We use this to notify on <code>done</code> when we&rsquo;ve worked
-all our jobs.</p>
+            <p>ワーカーを起動する。
+このゴルーチンは <code>j, more := &lt;-jobs</code> の行で繰り返し <code>jobs</code> から値を受信する。
+チャネルから2つ値を読み出しているのがキモだ。
+チャネルが閉じられており、そのチャネルの値をすべて受信し終えているとき、<code>more</code> は false になる。
+こうして最後の仕事を終えたことがわかるので、<code>done</code> を送り返せる。</p>
 
           </td>
           <td class="code leading">
@@ -110,8 +93,7 @@ all our jobs.</p>
         
         <tr>
           <td class="docs">
-            <p>This sends 3 jobs to the worker over the <code>jobs</code>
-channel, then closes it.</p>
+            <p>チャネル <code>jobs</code> を通じて3つの仕事をワーカーに送り、その後チャネルを閉じる。</p>
 
           </td>
           <td class="code leading">
@@ -129,9 +111,7 @@ channel, then closes it.</p>
         
         <tr>
           <td class="docs">
-            <p>We await the worker using the
-<a href="channel-synchronization">synchronization</a> approach
-we saw earlier.</p>
+            <p>既に紹介した<a href="channel-synchronization">同期</a>のやり方で、ワーカーを待つ。</p>
 
           </td>
           <td class="code">
@@ -169,8 +149,7 @@ we saw earlier.</p>
         
         <tr>
           <td class="docs">
-            <p>The idea of closed channels leads naturally to our next
-example: <code>range</code> over channels.</p>
+            <p>チャネルを閉じるというアイデアは、次の例である <code>range</code> をチャネルに適用するというアイデアにつながる。</p>
 
           </td>
           <td class="code empty">
@@ -183,11 +162,11 @@ example: <code>range</code> over channels.</p>
       
       
       <p class="next">
-        Next example: <a href="range-over-channels">Range over Channels</a>.
+        次の例：<a href="range-over-channels">Range over Channels</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/closing-channels">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinutids@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/examples/closing-channels">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
   </body>

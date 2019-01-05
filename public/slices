@@ -2,31 +2,19 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Slices</title>
+    <title>サンプルで学ぶ Go 言語：Slices</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="slices">
-      <h2><a href="./">Go by Example</a>: Slices</h2>
+      <h2><a href="./">サンプルで学ぶ Go 言語</a>：Slices</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p><em>Slices</em> are a key data type in Go, giving a more
-powerful interface to sequences than arrays.</p>
+            <p><em>スライス</em>は Go のデータ型の中でも特に重要だ。
+スライスは値の列を表す、配列よりも強力なインターフェースである。</p>
 
           </td>
           <td class="code empty leading">
@@ -40,7 +28,7 @@ powerful interface to sequences than arrays.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/Z3_U32sn8RF"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/l0PHLC1OZKK"><img title="コードを実行する" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -73,11 +61,9 @@ powerful interface to sequences than arrays.</p>
         
         <tr>
           <td class="docs">
-            <p>Unlike arrays, slices are typed only by the
-elements they contain (not the number of elements).
-To create an empty slice with non-zero length, use
-the builtin <code>make</code>. Here we make a slice of
-<code>string</code>s of length <code>3</code> (initially zero-valued).</p>
+            <p>配列とは違い、スライスの型はは要素の型だけを含む（つまり、要素数は含まない）。
+空でない（長さ0でない）スライスを作るには、組み込みの <code>make</code> を使う。
+ここでは、文字列が3つ入るスライスを作っている（初期値はゼロ値である）。</p>
 
           </td>
           <td class="code leading">
@@ -91,7 +77,7 @@ the builtin <code>make</code>. Here we make a slice of
         
         <tr>
           <td class="docs">
-            <p>We can set and get just like with arrays.</p>
+            <p>値の読み書きは配列と同様に行える。</p>
 
           </td>
           <td class="code leading">
@@ -108,7 +94,7 @@ the builtin <code>make</code>. Here we make a slice of
         
         <tr>
           <td class="docs">
-            <p><code>len</code> returns the length of the slice as expected.</p>
+            <p><code>len</code> はスライスの長さを返す。</p>
 
           </td>
           <td class="code leading">
@@ -121,12 +107,9 @@ the builtin <code>make</code>. Here we make a slice of
         
         <tr>
           <td class="docs">
-            <p>In addition to these basic operations, slices
-support several more that make them richer than
-arrays. One is the builtin <code>append</code>, which
-returns a slice containing one or more new values.
-Note that we need to accept a return value from
-<code>append</code> as we may get a new slice value.</p>
+            <p>配列にあった基本的な操作に加えて、スライスにはより豊富な操作が可能である。
+例えば組み込みの <code>append</code> は一つかそれ以上の新たな値を含むスライスを返す。
+ここで、新たな値を得るには、<code>make</code> の返り値を受け取る必要があることに注意する。</p>
 
           </td>
           <td class="code leading">
@@ -141,9 +124,8 @@ Note that we need to accept a return value from
         
         <tr>
           <td class="docs">
-            <p>Slices can also be <code>copy</code>&rsquo;d. Here we create an
-empty slice <code>c</code> of the same length as <code>s</code> and copy
-into <code>c</code> from <code>s</code>.</p>
+            <p>スライスはコピー（<code>copy</code>）することもできる。
+ここでは、<code>s</code> と同じ長さの空のスライス <code>c</code> を作り、<code>s</code> の内容を <code>c</code> にコピーしている。</p>
 
           </td>
           <td class="code leading">
@@ -158,9 +140,8 @@ into <code>c</code> from <code>s</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>Slices support a &ldquo;slice&rdquo; operator with the syntax
-<code>slice[low:high]</code>. For example, this gets a slice
-of the elements <code>s[2]</code>, <code>s[3]</code>, and <code>s[4]</code>.</p>
+            <p>スライスを「スライス」する <code>slice[low:high]</code> という記法もある。
+例えばこの例では、<code>s[2]</code>、<code>s[3]</code>、<code>s[4]</code> からなるスライスを取得している。</p>
 
           </td>
           <td class="code leading">
@@ -174,7 +155,7 @@ of the elements <code>s[2]</code>, <code>s[3]</code>, and <code>s[4]</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>This slices up to (but excluding) <code>s[5]</code>.</p>
+            <p>これは <code>s[5]</code> までの要素（<code>s[5]</code> を含まない）をスライスしている。</p>
 
           </td>
           <td class="code leading">
@@ -188,7 +169,7 @@ of the elements <code>s[2]</code>, <code>s[3]</code>, and <code>s[4]</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>And this slices up from (and including) <code>s[2]</code>.</p>
+            <p>これは <code>s[2]</code> から先の要素（<code>s[2]</code> を含む）をスライスしている。</p>
 
           </td>
           <td class="code leading">
@@ -202,8 +183,7 @@ of the elements <code>s[2]</code>, <code>s[3]</code>, and <code>s[4]</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>We can declare and initialize a variable for slice
-in a single line as well.</p>
+            <p>スライスの宣言と定義も、一行で済ませられる。</p>
 
           </td>
           <td class="code leading">
@@ -217,9 +197,8 @@ in a single line as well.</p>
         
         <tr>
           <td class="docs">
-            <p>Slices can be composed into multi-dimensional data
-structures. The length of the inner slices can
-vary, unlike with multi-dimensional arrays.</p>
+            <p>スライスを組み合わせて多次元のデータ構造を作れる。
+内側のスライスの長さは同じでなくてもよく、これは配列の場合とは異なる。</p>
 
           </td>
           <td class="code">
@@ -245,8 +224,7 @@ vary, unlike with multi-dimensional arrays.</p>
         
         <tr>
           <td class="docs">
-            <p>Note that while slices are different types than arrays,
-they are rendered similarly by <code>fmt.Println</code>.</p>
+            <p>スライスの型と配列の型は違うが、<code>fmt.Println</code> はいずれの型の値も同様に表示する。</p>
 
           </td>
           <td class="code leading">
@@ -270,9 +248,7 @@ they are rendered similarly by <code>fmt.Println</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>Check out this <a href="http://blog.golang.org/2011/01/go-slices-usage-and-internals.html">great blog post</a>
-by the Go team for more details on the design and
-implementation of slices in Go.</p>
+            <p>スライスの設計と実装に関する詳細が知りたければ、Go の開発チームが書いた<a href="http://blog.golang.org/2011/01/go-slices-usage-and-internals.html">素晴らしいブログポスト</a>を見てほしい。</p>
 
           </td>
           <td class="code empty leading">
@@ -283,8 +259,7 @@ implementation of slices in Go.</p>
         
         <tr>
           <td class="docs">
-            <p>Now that we&rsquo;ve seen arrays and slices we&rsquo;ll look at
-Go&rsquo;s other key builtin data structure: maps.</p>
+            <p>これまで配列とスライスを見てきたが、Go の重要な組み込みデータ型として次はマップを紹介する。</p>
 
           </td>
           <td class="code empty">
@@ -297,11 +272,11 @@ Go&rsquo;s other key builtin data structure: maps.</p>
       
       
       <p class="next">
-        Next example: <a href="maps">Maps</a>.
+        次の例：<a href="maps">Maps</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/slices">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinutids@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/examples/slices">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
   </body>

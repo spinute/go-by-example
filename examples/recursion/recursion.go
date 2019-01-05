@@ -7,12 +7,12 @@ import "fmt"
 
 // この関数 `fact` は、ベースケースである `fact(0)` に到達するまで自身を繰り返し呼び出す。
 func fact(n int) int {
-	if n == 0 {
-		return 1
-	}
-	return n * fact(n-1)
+    if n == 0 {
+        return 1
+    }
+    return n * fact(n-1)
 }
 
 func main() {
-	fmt.Println(fact(7))
+    fmt.Println(fact(7))
 }

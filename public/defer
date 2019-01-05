@@ -2,33 +2,20 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Defer</title>
+    <title>サンプルで学ぶ Go 言語：Defer</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="defer">
-      <h2><a href="./">Go by Example</a>: Defer</h2>
+      <h2><a href="./">サンプルで学ぶ Go 言語</a>：Defer</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p><em>Defer</em> is used to ensure that a function call is
-performed later in a program&rsquo;s execution, usually for
-purposes of cleanup. <code>defer</code> is often used where e.g.
-<code>ensure</code> and <code>finally</code> would be used in other languages.</p>
+            <p><em>Defer</em> を使って、ある関数を確実に後で呼ばせることができる。
+これは後片付けにしばしば使われる機能だ。
+他の言語だと <code>ensure</code> や <code>finally</code> といったキーワードを使う場面で、Go では <code>defer</code> を使う。</p>
 
           </td>
           <td class="code empty leading">
@@ -42,7 +29,7 @@ purposes of cleanup. <code>defer</code> is often used where e.g.
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/9aoHwzHcAo"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/rtyj2vPyXaB"><img title="コードを実行する" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -64,9 +51,8 @@ purposes of cleanup. <code>defer</code> is often used where e.g.
         
         <tr>
           <td class="docs">
-            <p>Suppose we wanted to create a file, write to it,
-and then close when we&rsquo;re done. Here&rsquo;s how we could
-do that with <code>defer</code>.</p>
+            <p>ファイルを作り、書き込み、最後にファイルを閉じたいとする。
+これを <code>defer</code> を使ってやってみよう。</p>
 
           </td>
           <td class="code leading">
@@ -79,11 +65,8 @@ do that with <code>defer</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>Immediately after getting a file object with
-<code>createFile</code>, we defer the closing of that file
-with <code>closeFile</code>. This will be executed at the end
-of the enclosing function (<code>main</code>), after
-<code>writeFile</code> has finished.</p>
+            <p><code>createFile</code> でファイルオブジェクトを得た直後に、ファイルを閉じるよう <code>closeFile</code> を <code>defer</code> しておく。
+直近の関数（<code>main</code>）の最後、つまり <code>writeFile</code> が終わるときに、defer した関数が実行される。</p>
 
           </td>
           <td class="code leading">
@@ -163,8 +146,7 @@ of the enclosing function (<code>main</code>), after
         
         <tr>
           <td class="docs">
-            <p>Running the program confirms that the file is closed
-after being written.</p>
+            <p>プログラムを実行すると、ファイルは書き込まれた後、閉じられることを確認できる。</p>
 
           </td>
           <td class="code">
@@ -182,11 +164,11 @@ after being written.</p>
       
       
       <p class="next">
-        Next example: <a href="collection-functions">Collection Functions</a>.
+        次の例：<a href="collection-functions">Collection Functions</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/defer">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinutids@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/examples/defer">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
   </body>

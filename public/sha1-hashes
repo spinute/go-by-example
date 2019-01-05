@@ -2,35 +2,20 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: SHA1 Hashes</title>
+    <title>サンプルで学ぶ Go 言語：SHA1 Hashes</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="sha1-hashes">
-      <h2><a href="./">Go by Example</a>: SHA1 Hashes</h2>
+      <h2><a href="./">サンプルで学ぶ Go 言語</a>：SHA1 Hashes</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p><a href="http://en.wikipedia.org/wiki/SHA-1"><em>SHA1 hashes</em></a> are
-frequently used to compute short identities for binary
-or text blobs. For example, the <a href="http://git-scm.com/">git revision control
-system</a> uses SHA1s extensively to
-identify versioned files and directories. Here&rsquo;s how to
-compute SHA1 hashes in Go.</p>
+            <p><a href="http://en.wikipedia.org/wiki/SHA-1"><em>SHA1 ハッシュ関数</em></a>はバイナリや文字列の短い識別子を計算するためによく使う。
+例えばバージョン管理システムである <a href="http://git-scm.com/">Git</a> ではファイルやディレクトリを識別するために SHA1 を使っている。
+それでは、Go で SHA1 を計算する例を見ていこう。</p>
 
           </td>
           <td class="code empty leading">
@@ -44,7 +29,7 @@ compute SHA1 hashes in Go.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/YUaWWEeB4U"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/QBaR5pfaWgn"><img title="コードを実行する" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -53,8 +38,7 @@ compute SHA1 hashes in Go.</p>
         
         <tr>
           <td class="docs">
-            <p>Go implements several hash functions in various
-<code>crypto/*</code> packages.</p>
+            <p><code>crypto/*</code> パッケージには何種類かのハッシュ関数が含まれている。</p>
 
           </td>
           <td class="code leading">
@@ -81,9 +65,8 @@ compute SHA1 hashes in Go.</p>
         
         <tr>
           <td class="docs">
-            <p>The pattern for generating a hash is <code>sha1.New()</code>,
-<code>sha1.Write(bytes)</code>, then <code>sha1.Sum([]byte{})</code>.
-Here we start with a new hash.</p>
+            <p>ハッシュ値を生成するには <code>sha1.New()</code>、<code>sha1.Write(bytes)</code>、<code>sha1.Sum([]byte{})</code> の順で関数を呼ぶ。
+まずは新たなハッシュ関数を生成する。</p>
 
           </td>
           <td class="code leading">
@@ -96,8 +79,8 @@ Here we start with a new hash.</p>
         
         <tr>
           <td class="docs">
-            <p><code>Write</code> expects bytes. If you have a string <code>s</code>,
-use <code>[]byte(s)</code> to coerce it to bytes.</p>
+            <p><code>Write</code> の入力はバイト列である。
+文字列 <code>s</code> のハッシュ値を計算したいなら、<code>[]byte(s)</code> と書いてハッシュ値に変換してやらなければならない。</p>
 
           </td>
           <td class="code leading">
@@ -110,9 +93,8 @@ use <code>[]byte(s)</code> to coerce it to bytes.</p>
         
         <tr>
           <td class="docs">
-            <p>This gets the finalized hash result as a byte
-slice. The argument to <code>Sum</code> can be used to append
-to an existing byte slice: it usually isn&rsquo;t needed.</p>
+            <p>バイトのスライスとして、最終的なハッシュ値を得る。
+<code>Sum</code> の引数を、これまで入力したバイト列に追記できるが、普通はこれは使わない。</p>
 
           </td>
           <td class="code leading">
@@ -125,9 +107,8 @@ to an existing byte slice: it usually isn&rsquo;t needed.</p>
         
         <tr>
           <td class="docs">
-            <p>SHA1 values are often printed in hex, for example
-in git commits. Use the <code>%x</code> format verb to convert
-a hash results to a hex string.</p>
+            <p>SHA1 のハッシュ値は、Git がそうしているように、16進記数法で表示することが多い。
+フォーマット文字列に <code>%x</code> と書けば、ハッシュ計算の結果を16進文字列に変換できる。</p>
 
           </td>
           <td class="code">
@@ -146,8 +127,7 @@ a hash results to a hex string.</p>
         
         <tr>
           <td class="docs">
-            <p>Running the program computes the hash and prints it in
-a human-readable hex format.</p>
+            <p>プログラムはハッシュ値を計算し、人が読みやすい16進記数法で結果を表示する。</p>
 
           </td>
           <td class="code leading">
@@ -162,9 +142,9 @@ a human-readable hex format.</p>
         
         <tr>
           <td class="docs">
-            <p>You can compute other hashes using a similar pattern to
-the one shown above. For example, to compute MD5 hashes
-import <code>crypto/md5</code> and use <code>md5.New()</code>.</p>
+            <p>上と同様のやり方で他のハッシュ関数を計算することもできる。
+例えば MD5 ハッシュ関数を使いたければ、
+<code>crypto/md5</code> をインポートして <code>md5.New()</code> を使えばよい。</p>
 
           </td>
           <td class="code empty leading">
@@ -175,9 +155,8 @@ import <code>crypto/md5</code> and use <code>md5.New()</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>Note that if you need cryptographically secure hashes,
-you should carefully research
-<a href="http://en.wikipedia.org/wiki/Cryptographic_hash_function">hash strength</a>!</p>
+            <p>ただし、暗号学的に安全なハッシュ関数を使いたい場合には
+<a href="http://en.wikipedia.org/wiki/Cryptographic_hash_function">ハッシュ関数の強度</a>をよく読むべきだ。</p>
 
           </td>
           <td class="code empty">
@@ -190,11 +169,11 @@ you should carefully research
       
       
       <p class="next">
-        Next example: <a href="base64-encoding">Base64 Encoding</a>.
+        次の例：<a href="base64-encoding">Base64 Encoding</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/sha1-hashes">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinutids@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/examples/sha1-hashes">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
   </body>

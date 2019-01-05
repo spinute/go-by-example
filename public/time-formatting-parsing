@@ -2,31 +2,18 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Time Formatting / Parsing</title>
+    <title>サンプルで学ぶ Go 言語：Time Formatting / Parsing</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="time-formatting-parsing">
-      <h2><a href="./">Go by Example</a>: Time Formatting / Parsing</h2>
+      <h2><a href="./">サンプルで学ぶ Go 言語</a>：Time Formatting / Parsing</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>Go supports time formatting and parsing via
-pattern-based layouts.</p>
+            <p>Go ではパターンに基づくレイアウトを利用して時刻をフォーマットできる。</p>
 
           </td>
           <td class="code empty leading">
@@ -40,7 +27,7 @@ pattern-based layouts.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/BFw556nWcM"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/Z3dgvH-ReF4"><img title="コードを実行する" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -75,9 +62,7 @@ pattern-based layouts.</p>
         
         <tr>
           <td class="docs">
-            <p>Here&rsquo;s a basic example of formatting a time
-according to RFC3339, using the corresponding layout
-constant.</p>
+            <p>まずは RFC3339 に対応するレイアウトを使って時刻をフォーマットする方法を紹介する。</p>
 
           </td>
           <td class="code leading">
@@ -91,7 +76,7 @@ constant.</p>
         
         <tr>
           <td class="docs">
-            <p>Time parsing uses the same layout values as <code>Format</code>.</p>
+            <p>時刻をパースするときも <code>Format</code> と同じレイアウトを使う。</p>
 
           </td>
           <td class="code leading">
@@ -107,13 +92,10 @@ constant.</p>
         
         <tr>
           <td class="docs">
-            <p><code>Format</code> and <code>Parse</code> use example-based layouts. Usually
-you&rsquo;ll use a constant from <code>time</code> for these layouts, but
-you can also supply custom layouts. Layouts must use the
-reference time <code>Mon Jan 2 15:04:05 MST 2006</code> to show the
-pattern with which to format/parse a given time/string.
-The example time must be exactly as shown: the year 2006,
-15 for the hour, Monday for the day of the week, etc.</p>
+            <p><code>Format</code>、<code>Parse</code> では例示に基づいてレイアウトを決める。
+ふつうは <code>time</code> モジュールに定義されている定数をレイアウトの例として使うが、独自のレイアウトを使ってもよい。
+レイアウトでは特定の時刻 <code>Mon Jan 2 15:04:05 MST 2006</code> を表している必要があり、プログラムはこれに従って時刻をフォーマットしたり、文字列をパースしたりする。
+時刻の例はちょうど以下のようなものだ。例えば、以下の例では、年は2006に、時間は15に、曜日は月曜になっている。</p>
 
           </td>
           <td class="code leading">
@@ -131,9 +113,7 @@ The example time must be exactly as shown: the year 2006,
         
         <tr>
           <td class="docs">
-            <p>For purely numeric representations you can also
-use standard string formatting with the extracted
-components of the time value.</p>
+            <p>フォーマットしたいのが数値なら、時刻値の部分を抜き出し、文字列のフォーマット機能を使ってもよい。</p>
 
           </td>
           <td class="code leading">
@@ -148,8 +128,7 @@ components of the time value.</p>
         
         <tr>
           <td class="docs">
-            <p><code>Parse</code> will return an error on malformed input
-explaining the parsing problem.</p>
+            <p><code>Parse</code> は入力が不正だと、パース時に起きた問題を説明するエラーを返す。</p>
 
           </td>
           <td class="code">
@@ -191,11 +170,11 @@ explaining the parsing problem.</p>
       
       
       <p class="next">
-        Next example: <a href="random-numbers">Random Numbers</a>.
+        次の例：<a href="random-numbers">Random Numbers</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/time-formatting-parsing">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinutids@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/examples/time-formatting-parsing">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
   </body>

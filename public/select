@@ -2,32 +2,19 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Select</title>
+    <title>サンプルで学ぶ Go 言語：Select</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="select">
-      <h2><a href="./">Go by Example</a>: Select</h2>
+      <h2><a href="./">サンプルで学ぶ Go 言語</a>：Select</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>Go&rsquo;s <em>select</em> lets you wait on multiple channel
-operations. Combining goroutines and channels with
-select is a powerful feature of Go.</p>
+            <p>Go の <em>select</em> を使うと、複数のチャネルで受信を待てる。
+ゴルーチンとチャネル、そして select の組み合わせは Go の強力な機能である。</p>
 
           </td>
           <td class="code empty leading">
@@ -41,7 +28,7 @@ select is a powerful feature of Go.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/ZdSOPe1Gj13"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/cDYZxkVGhIa"><img title="コードを実行する" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -75,7 +62,7 @@ select is a powerful feature of Go.</p>
         
         <tr>
           <td class="docs">
-            <p>For our example we&rsquo;ll select across two channels.</p>
+            <p>この例では2つのチャネルに select を使う。</p>
 
           </td>
           <td class="code leading">
@@ -89,9 +76,8 @@ select is a powerful feature of Go.</p>
         
         <tr>
           <td class="docs">
-            <p>Each channel will receive a value after some amount
-of time, to simulate e.g. blocking RPC operations
-executing in concurrent goroutines.</p>
+            <p>いずれのチャネルも一定の時間が経てば値を受信する。
+これはゴルーチンが RPC を同期的に実行する状況を模している。</p>
 
           </td>
           <td class="code leading">
@@ -112,7 +98,8 @@ executing in concurrent goroutines.</p>
         <tr>
           <td class="docs">
             <p>We&rsquo;ll use <code>select</code> to await both of these values
-simultaneously, printing each one as it arrives.</p>
+simultaneously, printing each one as it arrives.
+<code>select</code> を使ってふたつの値をいずれも非同期で受信し、届いた方から表示する。</p>
 
           </td>
           <td class="code">
@@ -137,8 +124,7 @@ simultaneously, printing each one as it arrives.</p>
         
         <tr>
           <td class="docs">
-            <p>We receive the values <code>&quot;one&quot;</code> and then <code>&quot;two&quot;</code> as
-expected.</p>
+            <p><code>&quot;one&quot;</code>、<code>&quot;two&quot;</code> を順番に受信する。</p>
 
           </td>
           <td class="code leading">
@@ -153,9 +139,8 @@ expected.</p>
         
         <tr>
           <td class="docs">
-            <p>Note that the total execution time is only ~2 seconds
-since both the 1 and 2 second <code>Sleeps</code> execute
-concurrently.</p>
+            <p>実行時間の合計は2秒程度である。
+これは1秒間のスリープと2秒間のスリープが平行に実行されるためである。</p>
 
           </td>
           <td class="code">
@@ -170,11 +155,11 @@ concurrently.</p>
       
       
       <p class="next">
-        Next example: <a href="timeouts">Timeouts</a>.
+        次の例：<a href="timeouts">Timeouts</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/select">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinutids@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/examples/select">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
   </body>

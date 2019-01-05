@@ -40,7 +40,8 @@ Usage of ./command-line-flags:
   -svar="bar": a string var
   -word="foo": a string
 
-# `flag` パッケージで指定していないフラグをプログラムに渡すと、プログラムはエラーメッセージを表示し、この場合もヘルプを表示する。
+# `flag` パッケージで指定していないフラグをプログラムに渡すと、
+# プログラムはエラーメッセージを表示し、この場合もヘルプを表示する。
 $ ./command-line-flags -wat
 flag provided but not defined: -wat
 Usage of ./command-line-flags:

@@ -2,33 +2,19 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Line Filters</title>
+    <title>サンプルで学ぶ Go 言語：Line Filters</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="line-filters">
-      <h2><a href="./">Go by Example</a>: Line Filters</h2>
+      <h2><a href="./">サンプルで学ぶ Go 言語</a>：Line Filters</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>A <em>line filter</em> is a common type of program that reads
-input on stdin, processes it, and then prints some
-derived result to stdout. <code>grep</code> and <code>sed</code> are common
-line filters.</p>
+            <p><em>行フィルタ</em>はよくある種類のプログラムで、標準入力を読んで、それを処理し、結果を標準出力に書き出す。
+<code>grep</code> や <code>sed</code> はよく使われる行フィルタの例である。</p>
 
           </td>
           <td class="code empty leading">
@@ -39,13 +25,13 @@ line filters.</p>
         
         <tr>
           <td class="docs">
-            <p>Here&rsquo;s an example line filter in Go that writes a
-capitalized version of all input text. You can use this
-pattern to write your own Go line filters.</p>
+            <p>ここでは Go で行フィルタを実装してみる。
+このプログラムは入力テキストをいずれも大文字にしたものを出力する。
+このパターンを真似れば、自分で好きな行フィルタを実装できるだろう。</p>
 
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/mpYwOHj2ma"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/3imTjIx01lD"><img title="コードを実行する" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -83,10 +69,8 @@ pattern to write your own Go line filters.</p>
         
         <tr>
           <td class="docs">
-            <p>Wrapping the unbuffered <code>os.Stdin</code> with a buffered
-scanner gives us a convenient <code>Scan</code> method that
-advances the scanner to the next token; which is
-the next line in the default scanner.</p>
+            <p>バッファの付いていない <code>os.Stdin</code> をバッファ付きのスキャナでラップすると、便利な <code>Scan</code> メソッドを使ってトークンごとに入力を読み進められる。
+デフォルトのスキャナは Stdin を行ごとに読み出すのだ。</p>
 
           </td>
           <td class="code leading">
@@ -99,8 +83,8 @@ the next line in the default scanner.</p>
         
         <tr>
           <td class="docs">
-            <p><code>Text</code> returns the current token, here the next line,
-from the input.</p>
+            <p><code>Text</code> は現在のトークンを返す。
+今の場合は、入力から読み出した次の行である。</p>
 
           </td>
           <td class="code leading">
@@ -125,7 +109,7 @@ from the input.</p>
         
         <tr>
           <td class="docs">
-            <p>Write out the uppercased line.</p>
+            <p>大文字にした行を書き出す。</p>
 
           </td>
           <td class="code leading">
@@ -139,8 +123,8 @@ from the input.</p>
         
         <tr>
           <td class="docs">
-            <p>Check for errors during <code>Scan</code>. End of file is
-expected and not reported by <code>Scan</code> as an error.</p>
+            <p><code>Scan</code> でエラーが無かったか確認する。
+なお、終端記号（EOF）が見つかっても、<code>Scan</code> はエラーとして扱わない。</p>
 
           </td>
           <td class="code">
@@ -161,8 +145,7 @@ expected and not reported by <code>Scan</code> as an error.</p>
         
         <tr>
           <td class="docs">
-            <p>To try out our line filter, first make a file with a few
-lowercase lines.</p>
+            <p>実装したラインフィルタを使ってみるため、小文字で書いた行をいくつか含むファイルを作る。</p>
 
           </td>
           <td class="code leading">
@@ -176,7 +159,7 @@ lowercase lines.</p>
         
         <tr>
           <td class="docs">
-            <p>Then use the line filter to get uppercase lines.</p>
+            <p>ラインフィルタによって、各行は大文字になる。</p>
 
           </td>
           <td class="code">
@@ -193,11 +176,11 @@ lowercase lines.</p>
       
       
       <p class="next">
-        Next example: <a href="command-line-arguments">Command-Line Arguments</a>.
+        次の例：<a href="command-line-arguments">Command-Line Arguments</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/line-filters">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinutids@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/examples/line-filters">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
   </body>

@@ -2,31 +2,18 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Constants</title>
+    <title>サンプルで学ぶ Go 言語：Constants</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="constants">
-      <h2><a href="./">Go by Example</a>: Constants</h2>
+      <h2><a href="./">サンプルで学ぶ Go 言語</a>：Constants</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>Go supports <em>constants</em> of character, string, boolean,
-and numeric values.</p>
+            <p>Go は文字、文字列、真偽値、数値の<em>定数（constant）</em>をサポートしている。</p>
 
           </td>
           <td class="code empty leading">
@@ -40,7 +27,7 @@ and numeric values.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/T5sj0eINnp"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/xSwnSqPlW0f"><img title="コードを実行する" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -62,7 +49,7 @@ and numeric values.</p>
         
         <tr>
           <td class="docs">
-            <p><code>const</code> declares a constant value.</p>
+            <p><code>const</code> を使って定数を宣言できる。</p>
 
           </td>
           <td class="code leading">
@@ -88,8 +75,7 @@ and numeric values.</p>
         
         <tr>
           <td class="docs">
-            <p>A <code>const</code> statement can appear anywhere a <code>var</code>
-statement can.</p>
+            <p><code>const</code> 文は <code>var</code> 文が書けるところならどこでも書ける。</p>
 
           </td>
           <td class="code leading">
@@ -102,8 +88,7 @@ statement can.</p>
         
         <tr>
           <td class="docs">
-            <p>Constant expressions perform arithmetic with
-arbitrary precision.</p>
+            <p>定数式では任意精度で算術を実行する。</p>
 
           </td>
           <td class="code leading">
@@ -117,8 +102,7 @@ arbitrary precision.</p>
         
         <tr>
           <td class="docs">
-            <p>A numeric constant has no type until it&rsquo;s given
-one, such as by an explicit cast.</p>
+            <p>数値の定数は、明示的にキャストするなどして型が決まるまでは、型を持たない。</p>
 
           </td>
           <td class="code leading">
@@ -131,10 +115,9 @@ one, such as by an explicit cast.</p>
         
         <tr>
           <td class="docs">
-            <p>A number can be given a type by using it in a
-context that requires one, such as a variable
-assignment or function call. For example, here
-<code>math.Sin</code> expects a <code>float64</code>.</p>
+            <p>数値のは型を必要とするコンテキストによって与えられる。
+変数の代入や、関数呼び出しが型を必要とする場面の例である。
+例えばここでは、<code>math.Sin</code> は <code>float64</code> 型の引数を受け取る。</p>
 
           </td>
           <td class="code">
@@ -170,11 +153,11 @@ assignment or function call. For example, here
       
       
       <p class="next">
-        Next example: <a href="for">For</a>.
+        次の例：<a href="for">For</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/constants">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinutids@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/examples/constants">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
   </body>

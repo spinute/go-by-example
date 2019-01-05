@@ -2,32 +2,19 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Regular Expressions</title>
+    <title>サンプルで学ぶ Go 言語：Regular Expressions</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="regular-expressions">
-      <h2><a href="./">Go by Example</a>: Regular Expressions</h2>
+      <h2><a href="./">サンプルで学ぶ Go 言語</a>：Regular Expressions</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>Go offers built-in support for <a href="http://en.wikipedia.org/wiki/Regular_expression">regular expressions</a>.
-Here are some examples of  common regexp-related tasks
-in Go.</p>
+            <p>Go は組み込みの<a href="http://en.wikipedia.org/wiki/Regular_expression">正規表現</a>処理機能を持っている。
+Go でよく使う正規表現関係の処理を紹介する。</p>
 
           </td>
           <td class="code empty leading">
@@ -41,7 +28,7 @@ in Go.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/YeSiBTfhFq"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/v6h9XjBpL33"><img title="コードを実行する" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -76,7 +63,7 @@ in Go.</p>
         
         <tr>
           <td class="docs">
-            <p>This tests whether a pattern matches a string.</p>
+            <p>文字列がパターンにマッチするかどうかを判定する。</p>
 
           </td>
           <td class="code leading">
@@ -90,9 +77,8 @@ in Go.</p>
         
         <tr>
           <td class="docs">
-            <p>Above we used a string pattern directly, but for
-other regexp tasks you&rsquo;ll need to <code>Compile</code> an
-optimized <code>Regexp</code> struct.</p>
+            <p>上では文字列としてパターンを直接使った。
+しかし、他のことをするには <code>Compile</code> して最適化された <code>Regexp</code> 構造体にしておく必要がある。</p>
 
           </td>
           <td class="code leading">
@@ -105,8 +91,8 @@ optimized <code>Regexp</code> struct.</p>
         
         <tr>
           <td class="docs">
-            <p>Many methods are available on these structs. Here&rsquo;s
-a match test like we saw earlier.</p>
+            <p>この構造体は色々なメソッドを持っている。
+まずは先程の、マッチするかどうかの判定をしてみる。</p>
 
           </td>
           <td class="code leading">
@@ -119,7 +105,7 @@ a match test like we saw earlier.</p>
         
         <tr>
           <td class="docs">
-            <p>This finds the match for the regexp.</p>
+            <p>マッチした文字列を見つける。</p>
 
           </td>
           <td class="code leading">
@@ -132,9 +118,7 @@ a match test like we saw earlier.</p>
         
         <tr>
           <td class="docs">
-            <p>This also finds the first match but returns the
-start and end indexes for the match instead of the
-matching text.</p>
+            <p>同様にマッチした文字列を見つけるが、マッチした文字列自体ではなく、その最初と最後のインデックスを返す。</p>
 
           </td>
           <td class="code leading">
@@ -147,10 +131,8 @@ matching text.</p>
         
         <tr>
           <td class="docs">
-            <p>The <code>Submatch</code> variants include information about
-both the whole-pattern matches and the submatches
-within those matches. For example this will return
-information for both <code>p([a-z]+)ch</code> and <code>([a-z]+)</code>.</p>
+            <p><code>Submatch</code> はパターンにマッチした文字列全体と、その中の部分マッチの情報を共に返す。
+例えば、この場合は <code>p([a-z]+)ch</code> と <code>([a-z]+)</code> のマッチ結果が返ってくる。</p>
 
           </td>
           <td class="code leading">
@@ -163,8 +145,7 @@ information for both <code>p([a-z]+)ch</code> and <code>([a-z]+)</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>Similarly this will return information about the
-indexes of matches and submatches.</p>
+            <p>同様にこちらはマッチした文字列全体と部分マッチの、インデックス情報を返す。</p>
 
           </td>
           <td class="code leading">
@@ -177,9 +158,8 @@ indexes of matches and submatches.</p>
         
         <tr>
           <td class="docs">
-            <p>The <code>All</code> variants of these functions apply to all
-matches in the input, not just the first. For
-example to find all matches for a regexp.</p>
+            <p><code>All</code> が付いているものははじめのマッチひとつだけではなく、入力のうちマッチした箇所すべてを処理するものだ。
+例えば、すべてのマッチを見つけるには次のようにする。</p>
 
           </td>
           <td class="code leading">
@@ -192,8 +172,7 @@ example to find all matches for a regexp.</p>
         
         <tr>
           <td class="docs">
-            <p>These <code>All</code> variants are available for the other
-functions we saw above as well.</p>
+            <p>これまで見てきた他の関数にも <code>All</code> がついたものがある。</p>
 
           </td>
           <td class="code leading">
@@ -207,9 +186,7 @@ functions we saw above as well.</p>
         
         <tr>
           <td class="docs">
-            <p>Providing a non-negative integer as the second
-argument to these functions will limit the number
-of matches.</p>
+            <p>第二引数に非負整数を渡すと、マッチの数に上限を設ける。</p>
 
           </td>
           <td class="code leading">
@@ -222,10 +199,9 @@ of matches.</p>
         
         <tr>
           <td class="docs">
-            <p>Our examples above had string arguments and used
-names like <code>MatchString</code>. We can also provide
-<code>[]byte</code> arguments and drop <code>String</code> from the
-function name.</p>
+            <p>これまで見た例は文字列を引数に取り、<code>MatchString</code> のような名前であった。
+<code>[]byte</code> を引数に取るものもある。
+関数名から <code>String</code> を外せば、対応する <code>[]byte</code> を引数に取る関数名になる。</p>
 
           </td>
           <td class="code leading">
@@ -238,10 +214,8 @@ function name.</p>
         
         <tr>
           <td class="docs">
-            <p>When creating constants with regular expressions
-you can use the <code>MustCompile</code> variation of
-<code>Compile</code>. A plain <code>Compile</code> won&rsquo;t work for
-constants because it has 2 return values.</p>
+            <p>正規表現の定数を作るときは、<code>Compile</code> ではなく <code>MustCompile</code> を使う。
+<code>Compile</code> は値を2つ返すので、定数には使えない。</p>
 
           </td>
           <td class="code leading">
@@ -255,8 +229,7 @@ constants because it has 2 return values.</p>
         
         <tr>
           <td class="docs">
-            <p>The <code>regexp</code> package can also be used to replace
-subsets of strings with other values.</p>
+            <p><code>repexp</code> パッケージを使って、部分文字列を別の値に置き換えることもできる。</p>
 
           </td>
           <td class="code leading">
@@ -269,8 +242,7 @@ subsets of strings with other values.</p>
         
         <tr>
           <td class="docs">
-            <p>The <code>Func</code> variant allows you to transform matched
-text with a given function.</p>
+            <p><code>Func</code> が名前に付いたものは、マッチした文字列を引数に渡した関数で変換する。</p>
 
           </td>
           <td class="code">
@@ -315,8 +287,7 @@ text with a given function.</p>
         
         <tr>
           <td class="docs">
-            <p>For a complete reference on Go regular expressions check
-the <a href="http://golang.org/pkg/regexp/"><code>regexp</code></a> package docs.</p>
+            <p>Go の正規表現の完全なリファレンスは <a href="http://golang.org/pkg/regexp/"><code>regexp</code></a> パッケージのドキュメントにある。</p>
 
           </td>
           <td class="code empty">
@@ -329,11 +300,11 @@ the <a href="http://golang.org/pkg/regexp/"><code>regexp</code></a> package docs
       
       
       <p class="next">
-        Next example: <a href="json">JSON</a>.
+        次の例：<a href="json">JSON</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/regular-expressions">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinutids@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/examples/regular-expressions">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
   </body>

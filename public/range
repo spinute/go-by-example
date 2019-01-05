@@ -2,32 +2,19 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Range</title>
+    <title>サンプルで学ぶ Go 言語：Range</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="range">
-      <h2><a href="./">Go by Example</a>: Range</h2>
+      <h2><a href="./">サンプルで学ぶ Go 言語</a>：Range</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p><em>range</em> iterates over elements in a variety of data
-structures. Let&rsquo;s see how to use <code>range</code> with some
-of the data structures we&rsquo;ve already learned.</p>
+            <p><em>range</em> は様々なデータ構造の要素の値を繰り返し取得するのに役立つ。
+これまで学んだデータ構造に <code>range</code> を使う方法を紹介する。</p>
 
           </td>
           <td class="code empty leading">
@@ -41,7 +28,7 @@ of the data structures we&rsquo;ve already learned.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/SkL_AS-1Jd"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/epHPVoykRN5"><img title="コードを実行する" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -74,8 +61,8 @@ of the data structures we&rsquo;ve already learned.</p>
         
         <tr>
           <td class="docs">
-            <p>Here we use <code>range</code> to sum the numbers in a slice.
-Arrays work like this too.</p>
+            <p>ここでは <code>range</code> を使ってスライスの要素の和を計算している。
+配列でも同様に <code>range</code> を使える。</p>
 
           </td>
           <td class="code leading">
@@ -93,11 +80,9 @@ Arrays work like this too.</p>
         
         <tr>
           <td class="docs">
-            <p><code>range</code> on arrays and slices provides both the
-index and value for each entry. Above we didn&rsquo;t
-need the index, so we ignored it with the
-blank identifier <code>_</code>. Sometimes we actually want
-the indexes though.</p>
+            <p>配列、スライスに対する <code>range</code> から、インデックスと値の両方を読み出せる。
+上ではインデックスを使わなかったので、ブランク識別子 <code>_</code> を使ってインデックスを無視した。
+しかし、インデックスを使いたい場面ももちろんある。</p>
 
           </td>
           <td class="code leading">
@@ -114,7 +99,7 @@ the indexes though.</p>
         
         <tr>
           <td class="docs">
-            <p><code>range</code> on map iterates over key/value pairs.</p>
+            <p>マップに <code>range</code> を使うと、キーと値の組みを繰り返し読み出す。</p>
 
           </td>
           <td class="code leading">
@@ -130,7 +115,7 @@ the indexes though.</p>
         
         <tr>
           <td class="docs">
-            <p><code>range</code> can also iterate over just the keys of a map.</p>
+            <p>マップのキーだけを繰り返し読み出すこともできる。</p>
 
           </td>
           <td class="code leading">
@@ -145,9 +130,8 @@ the indexes though.</p>
         
         <tr>
           <td class="docs">
-            <p><code>range</code> on strings iterates over Unicode code
-points. The first value is the starting byte index
-of the <code>rune</code> and the second the <code>rune</code> itself.</p>
+            <p>文字列に <code>range</code> を使うと、Unicode のコードポイントを繰り返し読み出す。
+1つ目の返り値は、その <code>rune</code> 型の値のはじめのバイトのインデックスであり、2つ目の返り値は <code>rune</code> 型の値そのものである。</p>
 
           </td>
           <td class="code">
@@ -189,11 +173,11 @@ of the <code>rune</code> and the second the <code>rune</code> itself.</p>
       
       
       <p class="next">
-        Next example: <a href="functions">Functions</a>.
+        次の例：<a href="functions">Functions</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/range">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinutids@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/examples/range">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
   </body>

@@ -2,33 +2,20 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Closures</title>
+    <title>サンプルで学ぶ Go 言語：Closures</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="closures">
-      <h2><a href="./">Go by Example</a>: Closures</h2>
+      <h2><a href="./">サンプルで学ぶ Go 言語</a>：Closures</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>Go supports <a href="http://en.wikipedia.org/wiki/Anonymous_function"><em>anonymous functions</em></a>,
-which can form <a href="http://en.wikipedia.org/wiki/Closure_(computer_science)"><em>closures</em></a>.
-Anonymous functions are useful when you want to define
-a function inline without having to name it.</p>
+            <p>Go は<a href="http://en.wikipedia.org/wiki/Anonymous_function"><em>無名関数</em></a>をサポートしている。
+無名関数を使って<a href="http://en.wikipedia.org/wiki/Closure_(computer_science)"><em>クロージャ</em></a>を作れる。
+無名関数は名前を付けずにインラインで関数を定義でき、便利である。</p>
 
           </td>
           <td class="code empty leading">
@@ -42,7 +29,7 @@ a function inline without having to name it.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/zb93qzV6iN3"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/uD3200wkgA2"><img title="コードを実行する" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -63,10 +50,8 @@ a function inline without having to name it.</p>
         
         <tr>
           <td class="docs">
-            <p>This function <code>intSeq</code> returns another function, which
-we define anonymously in the body of <code>intSeq</code>. The
-returned function <em>closes over</em> the variable <code>i</code> to
-form a closure.</p>
+            <p>この関数<code>intSeq</code> は、<code>intSeq</code> の中で定義した無名関数を返す。
+返される関数に変数 <code>i</code> を<em>閉じ込めて</em>おり、クロージャを作っている。</p>
 
           </td>
           <td class="code leading">
@@ -97,10 +82,8 @@ form a closure.</p>
         
         <tr>
           <td class="docs">
-            <p>We call <code>intSeq</code>, assigning the result (a function)
-to <code>nextInt</code>. This function value captures its
-own <code>i</code> value, which will be updated each time
-we call <code>nextInt</code>.</p>
+            <p><code>intSeq</code> を呼んで、その返り値（関数）を <code>nextInt</code> に代入している。
+この関数値は独自の <code>i</code> を持っていて、<code>nextInt</code> を呼ぶたびにその <code>i</code> の値が更新される。</p>
 
           </td>
           <td class="code leading">
@@ -113,8 +96,7 @@ we call <code>nextInt</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>See the effect of the closure by calling <code>nextInt</code>
-a few times.</p>
+            <p><code>nextInt</code> を何度か呼んでみてクロージャの効果を確認しよう。</p>
 
           </td>
           <td class="code leading">
@@ -129,8 +111,7 @@ a few times.</p>
         
         <tr>
           <td class="docs">
-            <p>To confirm that the state is unique to that
-particular function, create and test a new one.</p>
+            <p>関数ごとに状態が独立であることを確認するため、新しいクロージャを作ってみよう。</p>
 
           </td>
           <td class="code">
@@ -165,8 +146,7 @@ particular function, create and test a new one.</p>
         
         <tr>
           <td class="docs">
-            <p>The last feature of functions we&rsquo;ll look at for now is
-recursion.</p>
+            <p>関数の特徴をここまで見てきたが、最後には再帰を紹介する。</p>
 
           </td>
           <td class="code empty">
@@ -179,11 +159,11 @@ recursion.</p>
       
       
       <p class="next">
-        Next example: <a href="recursion">Recursion</a>.
+        次の例：<a href="recursion">Recursion</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/closures">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinutids@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/examples/closures">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
   </body>

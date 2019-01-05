@@ -2,31 +2,18 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Writing Files</title>
+    <title>サンプルで学ぶ Go 言語：Writing Files</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="writing-files">
-      <h2><a href="./">Go by Example</a>: Writing Files</h2>
+      <h2><a href="./">サンプルで学ぶ Go 言語</a>：Writing Files</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>Writing files in Go follows similar patterns to the
-ones we saw earlier for reading.</p>
+            <p>Go でファイルに書き込むには、前に見たファイルを読み出すのと似たパターンを使う。</p>
 
           </td>
           <td class="code empty leading">
@@ -40,7 +27,7 @@ ones we saw earlier for reading.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/5usz1Oc-xY"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/dSOS7wrVFpo"><img title="コードを実行する" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -94,8 +81,7 @@ ones we saw earlier for reading.</p>
         
         <tr>
           <td class="docs">
-            <p>To start, here&rsquo;s how to dump a string (or just
-bytes) into a file.</p>
+            <p>まずは文字列（またはバイト列）を単にファイルに書き込む。</p>
 
           </td>
           <td class="code leading">
@@ -110,7 +96,7 @@ bytes) into a file.</p>
         
         <tr>
           <td class="docs">
-            <p>For more granular writes, open a file for writing.</p>
+            <p>より細かな制御をするために、ファイルを書き込み用に開く。</p>
 
           </td>
           <td class="code leading">
@@ -124,8 +110,7 @@ bytes) into a file.</p>
         
         <tr>
           <td class="docs">
-            <p>It&rsquo;s idiomatic to defer a <code>Close</code> immediately
-after opening a file.</p>
+            <p>ファイルを開いた直後に <code>Close</code> を <code>defer</code> するのはイディオムである。</p>
 
           </td>
           <td class="code leading">
@@ -138,7 +123,7 @@ after opening a file.</p>
         
         <tr>
           <td class="docs">
-            <p>You can <code>Write</code> byte slices as you&rsquo;d expect.</p>
+            <p><code>Write</code> を使ってバイトのスライスを書き込める。</p>
 
           </td>
           <td class="code leading">
@@ -154,7 +139,7 @@ after opening a file.</p>
         
         <tr>
           <td class="docs">
-            <p>A <code>WriteString</code> is also available.</p>
+            <p><code>WriteString</code> という関数もあり、こちらは文字列を書き込める。</p>
 
           </td>
           <td class="code leading">
@@ -168,7 +153,7 @@ after opening a file.</p>
         
         <tr>
           <td class="docs">
-            <p>Issue a <code>Sync</code> to flush writes to stable storage.</p>
+            <p><code>Sync</code> を使って書き込みをストレージにフラッシュする。</p>
 
           </td>
           <td class="code leading">
@@ -181,8 +166,8 @@ after opening a file.</p>
         
         <tr>
           <td class="docs">
-            <p><code>bufio</code> provides buffered writers in addition
-to the buffered readers we saw earlier.</p>
+            <p><code>bufio</code> を使ってバッファ付きのリーダーを作る例を前に紹介した。
+同様に、バッファ付きのライターも作れる。</p>
 
           </td>
           <td class="code leading">
@@ -197,8 +182,7 @@ to the buffered readers we saw earlier.</p>
         
         <tr>
           <td class="docs">
-            <p>Use <code>Flush</code> to ensure all buffered operations have
-been applied to the underlying writer.</p>
+            <p><code>Flush</code> を使って、ライターのバッファされている操作をすべてフラッシュする。</p>
 
           </td>
           <td class="code leading">
@@ -227,7 +211,7 @@ been applied to the underlying writer.</p>
         
         <tr>
           <td class="docs">
-            <p>Try running the file-writing code.</p>
+            <p>ファイルに書き込みをするプログラムを実行してみる。</p>
 
           </td>
           <td class="code leading">
@@ -243,7 +227,7 @@ been applied to the underlying writer.</p>
         
         <tr>
           <td class="docs">
-            <p>Then check the contents of the written files.</p>
+            <p>そして、書き込み対象のファイルの内容を確認する。</p>
 
           </td>
           <td class="code leading">
@@ -262,8 +246,8 @@ been applied to the underlying writer.</p>
         
         <tr>
           <td class="docs">
-            <p>Next we&rsquo;ll look at applying some of the file I/O ideas
-we&rsquo;ve just seen to the <code>stdin</code> and <code>stdout</code> streams.</p>
+            <p>続いて、ここまで見てきたファイル IO のアイデアを、
+ストリームである <code>stdin</code> と <code>stdout</code> に適用する例を紹介する。</p>
 
           </td>
           <td class="code empty">
@@ -276,11 +260,11 @@ we&rsquo;ve just seen to the <code>stdin</code> and <code>stdout</code> streams.
       
       
       <p class="next">
-        Next example: <a href="line-filters">Line Filters</a>.
+        次の例：<a href="line-filters">Line Filters</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/writing-files">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinutids@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/examples/writing-files">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
   </body>

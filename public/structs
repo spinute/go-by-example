@@ -2,32 +2,19 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Structs</title>
+    <title>サンプルで学ぶ Go 言語：Structs</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="structs">
-      <h2><a href="./">Go by Example</a>: Structs</h2>
+      <h2><a href="./">サンプルで学ぶ Go 言語</a>：Structs</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>Go&rsquo;s <em>structs</em> are typed collections of fields.
-They&rsquo;re useful for grouping data together to form
-records.</p>
+            <p>Go の構造体は型がついたフィールドの集まりにである。
+構造体を使うとデータをまとめて扱うのに便利である。</p>
 
           </td>
           <td class="code empty leading">
@@ -41,7 +28,7 @@ records.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/OMCP5KFC10"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/mjgOzKZeMQy"><img title="コードを実行する" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -62,7 +49,7 @@ records.</p>
         
         <tr>
           <td class="docs">
-            <p>This <code>person</code> struct type has <code>name</code> and <code>age</code> fields.</p>
+            <p>構造体型 <code>person</code> はフィールド <code>name</code>、<code>age</code> を持つ。</p>
 
           </td>
           <td class="code leading">
@@ -90,7 +77,7 @@ records.</p>
         
         <tr>
           <td class="docs">
-            <p>This syntax creates a new struct.</p>
+            <p>新たな構造体はこう作る。</p>
 
           </td>
           <td class="code leading">
@@ -103,7 +90,7 @@ records.</p>
         
         <tr>
           <td class="docs">
-            <p>You can name the fields when initializing a struct.</p>
+            <p>構造体を初期化するときに、フィールド名を指定してもよい。</p>
 
           </td>
           <td class="code leading">
@@ -116,7 +103,7 @@ records.</p>
         
         <tr>
           <td class="docs">
-            <p>Omitted fields will be zero-valued.</p>
+            <p>明記しないフィールドの値はゼロ値になる。</p>
 
           </td>
           <td class="code leading">
@@ -129,7 +116,7 @@ records.</p>
         
         <tr>
           <td class="docs">
-            <p>An <code>&amp;</code> prefix yields a pointer to the struct.</p>
+            <p><code>&amp;</code> を前に付けると構造体のポインタを作れる。</p>
 
           </td>
           <td class="code leading">
@@ -142,7 +129,7 @@ records.</p>
         
         <tr>
           <td class="docs">
-            <p>Access struct fields with a dot.</p>
+            <p>構造体のフィールドにアクセスするにはドット演算子を使う。</p>
 
           </td>
           <td class="code leading">
@@ -156,8 +143,8 @@ records.</p>
         
         <tr>
           <td class="docs">
-            <p>You can also use dots with struct pointers - the
-pointers are automatically dereferenced.</p>
+            <p>構造体のポインタにもドット演算子を使える。
+このとき、ポインタは自動的に参照を剥がされる。</p>
 
           </td>
           <td class="code leading">
@@ -171,7 +158,7 @@ pointers are automatically dereferenced.</p>
         
         <tr>
           <td class="docs">
-            <p>Structs are mutable.</p>
+            <p>構造体は可変である。</p>
 
           </td>
           <td class="code">
@@ -211,11 +198,11 @@ pointers are automatically dereferenced.</p>
       
       
       <p class="next">
-        Next example: <a href="methods">Methods</a>.
+        次の例：<a href="methods">Methods</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/structs">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinutids@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/examples/structs">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
   </body>

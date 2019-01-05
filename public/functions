@@ -2,31 +2,19 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Functions</title>
+    <title>サンプルで学ぶ Go 言語：Functions</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="functions">
-      <h2><a href="./">Go by Example</a>: Functions</h2>
+      <h2><a href="./">サンプルで学ぶ Go 言語</a>：Functions</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p><em>Functions</em> are central in Go. We&rsquo;ll learn about
-functions with a few different examples.</p>
+            <p>Go において<em>関数</em>は中心的な存在だ。
+例を見ながら関数について学ぼう。</p>
 
           </td>
           <td class="code empty leading">
@@ -40,7 +28,7 @@ functions with a few different examples.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/9Nky-Dn49f"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/gTI4aYvFZWH"><img title="コードを実行する" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -61,8 +49,7 @@ functions with a few different examples.</p>
         
         <tr>
           <td class="docs">
-            <p>Here&rsquo;s a function that takes two <code>int</code>s and returns
-their sum as an <code>int</code>.</p>
+            <p>これは2つの <code>int</code> 型の値を受け取り、その和を表す <code>int</code> 型の値を返す関数である。</p>
 
           </td>
           <td class="code leading">
@@ -75,9 +62,8 @@ their sum as an <code>int</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>Go requires explicit returns, i.e. it won&rsquo;t
-automatically return the value of the last
-expression.</p>
+            <p>Go では明示的な return 文を書く必要がある。
+すなわち、return を書かなければ、最後の式の値を自動で返しはしない。</p>
 
           </td>
           <td class="code leading">
@@ -91,10 +77,7 @@ expression.</p>
         
         <tr>
           <td class="docs">
-            <p>When you have multiple consecutive parameters of
-the same type, you may omit the type name for the
-like-typed parameters up to the final parameter that
-declares the type.</p>
+            <p>同じ型のパラメータを続けて複数取るとき、それらの型名はそのうち最後のものの後にだけ書けばよい。</p>
 
           </td>
           <td class="code leading">
@@ -121,8 +104,7 @@ declares the type.</p>
         
         <tr>
           <td class="docs">
-            <p>Call a function just as you&rsquo;d expect, with
-<code>name(args)</code>.</p>
+            <p><code>name(args)</code> と書けば関数を呼べる</p>
 
           </td>
           <td class="code leading">
@@ -168,8 +150,8 @@ declares the type.</p>
         
         <tr>
           <td class="docs">
-            <p>There are several other features to Go functions. One is
-multiple return values, which we&rsquo;ll look at next.</p>
+            <p>Go の関数の機能は他にもある。
+そのうちの1つ、多値の返り値を次の例で紹介する。</p>
 
           </td>
           <td class="code empty">
@@ -182,11 +164,11 @@ multiple return values, which we&rsquo;ll look at next.</p>
       
       
       <p class="next">
-        Next example: <a href="multiple-return-values">Multiple Return Values</a>.
+        次の例：<a href="multiple-return-values">Multiple Return Values</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/functions">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinutids@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/examples/functions">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
   </body>

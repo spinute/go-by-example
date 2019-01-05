@@ -2,34 +2,20 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Tickers</title>
+    <title>サンプルで学ぶ Go 言語：Tickers</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="tickers">
-      <h2><a href="./">Go by Example</a>: Tickers</h2>
+      <h2><a href="./">サンプルで学ぶ Go 言語</a>：Tickers</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p><a href="timers">Timers</a> are for when you want to do
-something once in the future - <em>tickers</em> are for when
-you want to do something repeatedly at regular
-intervals. Here&rsquo;s an example of a ticker that ticks
-periodically until we stop it.</p>
+            <p><a href="timers">タイマー</a>を使えば、将来のあるタイミングで何かを実行できる。
+一方、<em>ticker</em> を使えば、定期的に何かを繰り返し実行できる。
+この例では、ticker を使って定期的にメッセージを送る方法を紹介する。</p>
 
           </td>
           <td class="code empty leading">
@@ -43,7 +29,7 @@ periodically until we stop it.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/Rgc_UDvHv6a"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/v7unECaK_4N"><img title="コードを実行する" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -77,10 +63,8 @@ periodically until we stop it.</p>
         
         <tr>
           <td class="docs">
-            <p>Tickers use a similar mechanism to timers: a
-channel that is sent values. Here we&rsquo;ll use the
-<code>range</code> builtin on the channel to iterate over
-the values as they arrive every 500ms.</p>
+            <p>タイマーと同様に ticker も値を送るチャネルを使う。
+ここでは組み込みの <code>range</code> をチャネルに使い、500ミリ秒ごとに届く値を繰り返し受け取っている。</p>
 
           </td>
           <td class="code leading">
@@ -98,9 +82,9 @@ the values as they arrive every 500ms.</p>
         
         <tr>
           <td class="docs">
-            <p>Tickers can be stopped like timers. Once a ticker
-is stopped it won&rsquo;t receive any more values on its
-channel. We&rsquo;ll stop ours after 1600ms.</p>
+            <p>ticker の止め方はタイマーと同様だ。
+ticker を止めると、それ以降そのチャネルは値を受信しなくなる。
+ここでは1600ミリ秒待って ticker を停止している。</p>
 
           </td>
           <td class="code">
@@ -120,8 +104,7 @@ channel. We&rsquo;ll stop ours after 1600ms.</p>
         
         <tr>
           <td class="docs">
-            <p>When we run this program the ticker should tick 3 times
-before we stop it.</p>
+            <p>プログラムを実行すると、ticker は3回起動して終了したことがわかる。</p>
 
           </td>
           <td class="code">
@@ -140,11 +123,11 @@ before we stop it.</p>
       
       
       <p class="next">
-        Next example: <a href="worker-pools">Worker Pools</a>.
+        次の例：<a href="worker-pools">Worker Pools</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/tickers">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinutids@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/examples/tickers">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
   </body>

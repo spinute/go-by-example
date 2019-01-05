@@ -2,37 +2,20 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Stateful Goroutines</title>
+    <title>サンプルで学ぶ Go 言語：Stateful Goroutines</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="stateful-goroutines">
-      <h2><a href="./">Go by Example</a>: Stateful Goroutines</h2>
+      <h2><a href="./">サンプルで学ぶ Go 言語</a>：Stateful Goroutines</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>In the previous example we used explicit locking with
-<a href="mutexes">mutexes</a> to synchronize access to shared state
-across multiple goroutines. Another option is to use the
-built-in synchronization features of  goroutines and
-channels to achieve the same result. This channel-based
-approach aligns with Go&rsquo;s ideas of sharing memory by
-communicating and having each piece of data owned
-by exactly 1 goroutine.</p>
+            <p><a href="mutexes">mutex</a> を使い明示的なロックを取って、複数のゴルーチンで共有データへのアクセスを同期する方法は既に紹介した。
+ゴルーチンを同期する組み込みの機能とチャネルを使っても、同じ結果が得られる。
+チャネルを使うこのやり方は、各ゴルーチンが持つデータをやり取りしてメモリを共有する Go のアイデアに合っている。</p>
 
           </td>
           <td class="code empty leading">
@@ -46,7 +29,7 @@ by exactly 1 goroutine.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/dlfBGF-qff6"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/oUeVBYzAG4G"><img title="コードを実行する" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -72,14 +55,10 @@ by exactly 1 goroutine.</p>
         
         <tr>
           <td class="docs">
-            <p>In this example our state will be owned by a single
-goroutine. This will guarantee that the data is never
-corrupted with concurrent access. In order to read or
-write that state, other goroutines will send messages
-to the owning goroutine and receive corresponding
-replies. These <code>readOp</code> and <code>writeOp</code> <code>struct</code>s
-encapsulate those requests and a way for the owning
-goroutine to respond.</p>
+            <p>この例では、あるゴルーチンだけが状態を所有する。
+この結果、アクセスの競合によってデータが壊れてしまうことなくなる。
+状態を読み書きするために、他のゴルーチンは状態を持つゴルーチンにメッセージを送り、返信を受け取る。
+構造体 <code>readOp</code>、<code>writeOp</code> はこれらのリクエストをカプセル化したものだ。</p>
 
           </td>
           <td class="code leading">
@@ -112,7 +91,7 @@ goroutine to respond.</p>
         
         <tr>
           <td class="docs">
-            <p>As before we&rsquo;ll count how many operations we perform.</p>
+            <p>前と同じように、操作を実行した回数を数える。</p>
 
           </td>
           <td class="code leading">
@@ -126,9 +105,7 @@ goroutine to respond.</p>
         
         <tr>
           <td class="docs">
-            <p>The <code>reads</code> and <code>writes</code> channels will be used by
-other goroutines to issue read and write requests,
-respectively.</p>
+            <p>チャネル <code>reads</code>、<code>writes</code> を使って、他のゴルーチンは読み書きのリクエストする。</p>
 
           </td>
           <td class="code leading">
@@ -142,15 +119,10 @@ respectively.</p>
         
         <tr>
           <td class="docs">
-            <p>Here is the goroutine that owns the <code>state</code>, which
-is a map as in the previous example but now private
-to the stateful goroutine. This goroutine repeatedly
-selects on the <code>reads</code> and <code>writes</code> channels,
-responding to requests as they arrive. A response
-is executed by first performing the requested
-operation and then sending a value on the response
-channel <code>resp</code> to indicate success (and the desired
-value in the case of <code>reads</code>).</p>
+            <p>このゴルーチンが <code>state</code> を所有する。
+<code>state</code> は前の例と同様のマップだが、この状態管理用のゴルーチンだけが読み書きをする。
+このゴルーチンはチャネル <code>reads</code>、<code>writes</code> を繰り返し <code>select</code> し、届いたリクエストに返信する。
+リクエストを受け取ると、リスエストされた操作を実行し、値を返信用のチャネル <code>resp</code> に送信し、リクエストが成功したことを伝える（<code>reads</code> の場合は読み出した結果も伝える）。</p>
 
           </td>
           <td class="code leading">
@@ -174,11 +146,8 @@ value in the case of <code>reads</code>).</p>
         
         <tr>
           <td class="docs">
-            <p>This starts 100 goroutines to issue reads to the
-state-owning goroutine via the <code>reads</code> channel.
-Each read requires constructing a <code>readOp</code>, sending
-it over the <code>reads</code> channel, and the receiving the
-result over the provided <code>resp</code> channel.</p>
+            <p>ここで100個のゴルーチンを開始し、チャネル <code>reads</code> を通じて状態を管理するゴルーチンに読み出しを発行する。
+読み出しリクエストのたびに <code>readOp</code> を作り、チャネル <code>reads</code> にそれを送り、チャネル <code>resp</code> から結果を受け取る。</p>
 
           </td>
           <td class="code leading">
@@ -203,8 +172,7 @@ result over the provided <code>resp</code> channel.</p>
         
         <tr>
           <td class="docs">
-            <p>We start 10 writes as well, using a similar
-approach.</p>
+            <p>同様に、書き込みを行うゴルーチンも10個開始する。</p>
 
           </td>
           <td class="code leading">
@@ -230,7 +198,7 @@ approach.</p>
         
         <tr>
           <td class="docs">
-            <p>Let the goroutines work for a second.</p>
+            <p>1秒間待って、ゴルーチンに仕事をさせる。</p>
 
           </td>
           <td class="code leading">
@@ -243,7 +211,7 @@ approach.</p>
         
         <tr>
           <td class="docs">
-            <p>Finally, capture and report the op counts.</p>
+            <p>最後に操作回数を読み出し、表示する。</p>
 
           </td>
           <td class="code">
@@ -264,9 +232,7 @@ approach.</p>
         
         <tr>
           <td class="docs">
-            <p>Running our program shows that the goroutine-based
-state management example completes about 80,000
-total operations.</p>
+            <p>プログラムを実行するとゴルーチンを使った状態管理の例では約80000回の操作を実行できたことがわかる。</p>
 
           </td>
           <td class="code leading">
@@ -281,14 +247,10 @@ total operations.</p>
         
         <tr>
           <td class="docs">
-            <p>For this particular case the goroutine-based approach
-was a bit more involved than the mutex-based one. It
-might be useful in certain cases though, for example
-where you have other channels involved or when managing
-multiple such mutexes would be error-prone. You should
-use whichever approach feels most natural, especially
-with respect to understanding the correctness of your
-program.</p>
+            <p>この例ではゴルーチンを使ったやり方はミューテックスを使う場合と比べて少し処理が多かった。
+しかし、場合によってはこのやり方の方が便利なこともある。
+例えば、他にもチャネルを使っている場合や、複数のミューテックスを使った結果プログラムを間違えそうな場合である。
+プログラムの正しさがパッと見てわかるような、自然なやり方を採用するのがよい。</p>
 
           </td>
           <td class="code empty">
@@ -301,11 +263,11 @@ program.</p>
       
       
       <p class="next">
-        Next example: <a href="sorting">Sorting</a>.
+        次の例：<a href="sorting">Sorting</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/stateful-goroutines">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinutids@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/examples/stateful-goroutines">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
   </body>

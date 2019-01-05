@@ -2,31 +2,19 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Number Parsing</title>
+    <title>サンプルで学ぶ Go 言語：Number Parsing</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="number-parsing">
-      <h2><a href="./">Go by Example</a>: Number Parsing</h2>
+      <h2><a href="./">サンプルで学ぶ Go 言語</a>：Number Parsing</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>Parsing numbers from strings is a basic but common task
-in many programs; here&rsquo;s how to do it in Go.</p>
+            <p>文字列から数値へのパースは、多くのプログラムに現れるパターンである。
+ここでは、Go でのやり方を紹介する。</p>
 
           </td>
           <td class="code empty leading">
@@ -40,7 +28,7 @@ in many programs; here&rsquo;s how to do it in Go.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/N90EppECFk"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/dmmDpvWCG7Z"><img title="コードを実行する" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -49,8 +37,7 @@ in many programs; here&rsquo;s how to do it in Go.</p>
         
         <tr>
           <td class="docs">
-            <p>The built-in package <code>strconv</code> provides the number
-parsing.</p>
+            <p><code>strconv</code> パッケージを使って数をパースできる。</p>
 
           </td>
           <td class="code leading">
@@ -76,8 +63,7 @@ parsing.</p>
         
         <tr>
           <td class="docs">
-            <p>With <code>ParseFloat</code>, this <code>64</code> tells how many bits of
-precision to parse.</p>
+            <p><code>ParseFloat</code> の <code>64</code> は何ビットの精度でパースするかを指定する。</p>
 
           </td>
           <td class="code leading">
@@ -91,9 +77,8 @@ precision to parse.</p>
         
         <tr>
           <td class="docs">
-            <p>For <code>ParseInt</code>, the <code>0</code> means infer the base from
-the string. <code>64</code> requires that the result fit in 64
-bits.</p>
+            <p><code>ParseInt</code> の <code>0</code> は基数を文字列から推測させることを表す。
+<code>64</code> は、結果が64ビットに収まることを要求する。</p>
 
           </td>
           <td class="code leading">
@@ -107,7 +92,7 @@ bits.</p>
         
         <tr>
           <td class="docs">
-            <p><code>ParseInt</code> will recognize hex-formatted numbers.</p>
+            <p><code>ParseInt</code> は8進記数法で書かれた文字列をパースできる。</p>
 
           </td>
           <td class="code leading">
@@ -121,7 +106,7 @@ bits.</p>
         
         <tr>
           <td class="docs">
-            <p>A <code>ParseUint</code> is also available.</p>
+            <p><code>ParseUint</code> もある。</p>
 
           </td>
           <td class="code leading">
@@ -135,8 +120,7 @@ bits.</p>
         
         <tr>
           <td class="docs">
-            <p><code>Atoi</code> is a convenience function for basic base-10
-<code>int</code> parsing.</p>
+            <p><code>Atoi</code> は基数が10の <code>int</code> 型の値をパースするときに便利である。</p>
 
           </td>
           <td class="code leading">
@@ -150,7 +134,7 @@ bits.</p>
         
         <tr>
           <td class="docs">
-            <p>Parse functions return an error on bad input.</p>
+            <p>パースする関数は、入力の形式が正しくないとエラーを返す。</p>
 
           </td>
           <td class="code">
@@ -187,7 +171,7 @@ bits.</p>
         
         <tr>
           <td class="docs">
-            <p>Next we&rsquo;ll look at another common parsing task: URLs.</p>
+            <p>パース対象としてこちらも頻出である URL をパースするやり方を紹介する。</p>
 
           </td>
           <td class="code empty">
@@ -200,11 +184,11 @@ bits.</p>
       
       
       <p class="next">
-        Next example: <a href="url-parsing">URL Parsing</a>.
+        次の例：<a href="url-parsing">URL Parsing</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/number-parsing">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinutids@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/examples/number-parsing">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
   </body>

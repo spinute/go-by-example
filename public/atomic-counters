@@ -2,35 +2,33 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Atomic Counters</title>
+    <title>サンプルで学ぶ Go 言語：Atomic Counters</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="atomic-counters">
-      <h2><a href="./">Go by Example</a>: Atomic Counters</h2>
+      <h2><a href="./">サンプルで学ぶ Go 言語</a>：Atomic Counters</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>The primary mechanism for managing state in Go is
-communication over channels. We saw this for example
-with <a href="worker-pools">worker pools</a>. There are a few other
-options for managing state though. Here we&rsquo;ll
-look at using the <code>sync/atomic</code> package for <em>atomic
-counters</em> accessed by multiple goroutines.</p>
+            <p>Go で状態を管理するとき、まず検討すべきはチャネル通信を使う方法である。
+このような例は既に<a href="worker-pools">ワーカープール</a>で紹介した。</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="c1">//</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>別のやり方もある。
+ここでは、<code>sync/atomic</code> パッケージにある、複数のゴルーチンからアクセスされる<em>アトミックなカウンタ</em>を使う方法を紹介する。</p>
 
           </td>
           <td class="code empty leading">
@@ -44,7 +42,7 @@ counters</em> accessed by multiple goroutines.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/KDr9EMMPMgi"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/5dh5XYxXEVJ"><img title="コードを実行する" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -79,8 +77,7 @@ counters</em> accessed by multiple goroutines.</p>
         
         <tr>
           <td class="docs">
-            <p>We&rsquo;ll use an unsigned integer to represent our
-(always-positive) counter.</p>
+            <p>符号無し整数型の変数で（負の値を取らない）カウンタを表現する</p>
 
           </td>
           <td class="code leading">
@@ -93,9 +90,8 @@ counters</em> accessed by multiple goroutines.</p>
         
         <tr>
           <td class="docs">
-            <p>To simulate concurrent updates, we&rsquo;ll start 50
-goroutines that each increment the counter about
-once a millisecond.</p>
+            <p>更新を並行に実行するため、50個のゴルーチンを起動する。
+各ゴルーチンは約1ミリ秒ごとにカウンタの値を1増やす。</p>
 
           </td>
           <td class="code leading">
@@ -110,10 +106,9 @@ once a millisecond.</p>
         
         <tr>
           <td class="docs">
-            <p>To atomically increment the counter we
-use <code>AddUint64</code>, giving it the memory
-address of our <code>ops</code> counter with the
-<code>&amp;</code> syntax.</p>
+            <p>カウンタを増やすには<code>AddUint64</code> を使う。
+この関数にはカウンタ <code>ops</code> のメモリアドレスを渡す。
+演算子 <code>&amp;</code> を使って変数のアドレスを取得できる。</p>
 
           </td>
           <td class="code leading">
@@ -126,7 +121,7 @@ address of our <code>ops</code> counter with the
         
         <tr>
           <td class="docs">
-            <p>Wait a bit between increments.</p>
+            <p>カウンタを増やすたびに少し待つ。</p>
 
           </td>
           <td class="code leading">
@@ -142,7 +137,7 @@ address of our <code>ops</code> counter with the
         
         <tr>
           <td class="docs">
-            <p>Wait a second to allow some ops to accumulate.</p>
+            <p>1秒待って、ゴルーチンに仕事をさせる。</p>
 
           </td>
           <td class="code leading">
@@ -155,12 +150,10 @@ address of our <code>ops</code> counter with the
         
         <tr>
           <td class="docs">
-            <p>In order to safely use the counter while it&rsquo;s still
-being updated by other goroutines, we extract a
-copy of the current value into <code>opsFinal</code> via
-<code>LoadUint64</code>. As above we need to give this
-function the memory address <code>&amp;ops</code> from which to
-fetch the value.</p>
+            <p>ゴルーチンはまだカウンタを更新し続けている。
+安全にカウンタから値を読み出すために <code>LoadUint64</code> を使う。
+先程と同じように、この関数にはカウンタのメモリアドレス <code>&amp;ops</code> を渡す。
+この関数は安全にカウンタの値を読み出す。</p>
 
           </td>
           <td class="code">
@@ -179,8 +172,7 @@ fetch the value.</p>
         
         <tr>
           <td class="docs">
-            <p>Running the program shows that we executed about
-40,000 operations.</p>
+            <p>プログラムを実行すると約40000回操作を実行したことがわかる。</p>
 
           </td>
           <td class="code leading">
@@ -194,8 +186,8 @@ fetch the value.</p>
         
         <tr>
           <td class="docs">
-            <p>Next we&rsquo;ll look at mutexes, another tool for managing
-state.</p>
+            <p>次の例では、状態管理のためのもう一つのツールである、
+ミューテックスを紹介する。</p>
 
           </td>
           <td class="code empty">
@@ -208,11 +200,11 @@ state.</p>
       
       
       <p class="next">
-        Next example: <a href="mutexes">Mutexes</a>.
+        次の例：<a href="mutexes">Mutexes</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/atomic-counters">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinutids@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/examples/atomic-counters">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
   </body>

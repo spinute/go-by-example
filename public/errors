@@ -2,37 +2,20 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Errors</title>
+    <title>サンプルで学ぶ Go 言語：Errors</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="errors">
-      <h2><a href="./">Go by Example</a>: Errors</h2>
+      <h2><a href="./">サンプルで学ぶ Go 言語</a>：Errors</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>In Go it&rsquo;s idiomatic to communicate errors via an
-explicit, separate return value. This contrasts with
-the exceptions used in languages like Java and Ruby and
-the overloaded single result / error value sometimes
-used in C. Go&rsquo;s approach makes it easy to see which
-functions return errors and to handle them using the
-same language constructs employed for any other,
-non-error tasks.</p>
+            <p>Go での慣習として、エラーを独立した返り値として明示的に返す。
+これは例外を使う Java や Ruby、結果とエラーを一つの値で返す C などの言語とは対照的である。
+Go のやり方だとどの関数がエラーを返すかがわかりやすく、またエラーのために特別な言語機能を増やす必要がない。</p>
 
           </td>
           <td class="code empty leading">
@@ -46,7 +29,7 @@ non-error tasks.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/mP_ZR1qjUvA"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/CWZ7todHuaK"><img title="コードを実行する" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -68,8 +51,7 @@ non-error tasks.</p>
         
         <tr>
           <td class="docs">
-            <p>By convention, errors are the last return value and
-have type <code>error</code>, a built-in interface.</p>
+            <p>慣習的に、最後の返り値を組み込みインターフェースである <code>error</code> 型の値にすることで、エラーの有無を返す。</p>
 
           </td>
           <td class="code leading">
@@ -83,8 +65,7 @@ have type <code>error</code>, a built-in interface.</p>
         
         <tr>
           <td class="docs">
-            <p><code>errors.New</code> constructs a basic <code>error</code> value
-with the given error message.</p>
+            <p><code>errors.New</code> は基本的な <code>error</code> 型の値を作る関数である。引数はエラーメッセージを表す。</p>
 
           </td>
           <td class="code leading">
@@ -109,8 +90,7 @@ with the given error message.</p>
         
         <tr>
           <td class="docs">
-            <p>A <code>nil</code> value in the error position indicates that
-there was no error.</p>
+            <p>error の値 <code>nil</code> はエラーが無かったことを表す。</p>
 
           </td>
           <td class="code leading">
@@ -124,10 +104,8 @@ there was no error.</p>
         
         <tr>
           <td class="docs">
-            <p>It&rsquo;s possible to use custom types as <code>error</code>s by
-implementing the <code>Error()</code> method on them. Here&rsquo;s a
-variant on the example above that uses a custom type
-to explicitly represent an argument error.</p>
+            <p><code>Error()</code> メソッドを実装すれば、自分で作った型を <code>error</code> として使える。
+エラーが引数エラーであることを明示する型を作り、先の例と同様の例を書いてみる。</p>
 
           </td>
           <td class="code leading">
@@ -170,9 +148,7 @@ to explicitly represent an argument error.</p>
         
         <tr>
           <td class="docs">
-            <p>In this case we use <code>&amp;argError</code> syntax to build
-a new struct, supplying values for the two
-fields <code>arg</code> and <code>prob</code>.</p>
+            <p><code>&amp;argError</code> と書いて、フィールド <code>arg</code> と <code>prob</code> の値を渡しながら構造体を作っている。</p>
 
           </td>
           <td class="code leading">
@@ -200,10 +176,8 @@ fields <code>arg</code> and <code>prob</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>The two loops below test out each of our
-error-returning functions. Note that the use of an
-inline error check on the <code>if</code> line is a common
-idiom in Go code.</p>
+            <p>以下の2つのループでは、上で実装したエラーを返す関数を試している。
+<code>if</code> の行でエラーの有無を確認するのは、Go の頻出パターンである。</p>
 
           </td>
           <td class="code leading">
@@ -229,10 +203,7 @@ idiom in Go code.</p>
         
         <tr>
           <td class="docs">
-            <p>If you want to programmatically use the data in
-a custom error, you&rsquo;ll need to get the error as an
-instance of the custom error type via type
-assertion.</p>
+            <p>自作したエラーのデータをプログラム中で使うときには、型アサーションを使って自作したエラー型のインスタンスを作る必要がある。</p>
 
           </td>
           <td class="code">
@@ -272,8 +243,7 @@ assertion.</p>
         
         <tr>
           <td class="docs">
-            <p>See this <a href="http://blog.golang.org/2011/07/error-handling-and-go.html">great post</a>
-on the Go blog for more on error handling.</p>
+            <p>エラー処理についてもっと知りたい人は、この<a href="http://blog.golang.org/2011/07/error-handling-and-go.html">素晴らしいブログポスト</a>を読んでほしい。</p>
 
           </td>
           <td class="code empty">
@@ -286,11 +256,11 @@ on the Go blog for more on error handling.</p>
       
       
       <p class="next">
-        Next example: <a href="goroutines">Goroutines</a>.
+        次の例：<a href="goroutines">Goroutines</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/errors">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinutids@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/examples/errors">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
   </body>

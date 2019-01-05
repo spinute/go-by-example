@@ -2,34 +2,20 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Sorting by Functions</title>
+    <title>サンプルで学ぶ Go 言語：Sorting by Functions</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="sorting-by-functions">
-      <h2><a href="./">Go by Example</a>: Sorting by Functions</h2>
+      <h2><a href="./">サンプルで学ぶ Go 言語</a>：Sorting by Functions</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>Sometimes we&rsquo;ll want to sort a collection by something
-other than its natural order. For example, suppose we
-wanted to sort strings by their length instead of
-alphabetically. Here&rsquo;s an example of custom sorts
-in Go.</p>
+            <p>コレクションを特別な順序でソートしたいことがある。
+例えば、文字列を辞書順ではなく、その長さの順にソートしたいとする。
+ここではそのようにソートをカスタムする方法を紹介する。</p>
 
           </td>
           <td class="code empty leading">
@@ -43,7 +29,7 @@ in Go.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/4b7_qiGp33y"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/Y10jDWEU1k2"><img title="コードを実行する" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -65,10 +51,8 @@ in Go.</p>
         
         <tr>
           <td class="docs">
-            <p>In order to sort by a custom function in Go, we need a
-corresponding type. Here we&rsquo;ve created a <code>byLength</code>
-type that is just an alias for the builtin <code>[]string</code>
-type.</p>
+            <p>Go で独自の関数を使ってソートするには、そのための型を定義しなければならない。
+ここでは <code>byLength</code> という型を定義するが、これは <code>[]string</code> の単なるエイリアスである。</p>
 
           </td>
           <td class="code leading">
@@ -81,13 +65,12 @@ type.</p>
         
         <tr>
           <td class="docs">
-            <p>We implement <code>sort.Interface</code> - <code>Len</code>, <code>Less</code>, and
-<code>Swap</code> - on our type so we can use the <code>sort</code> package&rsquo;s
-generic <code>Sort</code> function. <code>Len</code> and <code>Swap</code>
-will usually be similar across types and <code>Less</code> will
-hold the actual custom sorting logic. In our case we
-want to sort in order of increasing string length, so
-we use <code>len(s[i])</code> and <code>len(s[j])</code> here.</p>
+            <p><code>sort.Interface</code> を実装する。
+これは <code>Len</code>、<code>Less</code>、<code>Swap</code> の3つのメソッドを我々の型に実装するということだ。
+こうすると、<code>sort</code> パッケージの汎用な <code>Sort</code> 関数を使えるようになる。
+<code>Len</code> や <code>Swap</code> はどの型でも似たような実装になる。
+<code>Less</code> こそが実際にソートのやり方を決める関数である。
+我々の場合、文字列の長さの昇順にしたいので、<code>len(s[i])</code> と <code>len(s[j])</code> を使って <code>Less</code> を実装する。</p>
 
           </td>
           <td class="code leading">
@@ -108,10 +91,7 @@ we use <code>len(s[i])</code> and <code>len(s[j])</code> here.</p>
         
         <tr>
           <td class="docs">
-            <p>With all of this in place, we can now implement our
-custom sort by casting the original <code>fruits</code> slice to
-<code>byLength</code>, and then use <code>sort.Sort</code> on that typed
-slice.</p>
+            <p>ここまでの準備をすれば、あとはスライス <code>fruits</code> を <code>byLength</code> 型にキャストし、<code>sort.Sort</code> を呼べば、独自のソートを実装できる。</p>
 
           </td>
           <td class="code">
@@ -132,8 +112,7 @@ slice.</p>
         
         <tr>
           <td class="docs">
-            <p>Running our program shows a list sorted by string
-length, as desired.</p>
+            <p>プログラムを実行すると文字列の長さでソートされたリストが表示される。</p>
 
           </td>
           <td class="code leading">
@@ -147,11 +126,9 @@ length, as desired.</p>
         
         <tr>
           <td class="docs">
-            <p>By following this same pattern of creating a custom
-type, implementing the three <code>Interface</code> methods on that
-type, and then calling sort.Sort on a collection of that
-custom type, we can sort Go slices by arbitrary
-functions.</p>
+            <p>独自の型を作り、3つのインターフェースに含まれるメソッドを実装し、
+sort.Sort をその型の値に呼び出すパターンを使えば、
+任意の関数を使って Go のスライスをソートできる。</p>
 
           </td>
           <td class="code empty">
@@ -164,11 +141,11 @@ functions.</p>
       
       
       <p class="next">
-        Next example: <a href="panic">Panic</a>.
+        次の例：<a href="panic">Panic</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/sorting-by-functions">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinutids@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/examples/sorting-by-functions">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
   </body>

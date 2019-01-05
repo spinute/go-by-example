@@ -2,33 +2,19 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Non-Blocking Channel Operations</title>
+    <title>サンプルで学ぶ Go 言語：Non-Blocking Channel Operations</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="non-blocking-channel-operations">
-      <h2><a href="./">Go by Example</a>: Non-Blocking Channel Operations</h2>
+      <h2><a href="./">サンプルで学ぶ Go 言語</a>：Non-Blocking Channel Operations</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>Basic sends and receives on channels are blocking.
-However, we can use <code>select</code> with a <code>default</code> clause to
-implement <em>non-blocking</em> sends, receives, and even
-non-blocking multi-way <code>select</code>s.</p>
+            <p>基本的なチャネルの送受信の使い方はブロックする。
+しかし、<code>select</code> と <code>default</code> 節を使えば、<em>ノンブロッキング</em>な送受信や、選択的な受信を実装できる。</p>
 
           </td>
           <td class="code empty leading">
@@ -42,7 +28,7 @@ non-blocking multi-way <code>select</code>s.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/n5ttmOsMrrJ"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/vXZ9f7XCaeR"><img title="コードを実行する" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -77,10 +63,9 @@ non-blocking multi-way <code>select</code>s.</p>
         
         <tr>
           <td class="docs">
-            <p>Here&rsquo;s a non-blocking receive. If a value is
-available on <code>messages</code> then <code>select</code> will take
-the <code>&lt;-messages</code> <code>case</code> with that value. If not
-it will immediately take the <code>default</code> case.</p>
+            <p>これはノンブロッキングな受信である。
+もし <code>messages</code> から値を受け取れるなら、<code>select</code> は <code>&lt;-messages</code> の <code>case</code> 節で、その値を受け取る。
+そうでなければ、<code>default</code> 節に直ちに進む。</p>
 
           </td>
           <td class="code leading">
@@ -98,10 +83,10 @@ it will immediately take the <code>default</code> case.</p>
         
         <tr>
           <td class="docs">
-            <p>A non-blocking send works similarly. Here <code>msg</code>
-cannot be sent to the <code>messages</code> channel, because
-the channel has no buffer and there is no receiver.
-Therefore the <code>default</code> case is selected.</p>
+            <p>ノンブロッキングな送信も同様だ。
+ここでは <code>msg</code> を <code>messages</code> チャネルに送信できない。
+なぜならチャネルにバッファは付いておらず、受信者もいないからである。
+そのため、<code>default</code> 節に進む。</p>
 
           </td>
           <td class="code leading">
@@ -120,10 +105,8 @@ Therefore the <code>default</code> case is selected.</p>
         
         <tr>
           <td class="docs">
-            <p>We can use multiple <code>case</code>s above the <code>default</code>
-clause to implement a multi-way non-blocking
-select. Here we attempt non-blocking receives
-on both <code>messages</code> and <code>signals</code>.</p>
+            <p><code>default</code> 節の前に複数の <code>case</code> を書けば、複数のチャネルから選択的かつノンブロッキングに受信できる。
+ここでは <code>messages</code> と<code>signals</code> からノンブロッキング受信を試みている。</p>
 
           </td>
           <td class="code">
@@ -165,11 +148,11 @@ on both <code>messages</code> and <code>signals</code>.</p>
       
       
       <p class="next">
-        Next example: <a href="closing-channels">Closing Channels</a>.
+        次の例：<a href="closing-channels">Closing Channels</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/non-blocking-channel-operations">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinutids@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/examples/non-blocking-channel-operations">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
   </body>

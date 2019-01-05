@@ -2,31 +2,19 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: For</title>
+    <title>サンプルで学ぶ Go 言語：For</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="for">
-      <h2><a href="./">Go by Example</a>: For</h2>
+      <h2><a href="./">サンプルで学ぶ Go 言語</a>：For</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p><code>for</code> is Go&rsquo;s only looping construct. Here are
-three basic types of <code>for</code> loops.</p>
+            <p><code>for</code> は Go においてループを書くための唯一のキーワードである。
+基本的な <code>for</code> ループの書き方が3種類ある。</p>
 
           </td>
           <td class="code empty leading">
@@ -40,7 +28,7 @@ three basic types of <code>for</code> loops.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/KNLLSX4Io_"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/v0GAfb_Fi7n"><img title="コードを実行する" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -73,7 +61,7 @@ three basic types of <code>for</code> loops.</p>
         
         <tr>
           <td class="docs">
-            <p>The most basic type, with a single condition.</p>
+            <p>1つだけ条件を書く最も基本的な書き方</p>
 
           </td>
           <td class="code leading">
@@ -90,7 +78,7 @@ three basic types of <code>for</code> loops.</p>
         
         <tr>
           <td class="docs">
-            <p>A classic initial/condition/after <code>for</code> loop.</p>
+            <p>初期化、条件、ループ間処理を書く古典的な <code>for</code> ループ</p>
 
           </td>
           <td class="code leading">
@@ -105,9 +93,7 @@ three basic types of <code>for</code> loops.</p>
         
         <tr>
           <td class="docs">
-            <p><code>for</code> without a condition will loop repeatedly
-until you <code>break</code> out of the loop or <code>return</code> from
-the enclosing function.</p>
+            <p>条件を書かない <code>for</code> ループは、<code>break</code> でループから抜けるか、<code>return</code> で関数から抜けるまで繰り返し続ける。</p>
 
           </td>
           <td class="code leading">
@@ -123,8 +109,7 @@ the enclosing function.</p>
         
         <tr>
           <td class="docs">
-            <p>You can also <code>continue</code> to the next iteration of
-the loop.</p>
+            <p><code>coutinue</code> と書くと、ループ内の次の繰り返しに進む。</p>
 
           </td>
           <td class="code">
@@ -169,9 +154,7 @@ the loop.</p>
         
         <tr>
           <td class="docs">
-            <p>We&rsquo;ll see some other <code>for</code> forms later when we look at
-<code>range</code> statements, channels, and other data
-structures.</p>
+            <p><code>for</code> の別の書き方は、<code>range</code> やチャネル、その他のデータ構造と合わせて紹介する。</p>
 
           </td>
           <td class="code empty">
@@ -184,11 +167,11 @@ structures.</p>
       
       
       <p class="next">
-        Next example: <a href="if-else">If/Else</a>.
+        次の例：<a href="if-else">If/Else</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/for">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinutids@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/examples/for">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
   </body>
