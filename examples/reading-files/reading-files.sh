@@ -8,4 +8,4 @@ go
 2 bytes @ 6: go
 5 bytes: hello
 
-# Next we'll look at writing files.
+# 続いて、ファイルへの書き込み方を紹介する。

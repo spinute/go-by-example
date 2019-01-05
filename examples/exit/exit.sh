@@ -1,13 +1,11 @@
-#  If you run `exit.go` using `go run`, the exit
-# will be picked up by `go` and printed.
+# `exit.go` を `go run` で実行すると、プログラム終了は `go ` に補足され、画面に表示される。
 $ go run exit.go
 exit status 3
 
-# By building and executing a binary you can see
-# the status in the terminal.
+# バイナリをビルドしてから実行する場合は、ターミナル上でステータスを確認できる。
 $ go build exit.go
 $ ./exit
 $ echo $?
 3
 
-# Note that the `!` from our program never got printed.
+# なお、プログラムによって `!` が表示されることはない。

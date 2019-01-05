@@ -6,7 +6,4 @@ $ go run random-numbers.go
 5,87
 5,87
 
-
-# See the [`math/rand`](http://golang.org/pkg/math/rand/)
-# package docs for references on other random quantities
-# that Go can provide.
+# Go で使える他のランダムな値の使い方を知りたければ、パッケージ [`math/rand`](http://golang.org/pkg/math/rand/) のドキュメントを見てほしい。

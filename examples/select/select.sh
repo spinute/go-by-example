@@ -1,10 +1,8 @@
-# We receive the values `"one"` and then `"two"` as
-# expected.
+# `"one"`、`"two"` を順番に受信する。
 $ time go run select.go 
 received one
 received two
 
-# Note that the total execution time is only ~2 seconds
-# since both the 1 and 2 second `Sleeps` execute
-# concurrently.
+# 実行時間の合計は2秒程度である。
+# これは1秒間のスリープと2秒間のスリープが平行に実行されるためである。
 real	0m2.245s

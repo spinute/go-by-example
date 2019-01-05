@@ -1,10 +1,5 @@
-# Running our program shows a list sorted by string
-# length, as desired.
+# プログラムを実行すると文字列の長さでソートされたリストが表示される。
 $ go run sorting-by-functions.go 
 [kiwi peach banana]
 
-# By following this same pattern of creating a custom
-# type, implementing the three `Interface` methods on that
-# type, and then calling sort.Sort on a collection of that
-# custom type, we can sort Go slices by arbitrary
-# functions.
+# 独自の型を作り、3つのインターフェースに含まれるメソッドを実装し、sort.Sort をその型の値に呼び出すパターンを使えば、任意の関数を使って Go のスライスをソートできる。

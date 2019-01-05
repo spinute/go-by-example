@@ -1,11 +1,9 @@
-# Running this program shows the first operation timing
-# out and the second succeeding.
+# このプログラムを実行すると、1つ目の操作はタイムアウトし、2つ目の操作は成功することを確認できる。
 $ go run timeouts.go 
 timeout 1
 result 2
 
-# Using this `select` timeout pattern requires
-# communicating results over channels. This is a good
-# idea in general because other important Go features are
-# based on channels and `select`. We'll look at two
-# examples of this next: timers and tickers.
+# この `select` でタイムアウトを実装するパターンでは、結果をチャネルを通じて返す必要がある。
+# これは一般によいやり方である。
+# なぜなら他の Go の重要な機能もチャネルと `select` に基づくものだからだ。
+# このような例として、タイマーと ticker の2つを続いて紹介する。

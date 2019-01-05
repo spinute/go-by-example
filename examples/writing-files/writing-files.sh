@@ -1,10 +1,10 @@
-# Try running the file-writing code.
+# ファイルに書き込みをするプログラムを実行してみる。
 $ go run writing-files.go 
 wrote 5 bytes
 wrote 7 bytes
 wrote 9 bytes
 
-# Then check the contents of the written files.
+# そして、書き込み対象のファイルの内容を確認する。
 $ cat /tmp/dat1
 hello
 go
@@ -13,5 +13,4 @@ some
 writes
 buffered
 
-# Next we'll look at applying some of the file I/O ideas
-# we've just seen to the `stdin` and `stdout` streams.
+# 続いて、ここまで見てきたファイル IO のアイデアを、ストリームである `stdin` と `stdout` に適用する例を紹介する。

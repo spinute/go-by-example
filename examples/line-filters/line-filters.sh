@@ -1,9 +1,8 @@
-# To try out our line filter, first make a file with a few
-# lowercase lines.
+# 実装したラインフィルタを使ってみるため、小文字で書いた行をいくつか含むファイルを作る。
 $ echo 'hello'   > /tmp/lines
 $ echo 'filter' >> /tmp/lines
 
-# Then use the line filter to get uppercase lines.
+# ラインフィルタによって、各行は大文字になる。
 $ cat /tmp/lines | go run line-filters.go
 HELLO
 FILTER

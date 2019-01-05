@@ -3,5 +3,4 @@ $ go run multiple-return-values.go
 7
 7
 
-# Accepting a variable number of arguments is another nice
-# feature of Go functions; we'll look at this next.
+# Go の関数の素敵な機能として、引数を何個でも受け取れる関数の書き方を次に紹介する。

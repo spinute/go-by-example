@@ -1,17 +1,16 @@
-# To run the program, put the code in `hello-world.go` and
-# use `go run`.
+# プログラムを実行するには、`hello-world.go` にコードを書いて、`go run` を実行すればよい。
 $ go run hello-world.go
 hello world
 
-# Sometimes we'll want to build our programs into
-# binaries. We can do this using `go build`.
+# プログラムをビルドしてバイナリにしたいこともある。
+# このためには `go build` を実行する。
 $ go build hello-world.go
 $ ls
 hello-world	hello-world.go
 
-# We can then execute the built binary directly.
+# そうすると、バイナリを直接実行できる。
 $ ./hello-world
 hello world
 
-# Now that we can run and build basic Go programs, let's
-# learn more about the language.
+# ここまでで、Go のプログラムをビルド・実行できるようになった。
+# それでは、言語自体について学んでいこう。

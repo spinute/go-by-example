@@ -1,14 +1,10 @@
-# Running the program computes the hash and prints it in
-# a human-readable hex format.
+# プログラムはハッシュ値を計算し、人が読みやすい16進記数法で結果を表示する。
 $ go run sha1-hashes.go
 sha1 this string
 cf23df2207d99a74fbe169e3eba035e633b65d94
 
 
-# You can compute other hashes using a similar pattern to
-# the one shown above. For example, to compute MD5 hashes
-# import `crypto/md5` and use `md5.New()`.
+# 上と同様のやり方で他のハッシュ関数を計算することもできる。
+# 例えば MD5 ハッシュ関数を使いたければ、`crypto/md5` をインポートして `md5.New()` を使えばよい。
 
-# Note that if you need cryptographically secure hashes,
-# you should carefully research
-# [hash strength](http://en.wikipedia.org/wiki/Cryptographic_hash_function)!
+# ただし、暗号学的に安全なハッシュ関数を使いたい場合には[ハッシュ関数の強度](http://en.wikipedia.org/wiki/Cryptographic_hash_function)をよく読むべきだ。

@@ -2,6 +2,4 @@ $ go run range-over-channels.go
 one
 two
 
-# This example also showed that it's possible to close
-# a non-empty channel but still have the remaining
-# values be received.
+# この例を見ると、空でないチャネルを閉じることもできて、その場合にもチャネルに残っている値を受信できることがわかる。

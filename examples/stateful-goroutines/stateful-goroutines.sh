@@ -1,15 +1,9 @@
-# Running our program shows that the goroutine-based
-# state management example completes about 80,000
-# total operations.
+# プログラムを実行するとゴルーチンを使った状態管理の例では約80000回の操作を実行できたことがわかる。
 $ go run stateful-goroutines.go
 readOps: 71708
 writeOps: 7177
 
-# For this particular case the goroutine-based approach
-# was a bit more involved than the mutex-based one. It
-# might be useful in certain cases though, for example
-# where you have other channels involved or when managing
-# multiple such mutexes would be error-prone. You should
-# use whichever approach feels most natural, especially
-# with respect to understanding the correctness of your
-# program.
+# この例ではゴルーチンを使ったやり方はミューテックスを使う場合と比べて少し処理が多かった。
+# しかし、場合によってはこのやり方の方が便利なこともある。
+# 例えば、他にもチャネルを使っている場合や、複数のミューテックスを使った結果プログラムを間違えそうな場合である。
+# プログラムの正しさがパッと見てわかるような、自然なやり方を採用するのがよい。
