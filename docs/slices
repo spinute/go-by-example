@@ -28,7 +28,7 @@
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/l0PHLC1OZKK"><img title="コードを実行する" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/xxfcKEnqZJ2"><img title="コードを実行する" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -61,7 +61,7 @@
         
         <tr>
           <td class="docs">
-            <p>配列とは違い、スライスの型はは要素の型だけを含む（つまり、要素数は含まない）。
+            <p>配列とは違い、スライスの型は要素の型だけを含む（つまり、要素数は含まない）。
 空でない（長さ0でない）スライスを作るには、組み込みの <code>make</code> を使う。
 ここでは、文字列が3つ入るスライスを作っている（初期値はゼロ値である）。</p>
 
