@@ -37,6 +37,6 @@ func main() {
     close(jobs)
     fmt.Println("sent all jobs")
 
-    // 既に紹介した[同期](channel-synchronization)のやり方で、ワーカーを待つ。
+    // 既に紹介した[同期](channel-synchronization.html)のやり方で、ワーカーを待つ。
     <-done
 }

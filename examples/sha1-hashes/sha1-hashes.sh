@@ -9,4 +9,4 @@ cf23df2207d99a74fbe169e3eba035e633b65d94
 # `crypto/md5` をインポートして `md5.New()` を使えばよい。
 
 # ただし、暗号学的に安全なハッシュ関数を使いたい場合には
-# [ハッシュ関数の強度](http://en.wikipedia.org/wiki/Cryptographic_hash_function)をよく読むべきだ。
+# [ハッシュ関数の強度](http://en.wikipedia.org/wiki/Cryptographic_hash_function)について知る必要がある。

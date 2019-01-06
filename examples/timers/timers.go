@@ -1,6 +1,6 @@
 // Go のコードを将来のある時点で実行したり、定期的に繰り返し実行したりすることがよくある。
 // 組み込みの機能 _timer_ 、 _ticker_ を使ってこれらの機能をシンプルに実現できる。
-// まずは timer を紹介し、その後で [ticker](tickers) を紹介する。
+// まずは timer を紹介し、その後で [ticker](tickers.html) を紹介する。
 
 package main
 

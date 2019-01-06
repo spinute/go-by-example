@@ -1,5 +1,5 @@
 // <em>[レート制限](http://en.wikipedia.org/wiki/Rate_limiting)</em>はリソース使用量を管理し、QoS を保つために重要だ。
-// Go はゴルーチン、チャネル、[tickers](tickers) を使ってうまくレート制限をサポートする。
+// Go はゴルーチン、チャネル、[tickers](tickers.html) を使ってうまくレート制限をサポートする。
 
 package main
 

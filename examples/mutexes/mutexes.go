@@ -1,4 +1,4 @@
-// 前の例で、単純なカウンタの状態を[アトミックな操作](atomic-counters)で管理する方法を紹介した。
+// 前の例で、単純なカウンタの状態を[アトミックな操作](atomic-counters.html)で管理する方法を紹介した。
 // より複雑な状態を管理したいときには、[<em>ミューテックス（mutex）</em>](http://en.wikipedia.org/wiki/Mutual_exclusion)を使って複数のゴルーチンから安全にデータを読み書きすることもできる。
 
 package main

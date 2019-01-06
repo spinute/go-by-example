@@ -23,8 +23,6 @@ func main() {
         c2 <- "two"
     }()
 
-    // We'll use `select` to await both of these values
-    // simultaneously, printing each one as it arrives.
     // `select` を使ってふたつの値をいずれも非同期で受信し、届いた方から表示する。
     for i := 0; i < 2; i++ {
         select {

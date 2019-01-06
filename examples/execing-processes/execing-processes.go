@@ -1,4 +1,4 @@
-// 前の例で[外部プロセスを作る](spawning-processes)方法を紹介した。
+// 前の例で[外部プロセスを作る](spawning-processes.html)方法を紹介した。
 // 実行中の Go プロセスから外部プロセスにアクセスするときはこの機能を使う。
 // しかし、Go のプロセスを別の（Go ではないかもしれない）プロセスに置き換えたい場面もある。
 // このようなときは昔からある <a href="http://en.wikipedia.org/wiki/Exec_(operating_system)"><code>exec</code></a> の機能を、Go で実装したものを使う。
@@ -24,7 +24,7 @@ func main() {
     // なお、最初の引数はプログラム名であることに注意する。
     args := []string{"ls", "-a", "-l", "-h"}
 
-    // `Exec` には[環境変数](environment-variables)も渡す必要がある。
+    // `Exec` には[環境変数](environment-variables.html)も渡す必要がある。
     // ここでは、現在の環境変数をそのまま渡す。
     env := os.Environ()
 

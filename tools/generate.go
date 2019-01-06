@@ -226,7 +226,7 @@ func parseExamples() []*Example {
 			exampleID = strings.Replace(exampleID, "/", "-", -1)
 			exampleID = strings.Replace(exampleID, "'", "", -1)
 			exampleID = dashPat.ReplaceAllString(exampleID, "-")
-			example.ID = exampleID
+			example.ID = exampleID + ".html"
 			example.Segs = make([][]*Seg, 0)
 			sourcePaths := mustGlob("examples/" + exampleID + "/*")
 			for _, sourcePath := range sourcePaths {
