@@ -1,3 +1,5 @@
+日本語でもお気軽にプルリクどうぞ！
+
 ## Go by Example
 
 Content and build toolchain for [Go by Example](https://gobyexample.com),
