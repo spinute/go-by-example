@@ -14,6 +14,20 @@
     <title>サンプルで学ぶ Go 言語：Command-Line Flags</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'command-line-arguments.html';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'command-line-subcommands.html';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="command-line-flags.html">
       <h2><a href="./">サンプルで学ぶ Go 言語</a>：Command-Line Flags</h2>
@@ -28,7 +42,7 @@
 
           </td>
           <td class="code empty leading">
-	        
+            
             
           </td>
         </tr>
@@ -38,7 +52,7 @@
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/fSzQ3iNtMjl"><img title="コードを実行する" src="play.png" class="run" /></a>
+            <a href="http://play.golang.org/p/UvkbjGfd-5r"><img title="コードを実行する" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -52,9 +66,11 @@
 
           </td>
           <td class="code leading">
-	        
-            <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;flag&quot;</span>
-<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+            
+            <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;flag&quot;</span>
+    <span class="s">&quot;fmt&quot;</span>
+<span class="p">)</span>
 </pre></div>
 
           </td>
@@ -65,7 +81,7 @@
             
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
 </pre></div>
 
@@ -81,7 +97,7 @@
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>    <span class="nx">wordPtr</span> <span class="o">:=</span> <span class="nx">flag</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;word&quot;</span><span class="p">,</span> <span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="s">&quot;a string&quot;</span><span class="p">)</span>
 </pre></div>
 
@@ -94,7 +110,7 @@
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>    <span class="nx">numbPtr</span> <span class="o">:=</span> <span class="nx">flag</span><span class="p">.</span><span class="nx">Int</span><span class="p">(</span><span class="s">&quot;numb&quot;</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="s">&quot;an int&quot;</span><span class="p">)</span>
     <span class="nx">boolPtr</span> <span class="o">:=</span> <span class="nx">flag</span><span class="p">.</span><span class="nx">Bool</span><span class="p">(</span><span class="s">&quot;fork&quot;</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="s">&quot;a bool&quot;</span><span class="p">)</span>
 </pre></div>
@@ -109,7 +125,7 @@
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">svar</span> <span class="kt">string</span>
     <span class="nx">flag</span><span class="p">.</span><span class="nx">StringVar</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">svar</span><span class="p">,</span> <span class="s">&quot;svar&quot;</span><span class="p">,</span> <span class="s">&quot;bar&quot;</span><span class="p">,</span> <span class="s">&quot;a string var&quot;</span><span class="p">)</span>
 </pre></div>
@@ -123,7 +139,7 @@
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>    <span class="nx">flag</span><span class="p">.</span><span class="nx">Parse</span><span class="p">()</span>
 </pre></div>
 
@@ -137,7 +153,7 @@
 
           </td>
           <td class="code">
-	        
+            
             <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;word:&quot;</span><span class="p">,</span> <span class="o">*</span><span class="nx">wordPtr</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;numb:&quot;</span><span class="p">,</span> <span class="o">*</span><span class="nx">numbPtr</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;fork:&quot;</span><span class="p">,</span> <span class="o">*</span><span class="nx">boolPtr</span><span class="p">)</span>
@@ -159,7 +175,7 @@
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre><span class="gp">$</span> go build command-line-flags.go
 </pre></div>
 
@@ -172,7 +188,7 @@
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre><span class="gp">$</span> ./command-line-flags -word<span class="o">=</span>opt -numb<span class="o">=</span><span class="m">7</span> -fork -svar<span class="o">=</span>flag
 <span class="go">word: opt</span>
 <span class="go">numb: 7</span>
@@ -190,7 +206,7 @@
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre><span class="gp">$</span> ./command-line-flags -word<span class="o">=</span>opt
 <span class="go">word: opt</span>
 <span class="go">numb: 42</span>
@@ -208,7 +224,7 @@
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre><span class="gp">$</span> ./command-line-flags -word<span class="o">=</span>opt a1 a2 a3
 <span class="go">word: opt</span>
 <span class="go">...</span>
@@ -225,7 +241,7 @@
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre><span class="gp">$</span> ./command-line-flags -word<span class="o">=</span>opt a1 a2 a3 -numb<span class="o">=</span>7
 <span class="go">word: opt</span>
 <span class="go">numb: 42</span>
@@ -243,7 +259,7 @@
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre><span class="gp">$</span> ./command-line-flags -h
 <span class="go">Usage of ./command-line-flags:</span>
 <span class="go">  -fork=false: a bool</span>
@@ -261,8 +277,8 @@
 プログラムはエラーメッセージを表示し、この場合もヘルプを表示する。</p>
 
           </td>
-          <td class="code leading">
-	        
+          <td class="code">
+            
             <div class="highlight"><pre><span class="gp">$</span> ./command-line-flags -wat
 <span class="go">flag provided but not defined: -wat</span>
 <span class="go">Usage of ./command-line-flags:</span>
@@ -272,27 +288,21 @@
           </td>
         </tr>
         
-        <tr>
-          <td class="docs">
-            <p>続いて、プログラムにパラメータを渡す別の方法である、環境変数を紹介する。</p>
-
-          </td>
-          <td class="code empty">
-	        
-            
-          </td>
-        </tr>
-        
       </table>
       
       
       <p class="next">
-        次の例：<a href="environment-variables.html">Environment Variables</a>
+        次の例：<a href="command-line-subcommands.html">Command-Line Subcommands</a>
       </p>
       
       <p class="footer">
-        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinute.pages@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/docs/command-line-flags.html">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
+        原著者 <a href="https://markmcgranaghan.com">Mark McGranaghan</a> | 翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinute.pages@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/docs/command-line-flags.html">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
+    <script>
+      var codeLines = [];
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"flag\"\u000A    \"fmt\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    wordPtr := flag.String(\"word\", \"foo\", \"a string\")\u000A');codeLines.push('    numbPtr := flag.Int(\"numb\", 42, \"an int\")\u000A    boolPtr := flag.Bool(\"fork\", false, \"a bool\")\u000A');codeLines.push('    var svar string\u000A    flag.StringVar(&svar, \"svar\", \"bar\", \"a string var\")\u000A');codeLines.push('    flag.Parse()\u000A');codeLines.push('    fmt.Println(\"word:\", *wordPtr)\u000A    fmt.Println(\"numb:\", *numbPtr)\u000A    fmt.Println(\"fork:\", *boolPtr)\u000A    fmt.Println(\"svar:\", svar)\u000A    fmt.Println(\"tail:\", flag.Args())\u000A}\u000A');codeLines.push('');codeLines.push('');codeLines.push('');codeLines.push('');codeLines.push('');codeLines.push('');codeLines.push('');
+    </script>
+    <script src="site.js" async></script>
   </body>
 </html>

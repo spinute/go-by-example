@@ -5,34 +5,36 @@
 
 package main
 
-import "syscall"
-import "os"
-import "os/exec"
+import (
+	"os"
+	"os/exec"
+	"syscall"
+)
 
 func main() {
 
-    // この例では `ls` を exec する。
-    // 実行したいバイナリの絶対パスを Go は必要とするので、
-    // `exec.LookPath` を使う（おそらく `/bin/ls` だろう）。
-    binary, lookErr := exec.LookPath("ls")
-    if lookErr != nil {
-        panic(lookErr)
-    }
+	// この例では `ls` を exec する。
+	// 実行したいバイナリの絶対パスを Go は必要とするので、
+	// `exec.LookPath` を使う（おそらく `/bin/ls` だろう）。
+	binary, lookErr := exec.LookPath("ls")
+	if lookErr != nil {
+		panic(lookErr)
+	}
 
-    // `Exec` の引数はスライスで表現する（ひとつの大きな文字列ではない）。
-    // ここでは `ls` によく使う引数を渡してみる。
-    // なお、最初の引数はプログラム名であることに注意する。
-    args := []string{"ls", "-a", "-l", "-h"}
+	// `Exec` の引数はスライスで表現する（ひとつの大きな文字列ではない）。
+	// ここでは `ls` によく使う引数を渡してみる。
+	// なお、最初の引数はプログラム名であることに注意する。
+	args := []string{"ls", "-a", "-l", "-h"}
 
-    // `Exec` には[環境変数](environment-variables.html)も渡す必要がある。
-    // ここでは、現在の環境変数をそのまま渡す。
-    env := os.Environ()
+	// `Exec` には[環境変数](environment-variables.html)も渡す必要がある。
+	// ここでは、現在の環境変数をそのまま渡す。
+	env := os.Environ()
 
-    // `syscall.Exec` を呼ぶ。
-    // 呼び出しが成功すると、このプロセスはここで終わり、`/bin/ls -a -l -h` を実行するプロセスに置き換わる。
-    // もしエラーがあれば、それを表す値が返ってくる。
-    execErr := syscall.Exec(binary, args, env)
-    if execErr != nil {
-        panic(execErr)
-    }
+	// `syscall.Exec` を呼ぶ。
+	// 呼び出しが成功すると、このプロセスはここで終わり、`/bin/ls -a -l -h` を実行するプロセスに置き換わる。
+	// もしエラーがあれば、それを表す値が返ってくる。
+	execErr := syscall.Exec(binary, args, env)
+	if execErr != nil {
+		panic(execErr)
+	}
 }

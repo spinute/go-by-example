@@ -9,25 +9,24 @@ import "fmt"
 // この関数`intSeq` は、`intSeq` の中で定義した無名関数を返す。
 // 返される関数に変数 `i` を<em>閉じ込めて</em>おり、クロージャを作っている。
 func intSeq() func() int {
-    i := 0
-    return func() int {
-        i++
-        return i
-    }
+	i := 0
+	return func() int {
+		i++
+		return i
+	}
 }
 
 func main() {
+	// `intSeq` を呼んで、その返り値（関数）を `nextInt` に代入している。
+	// この関数値は独自の `i` を持っていて、`nextInt` を呼ぶたびにその `i` の値が更新される。
+	nextInt := intSeq()
 
-    // `intSeq` を呼んで、その返り値（関数）を `nextInt` に代入している。
-    // この関数値は独自の `i` を持っていて、`nextInt` を呼ぶたびにその `i` の値が更新される。
-    nextInt := intSeq()
+	// `nextInt` を何度か呼んでみてクロージャの効果を確認しよう。
+	fmt.Println(nextInt())
+	fmt.Println(nextInt())
+	fmt.Println(nextInt())
 
-    // `nextInt` を何度か呼んでみてクロージャの効果を確認しよう。
-    fmt.Println(nextInt())
-    fmt.Println(nextInt())
-    fmt.Println(nextInt())
-
-    // 関数ごとに状態が独立であることを確認するため、新しいクロージャを作ってみよう。
-    newInts := intSeq()
-    fmt.Println(newInts())
+	// 関数ごとに状態が独立であることを確認するため、新しいクロージャを作ってみよう。
+	newInts := intSeq()
+	fmt.Println(newInts())
 }

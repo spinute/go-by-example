@@ -4,8 +4,10 @@
 
 package main
 
-import "sort"
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 // Go で独自の関数を使ってソートするには、そのための型を定義しなければならない。
 // ここでは `byLength` という型を定義するが、これは `[]string` の単なるエイリアスである。
@@ -18,18 +20,18 @@ type byLength []string
 // `Less` こそが実際にソートのやり方を決める関数である。
 // 我々の場合、文字列の長さの昇順にしたいので、`len(s[i])` と `len(s[j])` を使って `Less` を実装する。
 func (s byLength) Len() int {
-    return len(s)
+	return len(s)
 }
 func (s byLength) Swap(i, j int) {
-    s[i], s[j] = s[j], s[i]
+	s[i], s[j] = s[j], s[i]
 }
 func (s byLength) Less(i, j int) bool {
-    return len(s[i]) < len(s[j])
+	return len(s[i]) < len(s[j])
 }
 
-// ここまでの準備をすれば、あとはスライス `fruits` を `byLength` 型にキャストし、`sort.Sort` を呼べば、独自のソートを実装できる。
+// ここまでの準備をすれば、あとはスライス `fruits` を `byLength` 型に変換し、`sort.Sort` を呼べば、独自のソートを実装できる。
 func main() {
-    fruits := []string{"peach", "banana", "kiwi"}
-    sort.Sort(byLength(fruits))
-    fmt.Println(fruits)
+	fruits := []string{"peach", "banana", "kiwi"}
+	sort.Sort(byLength(fruits))
+	fmt.Println(fruits)
 }

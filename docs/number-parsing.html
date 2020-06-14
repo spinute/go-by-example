@@ -14,6 +14,20 @@
     <title>サンプルで学ぶ Go 言語：Number Parsing</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'random-numbers.html';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'url-parsing.html';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="number-parsing.html">
       <h2><a href="./">サンプルで学ぶ Go 言語</a>：Number Parsing</h2>
@@ -27,7 +41,7 @@
 
           </td>
           <td class="code empty leading">
-	        
+            
             
           </td>
         </tr>
@@ -37,7 +51,7 @@
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/dmmDpvWCG7Z"><img title="コードを実行する" src="play.png" class="run" /></a>
+            <a href="http://play.golang.org/p/XPpxx3_UQ7s"><img title="コードを実行する" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -50,9 +64,11 @@
 
           </td>
           <td class="code leading">
-	        
-            <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;strconv&quot;</span>
-<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+            
+            <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;strconv&quot;</span>
+<span class="p">)</span>
 </pre></div>
 
           </td>
@@ -63,7 +79,7 @@
             
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
 </pre></div>
 
@@ -76,7 +92,7 @@
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>    <span class="nx">f</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">ParseFloat</span><span class="p">(</span><span class="s">&quot;1.234&quot;</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span>
 </pre></div>
@@ -91,7 +107,7 @@
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>    <span class="nx">i</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">ParseInt</span><span class="p">(</span><span class="s">&quot;123&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
 </pre></div>
@@ -105,7 +121,7 @@
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>    <span class="nx">d</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">ParseInt</span><span class="p">(</span><span class="s">&quot;0x1c8&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span>
 </pre></div>
@@ -119,7 +135,7 @@
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>    <span class="nx">u</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">ParseUint</span><span class="p">(</span><span class="s">&quot;789&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">)</span>
 </pre></div>
@@ -133,7 +149,7 @@
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>    <span class="nx">k</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">Atoi</span><span class="p">(</span><span class="s">&quot;135&quot;</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">k</span><span class="p">)</span>
 </pre></div>
@@ -147,7 +163,7 @@
 
           </td>
           <td class="code">
-	        
+            
             <div class="highlight"><pre>    <span class="nx">_</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">Atoi</span><span class="p">(</span><span class="s">&quot;wat&quot;</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
 <span class="p">}</span>
@@ -165,7 +181,7 @@
             
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre><span class="gp">$</span> go run number-parsing.go 
 <span class="go">1.234</span>
 <span class="go">123</span>
@@ -184,7 +200,7 @@
 
           </td>
           <td class="code empty">
-	        
+            
             
           </td>
         </tr>
@@ -197,8 +213,13 @@
       </p>
       
       <p class="footer">
-        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinute.pages@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/docs/number-parsing.html">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
+        原著者 <a href="https://markmcgranaghan.com">Mark McGranaghan</a> | 翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinute.pages@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/docs/number-parsing.html">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
+    <script>
+      var codeLines = [];
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"strconv\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    f, _ := strconv.ParseFloat(\"1.234\", 64)\u000A    fmt.Println(f)\u000A');codeLines.push('    i, _ := strconv.ParseInt(\"123\", 0, 64)\u000A    fmt.Println(i)\u000A');codeLines.push('    d, _ := strconv.ParseInt(\"0x1c8\", 0, 64)\u000A    fmt.Println(d)\u000A');codeLines.push('    u, _ := strconv.ParseUint(\"789\", 0, 64)\u000A    fmt.Println(u)\u000A');codeLines.push('    k, _ := strconv.Atoi(\"135\")\u000A    fmt.Println(k)\u000A');codeLines.push('    _, e := strconv.Atoi(\"wat\")\u000A    fmt.Println(e)\u000A}\u000A');codeLines.push('');codeLines.push('');
+    </script>
+    <script src="site.js" async></script>
   </body>
 </html>

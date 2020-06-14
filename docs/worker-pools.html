@@ -14,6 +14,20 @@
     <title>サンプルで学ぶ Go 言語：Worker Pools</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'tickers.html';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'waitgroups.html';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="worker-pools.html">
       <h2><a href="./">サンプルで学ぶ Go 言語</a>：Worker Pools</h2>
@@ -26,7 +40,7 @@
 
           </td>
           <td class="code empty leading">
-	        
+            
             
           </td>
         </tr>
@@ -36,7 +50,7 @@
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/6A_iBD0v-e3"><img title="コードを実行する" src="play.png" class="run" /></a>
+            <a href="http://play.golang.org/p/U8iVO6-_UC9"><img title="コードを実行する" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -48,9 +62,11 @@
             
           </td>
           <td class="code leading">
-	        
-            <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
-<span class="kn">import</span> <span class="s">&quot;time&quot;</span>
+            
+            <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;time&quot;</span>
+<span class="p">)</span>
 </pre></div>
 
           </td>
@@ -64,7 +80,7 @@
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">worker</span><span class="p">(</span><span class="nx">id</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">jobs</span> <span class="o">&lt;-</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">results</span> <span class="kd">chan</span><span class="o">&lt;-</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">for</span> <span class="nx">j</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">jobs</span> <span class="p">{</span>
         <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;worker&quot;</span><span class="p">,</span> <span class="nx">id</span><span class="p">,</span> <span class="s">&quot;started  job&quot;</span><span class="p">,</span> <span class="nx">j</span><span class="p">)</span>
@@ -83,7 +99,7 @@
             
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
 </pre></div>
 
@@ -97,9 +113,10 @@
 
           </td>
           <td class="code leading">
-	        
-            <div class="highlight"><pre>    <span class="nx">jobs</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-    <span class="nx">results</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+            
+            <div class="highlight"><pre>    <span class="kd">const</span> <span class="nx">numJobs</span> <span class="p">=</span> <span class="mi">5</span>
+    <span class="nx">jobs</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">numJobs</span><span class="p">)</span>
+    <span class="nx">results</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">numJobs</span><span class="p">)</span>
 </pre></div>
 
           </td>
@@ -112,7 +129,7 @@
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>    <span class="k">for</span> <span class="nx">w</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">w</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">w</span><span class="o">++</span> <span class="p">{</span>
         <span class="k">go</span> <span class="nx">worker</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="nx">jobs</span><span class="p">,</span> <span class="nx">results</span><span class="p">)</span>
     <span class="p">}</span>
@@ -127,8 +144,8 @@
 
           </td>
           <td class="code leading">
-	        
-            <div class="highlight"><pre>    <span class="k">for</span> <span class="nx">j</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span> <span class="p">{</span>
+            
+            <div class="highlight"><pre>    <span class="k">for</span> <span class="nx">j</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;=</span> <span class="nx">numJobs</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span> <span class="p">{</span>
         <span class="nx">jobs</span> <span class="o">&lt;-</span> <span class="nx">j</span>
     <span class="p">}</span>
     <span class="nb">close</span><span class="p">(</span><span class="nx">jobs</span><span class="p">)</span>
@@ -139,12 +156,14 @@
         
         <tr>
           <td class="docs">
-            <p>最後に仕事の結果を集める。</p>
+            <p>最後に仕事の結果を集める。
+ここではゴルーチンのワーカーが終了したことも保証される。
+複数のゴルーチンが終了するのを待つには <a href="waitgroups">WaitGroup</a> を使うやり方もある。</p>
 
           </td>
           <td class="code">
-	        
-            <div class="highlight"><pre>    <span class="k">for</span> <span class="nx">a</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">a</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">;</span> <span class="nx">a</span><span class="o">++</span> <span class="p">{</span>
+            
+            <div class="highlight"><pre>    <span class="k">for</span> <span class="nx">a</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">a</span> <span class="o">&lt;=</span> <span class="nx">numJobs</span><span class="p">;</span> <span class="nx">a</span><span class="o">++</span> <span class="p">{</span>
         <span class="o">&lt;-</span><span class="nx">results</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -165,7 +184,7 @@
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre><span class="gp">$</span> <span class="nb">time</span> go run worker-pools.go 
 <span class="go">worker 1 started  job 1</span>
 <span class="go">worker 2 started  job 2</span>
@@ -187,8 +206,8 @@
             
           </td>
           <td class="code">
-	        
-            <div class="highlight"><pre><span class="go">real	0m2.358s</span>
+            
+            <div class="highlight"><pre><span class="go">real    0m2.358s</span>
 </pre></div>
 
           </td>
@@ -198,12 +217,17 @@
       
       
       <p class="next">
-        次の例：<a href="rate-limiting.html">Rate Limiting</a>
+        次の例：<a href="waitgroups.html">WaitGroups</a>
       </p>
       
       <p class="footer">
-        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinute.pages@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/docs/worker-pools.html">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
+        原著者 <a href="https://markmcgranaghan.com">Mark McGranaghan</a> | 翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinute.pages@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/docs/worker-pools.html">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
+    <script>
+      var codeLines = [];
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"time\"\u000A)\u000A');codeLines.push('func worker(id int, jobs \x3C-chan int, results chan\x3C- int) {\u000A    for j := range jobs {\u000A        fmt.Println(\"worker\", id, \"started  job\", j)\u000A        time.Sleep(time.Second)\u000A        fmt.Println(\"worker\", id, \"finished job\", j)\u000A        results \x3C- j * 2\u000A    }\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    const numJobs = 5\u000A    jobs := make(chan int, numJobs)\u000A    results := make(chan int, numJobs)\u000A');codeLines.push('    for w := 1; w \x3C= 3; w++ {\u000A        go worker(w, jobs, results)\u000A    }\u000A');codeLines.push('    for j := 1; j \x3C= numJobs; j++ {\u000A        jobs \x3C- j\u000A    }\u000A    close(jobs)\u000A');codeLines.push('    for a := 1; a \x3C= numJobs; a++ {\u000A        \x3C-results\u000A    }\u000A}\u000A');codeLines.push('');codeLines.push('');
+    </script>
+    <script src="site.js" async></script>
   </body>
 </html>

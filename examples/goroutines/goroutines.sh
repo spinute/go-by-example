@@ -9,7 +9,6 @@ goroutine : 0
 going
 goroutine : 1
 goroutine : 2
-<enter>
 done
 
 # 次は、Go における並行プログラミングをする際にゴルーチンとしばしば一緒に使われるチャネルを紹介する。
