@@ -3,21 +3,23 @@
 
 package main
 
-import "os"
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
 func main() {
 
-    // `os.Args` を使って生のコマンドライン引数にアクセスできる。
-    // ただし、このスライスの一番目の値はプログラムのパスである。
-    // そのため `os.Args[1:]` がプログラムの引数である。
-    argsWithProg := os.Args
-    argsWithoutProg := os.Args[1:]
+	// `os.Args` を使って生のコマンドライン引数にアクセスできる。
+	// ただし、このスライスの一番目の値はプログラムのパスである。
+	// そのため `os.Args[1:]` がプログラムの引数である。
+	argsWithProg := os.Args
+	argsWithoutProg := os.Args[1:]
 
-    // インデックスを指定して個々の引数を取得できる。
-    arg := os.Args[3]
+	// インデックスを指定して個々の引数を取得できる。
+	arg := os.Args[3]
 
-    fmt.Println(argsWithProg)
-    fmt.Println(argsWithoutProg)
-    fmt.Println(arg)
+	fmt.Println(argsWithProg)
+	fmt.Println(argsWithoutProg)
+	fmt.Println(arg)
 }

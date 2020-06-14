@@ -7,15 +7,14 @@ package main
 import "fmt"
 
 func main() {
+	// `make` を使って、2つまで値を溜められるバッファ付きチャネルを作る。
+	messages := make(chan string, 2)
 
-    // `make` を使って、2つまで値を溜められるバッファ付きチャネルを作る。
-    messages := make(chan string, 2)
+	// このチャネルにはバッファが付いているので、まだ受信者がいないにもかかわらずこれらの値を送れる。
+	messages <- "buffered"
+	messages <- "channel"
 
-    // このチャネルにはバッファが付いているので、まだ受信者がいないにもかかわらずこれらの値を送れる。
-    messages <- "buffered"
-    messages <- "channel"
-
-    // これらの値は後から読み出せる
-    fmt.Println(<-messages)
-    fmt.Println(<-messages)
+	// これらの値は後から読み出せる
+	fmt.Println(<-messages)
+	fmt.Println(<-messages)
 }

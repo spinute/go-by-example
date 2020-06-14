@@ -14,6 +14,20 @@
     <title>サンプルで学ぶ Go 言語：JSON</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'regular-expressions.html';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'xml.html';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="json.html">
       <h2><a href="./">サンプルで学ぶ Go 言語</a>：JSON</h2>
@@ -26,7 +40,7 @@
 
           </td>
           <td class="code empty leading">
-	        
+            
             
           </td>
         </tr>
@@ -36,7 +50,7 @@
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/GLCv-Gl7S2e"><img title="コードを実行する" src="play.png" class="run" /></a>
+            <a href="http://play.golang.org/p/1fXRw9K-zop"><img title="コードを実行する" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -48,10 +62,12 @@
             
           </td>
           <td class="code leading">
-	        
-            <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;encoding/json&quot;</span>
-<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
-<span class="kn">import</span> <span class="s">&quot;os&quot;</span>
+            
+            <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;encoding/json&quot;</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;os&quot;</span>
+<span class="p">)</span>
 </pre></div>
 
           </td>
@@ -63,12 +79,25 @@
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre><span class="kd">type</span> <span class="nx">response1</span> <span class="kd">struct</span> <span class="p">{</span>
     <span class="nx">Page</span>   <span class="kt">int</span>
     <span class="nx">Fruits</span> <span class="p">[]</span><span class="kt">string</span>
 <span class="p">}</span>
-<span class="kd">type</span> <span class="nx">response2</span> <span class="kd">struct</span> <span class="p">{</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>エクスポートされているフィールドだけが JSON にエンコード・デコードされる。
+フィールドをエクスポートするには、フィールド名を大文字からはじめる。</p>
+
+          </td>
+          <td class="code leading">
+            
+            <div class="highlight"><pre><span class="kd">type</span> <span class="nx">response2</span> <span class="kd">struct</span> <span class="p">{</span>
     <span class="nx">Page</span>   <span class="kt">int</span>      <span class="s">`json:&quot;page&quot;`</span>
     <span class="nx">Fruits</span> <span class="p">[]</span><span class="kt">string</span> <span class="s">`json:&quot;fruits&quot;`</span>
 <span class="p">}</span>
@@ -82,7 +111,7 @@
             
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
 </pre></div>
 
@@ -95,7 +124,7 @@
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>    <span class="nx">bolB</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">Marshal</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">bolB</span><span class="p">))</span>
 </pre></div>
@@ -108,7 +137,7 @@
             
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>    <span class="nx">intB</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">Marshal</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">intB</span><span class="p">))</span>
 </pre></div>
@@ -121,7 +150,7 @@
             
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>    <span class="nx">fltB</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">Marshal</span><span class="p">(</span><span class="mf">2.34</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">fltB</span><span class="p">))</span>
 </pre></div>
@@ -134,7 +163,7 @@
             
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>    <span class="nx">strB</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">Marshal</span><span class="p">(</span><span class="s">&quot;gopher&quot;</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">strB</span><span class="p">))</span>
 </pre></div>
@@ -149,7 +178,7 @@
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>    <span class="nx">slcD</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;apple&quot;</span><span class="p">,</span> <span class="s">&quot;peach&quot;</span><span class="p">,</span> <span class="s">&quot;pear&quot;</span><span class="p">}</span>
     <span class="nx">slcB</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">Marshal</span><span class="p">(</span><span class="nx">slcD</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">slcB</span><span class="p">))</span>
@@ -163,7 +192,7 @@
             
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>    <span class="nx">mapD</span> <span class="o">:=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="s">&quot;apple&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s">&quot;lettuce&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">}</span>
     <span class="nx">mapB</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">Marshal</span><span class="p">(</span><span class="nx">mapD</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">mapB</span><span class="p">))</span>
@@ -180,7 +209,7 @@
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>    <span class="nx">res1D</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">response1</span><span class="p">{</span>
         <span class="nx">Page</span><span class="p">:</span>   <span class="mi">1</span><span class="p">,</span>
         <span class="nx">Fruits</span><span class="p">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;apple&quot;</span><span class="p">,</span> <span class="s">&quot;peach&quot;</span><span class="p">,</span> <span class="s">&quot;pear&quot;</span><span class="p">}}</span>
@@ -198,7 +227,7 @@
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>    <span class="nx">res2D</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">response2</span><span class="p">{</span>
         <span class="nx">Page</span><span class="p">:</span>   <span class="mi">1</span><span class="p">,</span>
         <span class="nx">Fruits</span><span class="p">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;apple&quot;</span><span class="p">,</span> <span class="s">&quot;peach&quot;</span><span class="p">,</span> <span class="s">&quot;pear&quot;</span><span class="p">}}</span>
@@ -216,7 +245,7 @@
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>    <span class="nx">byt</span> <span class="o">:=</span> <span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="s">`{&quot;num&quot;:6.13,&quot;strs&quot;:[&quot;a&quot;,&quot;b&quot;]}`</span><span class="p">)</span>
 </pre></div>
 
@@ -230,7 +259,7 @@
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">dat</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span><span class="p">{}</span>
 </pre></div>
 
@@ -243,7 +272,7 @@
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>    <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">Unmarshal</span><span class="p">(</span><span class="nx">byt</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">dat</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
         <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
     <span class="p">}</span>
@@ -260,7 +289,7 @@
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>    <span class="nx">num</span> <span class="o">:=</span> <span class="nx">dat</span><span class="p">[</span><span class="s">&quot;num&quot;</span><span class="p">].(</span><span class="kt">float64</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span>
 </pre></div>
@@ -274,7 +303,7 @@
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>    <span class="nx">strs</span> <span class="o">:=</span> <span class="nx">dat</span><span class="p">[</span><span class="s">&quot;strs&quot;</span><span class="p">].([]</span><span class="kd">interface</span><span class="p">{})</span>
     <span class="nx">str1</span> <span class="o">:=</span> <span class="nx">strs</span><span class="p">[</span><span class="mi">0</span><span class="p">].(</span><span class="kt">string</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">str1</span><span class="p">)</span>
@@ -290,7 +319,7 @@
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>    <span class="nx">str</span> <span class="o">:=</span> <span class="s">`{&quot;page&quot;: 1, &quot;fruits&quot;: [&quot;apple&quot;, &quot;peach&quot;]}`</span>
     <span class="nx">res</span> <span class="o">:=</span> <span class="nx">response2</span><span class="p">{}</span>
     <span class="nx">json</span><span class="p">.</span><span class="nx">Unmarshal</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">str</span><span class="p">),</span> <span class="o">&amp;</span><span class="nx">res</span><span class="p">)</span>
@@ -308,7 +337,7 @@ JSON エンコードされたストリームを、<code>os.Writer' のように<
 
           </td>
           <td class="code">
-	        
+            
             <div class="highlight"><pre>    <span class="nx">enc</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">NewEncoder</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">)</span>
     <span class="nx">d</span> <span class="o">:=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="s">&quot;apple&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s">&quot;lettuce&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">}</span>
     <span class="nx">enc</span><span class="p">.</span><span class="nx">Encode</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span>
@@ -327,7 +356,7 @@ JSON エンコードされたストリームを、<code>os.Writer' のように<
             
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre><span class="gp">$</span> go run json.go
 <span class="go">true</span>
 <span class="go">1</span>
@@ -355,7 +384,7 @@ JSON エンコードされたストリームを、<code>os.Writer' のように<
 
           </td>
           <td class="code empty">
-	        
+            
             
           </td>
         </tr>
@@ -364,12 +393,17 @@ JSON エンコードされたストリームを、<code>os.Writer' のように<
       
       
       <p class="next">
-        次の例：<a href="time.html">Time</a>
+        次の例：<a href="xml.html">XML</a>
       </p>
       
       <p class="footer">
-        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinute.pages@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/docs/json.html">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
+        原著者 <a href="https://markmcgranaghan.com">Mark McGranaghan</a> | 翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinute.pages@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/docs/json.html">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
+    <script>
+      var codeLines = [];
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"encoding/json\"\u000A    \"fmt\"\u000A    \"os\"\u000A)\u000A');codeLines.push('type response1 struct {\u000A    Page   int\u000A    Fruits []string\u000A}\u000A');codeLines.push('type response2 struct {\u000A    Page   int      `json:\"page\"`\u000A    Fruits []string `json:\"fruits\"`\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    bolB, _ := json.Marshal(true)\u000A    fmt.Println(string(bolB))\u000A');codeLines.push('    intB, _ := json.Marshal(1)\u000A    fmt.Println(string(intB))\u000A');codeLines.push('    fltB, _ := json.Marshal(2.34)\u000A    fmt.Println(string(fltB))\u000A');codeLines.push('    strB, _ := json.Marshal(\"gopher\")\u000A    fmt.Println(string(strB))\u000A');codeLines.push('    slcD := []string{\"apple\", \"peach\", \"pear\"}\u000A    slcB, _ := json.Marshal(slcD)\u000A    fmt.Println(string(slcB))\u000A');codeLines.push('    mapD := map[string]int{\"apple\": 5, \"lettuce\": 7}\u000A    mapB, _ := json.Marshal(mapD)\u000A    fmt.Println(string(mapB))\u000A');codeLines.push('    res1D := &response1{\u000A        Page:   1,\u000A        Fruits: []string{\"apple\", \"peach\", \"pear\"}}\u000A    res1B, _ := json.Marshal(res1D)\u000A    fmt.Println(string(res1B))\u000A');codeLines.push('    res2D := &response2{\u000A        Page:   1,\u000A        Fruits: []string{\"apple\", \"peach\", \"pear\"}}\u000A    res2B, _ := json.Marshal(res2D)\u000A    fmt.Println(string(res2B))\u000A');codeLines.push('    byt := []byte(`{\"num\":6.13,\"strs\":[\"a\",\"b\"]}`)\u000A');codeLines.push('    var dat map[string]interface{}\u000A');codeLines.push('    if err := json.Unmarshal(byt, &dat); err != nil {\u000A        panic(err)\u000A    }\u000A    fmt.Println(dat)\u000A');codeLines.push('    num := dat[\"num\"].(float64)\u000A    fmt.Println(num)\u000A');codeLines.push('    strs := dat[\"strs\"].([]interface{})\u000A    str1 := strs[0].(string)\u000A    fmt.Println(str1)\u000A');codeLines.push('    str := `{\"page\": 1, \"fruits\": [\"apple\", \"peach\"]}`\u000A    res := response2{}\u000A    json.Unmarshal([]byte(str), &res)\u000A    fmt.Println(res)\u000A    fmt.Println(res.Fruits[0])\u000A');codeLines.push('    enc := json.NewEncoder(os.Stdout)\u000A    d := map[string]int{\"apple\": 5, \"lettuce\": 7}\u000A    enc.Encode(d)\u000A}\u000A');codeLines.push('');codeLines.push('');
+    </script>
+    <script src="site.js" async></script>
   </body>
 </html>

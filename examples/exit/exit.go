@@ -2,17 +2,19 @@
 
 package main
 
-import "fmt"
-import "os"
+import (
+	"fmt"
+	"os"
+)
 
 func main() {
 
-    // `os.Exit` を使うと `defer` は実行 _されない_ 。
-    // そのためこの `fmt.Println` は呼ばれない。
-    defer fmt.Println("!")
+	// `os.Exit` を使うと `defer` は実行 _されない_ 。
+	// そのためこの `fmt.Println` は呼ばれない。
+	defer fmt.Println("!")
 
-    // ステータス 3 で終了する。
-    os.Exit(3)
+	// ステータス 3 で終了する。
+	os.Exit(3)
 }
 
 // C などと違って、Go は `main` 関数が返す整数型の値を使って終了ステータスを表すことはない。

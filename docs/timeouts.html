@@ -14,6 +14,20 @@
     <title>サンプルで学ぶ Go 言語：Timeouts</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'select.html';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'non-blocking-channel-operations.html';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="timeouts.html">
       <h2><a href="./">サンプルで学ぶ Go 言語</a>：Timeouts</h2>
@@ -27,7 +41,7 @@ Go ではチャネルと <code>select</code> を使ってタイムアウトを�
 
           </td>
           <td class="code empty leading">
-	        
+            
             
           </td>
         </tr>
@@ -37,7 +51,7 @@ Go ではチャネルと <code>select</code> を使ってタイムアウトを�
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/sD8O4wdyph_Z"><img title="コードを実行する" src="play.png" class="run" /></a>
+            <a href="http://play.golang.org/p/kkg4OJN4bq3"><img title="コードを実行する" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -49,9 +63,11 @@ Go ではチャネルと <code>select</code> を使ってタイムアウトを�
             
           </td>
           <td class="code leading">
-	        
-            <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;time&quot;</span>
-<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+            
+            <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;time&quot;</span>
+<span class="p">)</span>
 </pre></div>
 
           </td>
@@ -62,7 +78,7 @@ Go ではチャネルと <code>select</code> を使ってタイムアウトを�
             
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
 </pre></div>
 
@@ -71,11 +87,12 @@ Go ではチャネルと <code>select</code> を使ってタイムアウトを�
         
         <tr>
           <td class="docs">
-            <p>チャネル <code>c1</code> に2秒後に結果を返す外部機能を呼び出したいとする。</p>
+            <p>チャネル <code>c1</code> に2秒後に結果を返す外部機能を呼び出したいとする。
+チャネルにはバッファがあるのでゴルーチンの送信処理はブロックしないことに注意する。</p>
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>    <span class="nx">c1</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
         <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
@@ -94,7 +111,7 @@ Go ではチャネルと <code>select</code> を使ってタイムアウトを�
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>    <span class="k">select</span> <span class="p">{</span>
     <span class="k">case</span> <span class="nx">res</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">c1</span><span class="p">:</span>
         <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span>
@@ -112,7 +129,7 @@ Go ではチャネルと <code>select</code> を使ってタイムアウトを�
 
           </td>
           <td class="code">
-	        
+            
             <div class="highlight"><pre>    <span class="nx">c2</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
         <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
@@ -139,27 +156,13 @@ Go ではチャネルと <code>select</code> を使ってタイムアウトを�
             <p>このプログラムを実行すると、1つ目の操作はタイムアウトし、2つ目の操作は成功することを確認できる。</p>
 
           </td>
-          <td class="code leading">
-	        
+          <td class="code">
+            
             <div class="highlight"><pre><span class="gp">$</span> go run timeouts.go 
 <span class="go">timeout 1</span>
 <span class="go">result 2</span>
 </pre></div>
 
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="docs">
-            <p>この <code>select</code> でタイムアウトを実装するパターンでは、結果をチャネルを通じて返す必要がある。
-これは一般によいやり方である。
-なぜなら他の Go の重要な機能もチャネルと <code>select</code> に基づくものだからだ。
-このような例として、タイマーと ticker の2つを続いて紹介する。</p>
-
-          </td>
-          <td class="code empty">
-	        
-            
           </td>
         </tr>
         
@@ -171,8 +174,13 @@ Go ではチャネルと <code>select</code> を使ってタイムアウトを�
       </p>
       
       <p class="footer">
-        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinute.pages@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/docs/timeouts.html">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
+        原著者 <a href="https://markmcgranaghan.com">Mark McGranaghan</a> | 翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinute.pages@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/docs/timeouts.html">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
+    <script>
+      var codeLines = [];
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"fmt\"\u000A    \"time\"\u000A)\u000A');codeLines.push('func main() {\u000A');codeLines.push('    c1 := make(chan string, 1)\u000A    go func() {\u000A        time.Sleep(2 * time.Second)\u000A        c1 \x3C- \"result 1\"\u000A    }()\u000A');codeLines.push('    select {\u000A    case res := \x3C-c1:\u000A        fmt.Println(res)\u000A    case \x3C-time.After(1 * time.Second):\u000A        fmt.Println(\"timeout 1\")\u000A    }\u000A');codeLines.push('    c2 := make(chan string, 1)\u000A    go func() {\u000A        time.Sleep(2 * time.Second)\u000A        c2 \x3C- \"result 2\"\u000A    }()\u000A    select {\u000A    case res := \x3C-c2:\u000A        fmt.Println(res)\u000A    case \x3C-time.After(3 * time.Second):\u000A        fmt.Println(\"timeout 2\")\u000A    }\u000A}\u000A');codeLines.push('');
+    </script>
+    <script src="site.js" async></script>
   </body>
 </html>

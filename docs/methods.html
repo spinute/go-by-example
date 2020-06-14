@@ -14,6 +14,20 @@
     <title>サンプルで学ぶ Go 言語：Methods</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'structs.html';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'interfaces.html';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="methods.html">
       <h2><a href="./">サンプルで学ぶ Go 言語</a>：Methods</h2>
@@ -26,7 +40,7 @@
 
           </td>
           <td class="code empty leading">
-	        
+            
             
           </td>
         </tr>
@@ -36,7 +50,7 @@
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/-u16Y-UUf9K"><img title="コードを実行する" src="play.png" class="run" /></a>
+            <a href="http://play.golang.org/p/k2ud70iAlFE"><img title="コードを実行する" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -48,7 +62,7 @@
             
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
 </pre></div>
 
@@ -60,7 +74,7 @@
             
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre><span class="kd">type</span> <span class="nx">rect</span> <span class="kd">struct</span> <span class="p">{</span>
     <span class="nx">width</span><span class="p">,</span> <span class="nx">height</span> <span class="kt">int</span>
 <span class="p">}</span>
@@ -75,7 +89,7 @@
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre><span class="kd">func</span> <span class="p">(</span><span class="nx">r</span> <span class="o">*</span><span class="nx">rect</span><span class="p">)</span> <span class="nx">area</span><span class="p">()</span> <span class="kt">int</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">r</span><span class="p">.</span><span class="nx">width</span> <span class="o">*</span> <span class="nx">r</span><span class="p">.</span><span class="nx">height</span>
 <span class="p">}</span>
@@ -91,7 +105,7 @@
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre><span class="kd">func</span> <span class="p">(</span><span class="nx">r</span> <span class="nx">rect</span><span class="p">)</span> <span class="nx">perim</span><span class="p">()</span> <span class="kt">int</span> <span class="p">{</span>
     <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="nx">r</span><span class="p">.</span><span class="nx">width</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="nx">r</span><span class="p">.</span><span class="nx">height</span>
 <span class="p">}</span>
@@ -105,7 +119,7 @@
             
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">r</span> <span class="o">:=</span> <span class="nx">rect</span><span class="p">{</span><span class="nx">width</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="nx">height</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
 </pre></div>
@@ -119,7 +133,7 @@
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;area: &quot;</span><span class="p">,</span> <span class="nx">r</span><span class="p">.</span><span class="nx">area</span><span class="p">())</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;perim:&quot;</span><span class="p">,</span> <span class="nx">r</span><span class="p">.</span><span class="nx">perim</span><span class="p">())</span>
 </pre></div>
@@ -134,7 +148,7 @@
 
           </td>
           <td class="code">
-	        
+            
             <div class="highlight"><pre>    <span class="nx">rp</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">r</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;area: &quot;</span><span class="p">,</span> <span class="nx">rp</span><span class="p">.</span><span class="nx">area</span><span class="p">())</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;perim:&quot;</span><span class="p">,</span> <span class="nx">rp</span><span class="p">.</span><span class="nx">perim</span><span class="p">())</span>
@@ -153,7 +167,7 @@
             
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre><span class="gp">$</span> go run methods.go 
 <span class="go">area:  50</span>
 <span class="go">perim: 30</span>
@@ -170,7 +184,7 @@
 
           </td>
           <td class="code empty">
-	        
+            
             
           </td>
         </tr>
@@ -183,8 +197,13 @@
       </p>
       
       <p class="footer">
-        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinute.pages@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/docs/methods.html">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
+        原著者 <a href="https://markmcgranaghan.com">Mark McGranaghan</a> | 翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinute.pages@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/docs/methods.html">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
+    <script>
+      var codeLines = [];
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import \"fmt\"\u000A');codeLines.push('type rect struct {\u000A    width, height int\u000A}\u000A');codeLines.push('func (r *rect) area() int {\u000A    return r.width * r.height\u000A}\u000A');codeLines.push('func (r rect) perim() int {\u000A    return 2*r.width + 2*r.height\u000A}\u000A');codeLines.push('func main() {\u000A    r := rect{width: 10, height: 5}\u000A');codeLines.push('    fmt.Println(\"area: \", r.area())\u000A    fmt.Println(\"perim:\", r.perim())\u000A');codeLines.push('    rp := &r\u000A    fmt.Println(\"area: \", rp.area())\u000A    fmt.Println(\"perim:\", rp.perim())\u000A}\u000A');codeLines.push('');codeLines.push('');
+    </script>
+    <script src="site.js" async></script>
   </body>
 </html>

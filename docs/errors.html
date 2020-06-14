@@ -14,6 +14,20 @@
     <title>サンプルで学ぶ Go 言語：Errors</title>
     <link rel=stylesheet href="site.css">
   </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'interfaces.html';
+          }
+          
+          
+          if (e.key == "ArrowRight") {
+              window.location.href = 'goroutines.html';
+          }
+          
+      }
+  </script>
   <body>
     <div class="example" id="errors.html">
       <h2><a href="./">サンプルで学ぶ Go 言語</a>：Errors</h2>
@@ -28,7 +42,7 @@ Go のやり方だとどの関数がエラーを返すかがわかりやすく�
 
           </td>
           <td class="code empty leading">
-	        
+            
             
           </td>
         </tr>
@@ -38,7 +52,7 @@ Go のやり方だとどの関数がエラーを返すかがわかりやすく�
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/CWZ7todHuaK"><img title="コードを実行する" src="play.png" class="run" /></a>
+            <a href="http://play.golang.org/p/TAc9KJJLorN"><img title="コードを実行する" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -50,9 +64,11 @@ Go のやり方だとどの関数がエラーを返すかがわかりやすく�
             
           </td>
           <td class="code leading">
-	        
-            <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;errors&quot;</span>
-<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+            
+            <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;errors&quot;</span>
+    <span class="s">&quot;fmt&quot;</span>
+<span class="p">)</span>
 </pre></div>
 
           </td>
@@ -64,7 +80,7 @@ Go のやり方だとどの関数がエラーを返すかがわかりやすく�
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">f1</span><span class="p">(</span><span class="nx">arg</span> <span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="nx">arg</span> <span class="o">==</span> <span class="mi">42</span> <span class="p">{</span>
 </pre></div>
@@ -78,7 +94,7 @@ Go のやり方だとどの関数がエラーを返すかがわかりやすく�
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="nx">errors</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="s">&quot;can&#39;t work with 42&quot;</span><span class="p">)</span>
 </pre></div>
 
@@ -90,7 +106,7 @@ Go のやり方だとどの関数がエラーを返すかがわかりやすく�
             
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>    <span class="p">}</span>
 </pre></div>
 
@@ -103,7 +119,7 @@ Go のやり方だとどの関数がエラーを返すかがわかりやすく�
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>    <span class="k">return</span> <span class="nx">arg</span> <span class="o">+</span> <span class="mi">3</span><span class="p">,</span> <span class="kc">nil</span>
 <span class="p">}</span>
 </pre></div>
@@ -118,7 +134,7 @@ Go のやり方だとどの関数がエラーを返すかがわかりやすく�
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre><span class="kd">type</span> <span class="nx">argError</span> <span class="kd">struct</span> <span class="p">{</span>
     <span class="nx">arg</span>  <span class="kt">int</span>
     <span class="nx">prob</span> <span class="kt">string</span>
@@ -133,7 +149,7 @@ Go のやり方だとどの関数がエラーを返すかがわかりやすく�
             
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre><span class="kd">func</span> <span class="p">(</span><span class="nx">e</span> <span class="o">*</span><span class="nx">argError</span><span class="p">)</span> <span class="nx">Error</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;%d - %s&quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">arg</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">prob</span><span class="p">)</span>
 <span class="p">}</span>
@@ -147,7 +163,7 @@ Go のやり方だとどの関数がエラーを返すかがわかりやすく�
             
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">f2</span><span class="p">(</span><span class="nx">arg</span> <span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="nx">arg</span> <span class="o">==</span> <span class="mi">42</span> <span class="p">{</span>
 </pre></div>
@@ -161,7 +177,7 @@ Go のやり方だとどの関数がエラーを返すかがわかりやすく�
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">argError</span><span class="p">{</span><span class="nx">arg</span><span class="p">,</span> <span class="s">&quot;can&#39;t work with it&quot;</span><span class="p">}</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="nx">arg</span> <span class="o">+</span> <span class="mi">3</span><span class="p">,</span> <span class="kc">nil</span>
@@ -176,7 +192,7 @@ Go のやり方だとどの関数がエラーを返すかがわかりやすく�
             
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
 </pre></div>
 
@@ -190,7 +206,7 @@ Go のやり方だとどの関数がエラーを返すかがわかりやすく�
 
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre>    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">i</span> <span class="o">:=</span> <span class="k">range</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">7</span><span class="p">,</span> <span class="mi">42</span><span class="p">}</span> <span class="p">{</span>
         <span class="k">if</span> <span class="nx">r</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nx">f1</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span> <span class="nx">e</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
             <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;f1 failed:&quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">)</span>
@@ -216,7 +232,7 @@ Go のやり方だとどの関数がエラーを返すかがわかりやすく�
 
           </td>
           <td class="code">
-	        
+            
             <div class="highlight"><pre>    <span class="nx">_</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nx">f2</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
     <span class="k">if</span> <span class="nx">ae</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">e</span><span class="p">.(</span><span class="o">*</span><span class="nx">argError</span><span class="p">);</span> <span class="nx">ok</span> <span class="p">{</span>
         <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">ae</span><span class="p">.</span><span class="nx">arg</span><span class="p">)</span>
@@ -237,7 +253,7 @@ Go のやり方だとどの関数がエラーを返すかがわかりやすく�
             
           </td>
           <td class="code leading">
-	        
+            
             <div class="highlight"><pre><span class="gp">$</span> go run errors.go
 <span class="go">f1 worked: 10</span>
 <span class="go">f1 failed: can&#39;t work with 42</span>
@@ -256,7 +272,7 @@ Go のやり方だとどの関数がエラーを返すかがわかりやすく�
 
           </td>
           <td class="code empty">
-	        
+            
             
           </td>
         </tr>
@@ -269,8 +285,13 @@ Go のやり方だとどの関数がエラーを返すかがわかりやすく�
       </p>
       
       <p class="footer">
-        翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinute.pages@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/docs/errors.html">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
+        原著者 <a href="https://markmcgranaghan.com">Mark McGranaghan</a> | 翻訳者：<a href="https://twitter.com/spinute">@spinute</a> | <a href="mailto:spinute.pages@gmail.com">フィードバック</a> | <a href="https://github.com/spinute/go-by-example/blob/master/docs/errors.html">ソースコード</a> | <a href="https://github.com/spinute/go-by-example#license">ライセンス</a>
       </p>
     </div>
+    <script>
+      var codeLines = [];
+      codeLines.push('');codeLines.push('package main\u000A');codeLines.push('import (\u000A    \"errors\"\u000A    \"fmt\"\u000A)\u000A');codeLines.push('func f1(arg int) (int, error) {\u000A    if arg == 42 {\u000A');codeLines.push('        return -1, errors.New(\"can\'t work with 42\")\u000A');codeLines.push('    }\u000A');codeLines.push('    return arg + 3, nil\u000A}\u000A');codeLines.push('type argError struct {\u000A    arg  int\u000A    prob string\u000A}\u000A');codeLines.push('func (e *argError) Error() string {\u000A    return fmt.Sprintf(\"%d - %s\", e.arg, e.prob)\u000A}\u000A');codeLines.push('func f2(arg int) (int, error) {\u000A    if arg == 42 {\u000A');codeLines.push('        return -1, &argError{arg, \"can\'t work with it\"}\u000A    }\u000A    return arg + 3, nil\u000A}\u000A');codeLines.push('func main() {\u000A');codeLines.push('    for _, i := range []int{7, 42} {\u000A        if r, e := f1(i); e != nil {\u000A            fmt.Println(\"f1 failed:\", e)\u000A        } else {\u000A            fmt.Println(\"f1 worked:\", r)\u000A        }\u000A    }\u000A    for _, i := range []int{7, 42} {\u000A        if r, e := f2(i); e != nil {\u000A            fmt.Println(\"f2 failed:\", e)\u000A        } else {\u000A            fmt.Println(\"f2 worked:\", r)\u000A        }\u000A    }\u000A');codeLines.push('    _, e := f2(42)\u000A    if ae, ok := e.(*argError); ok {\u000A        fmt.Println(ae.arg)\u000A        fmt.Println(ae.prob)\u000A    }\u000A}\u000A');codeLines.push('');codeLines.push('');
+    </script>
+    <script src="site.js" async></script>
   </body>
 </html>
