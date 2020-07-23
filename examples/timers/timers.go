@@ -18,7 +18,7 @@ func main() {
 
 	// `<-timer1.C` は、タイマーのチャネル `C` にタイマーが切れたことを示す値が届くまでブロックする。
 	<-timer1.C
-	fmt.Println("Timer 1 expired")
+	fmt.Println("Timer 1 fired")
 
 	// ただ待ちたいだけなら、`time.Sleep` を使ってもよかったかもしれない。
 	// タイマーを使った方が便利な点としては、タイマーは切れる前にキャンセルすることもできる。
@@ -26,7 +26,7 @@ func main() {
 	timer2 := time.NewTimer(time.Second)
 	go func() {
 		<-timer2.C
-		fmt.Println("Timer 2 expired")
+		fmt.Println("Timer 2 fired")
 	}()
 	stop2 := timer2.Stop()
 	if stop2 {
