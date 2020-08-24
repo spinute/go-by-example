@@ -51,7 +51,7 @@ Go ではチャネルと <code>select</code> を使ってタイムアウトを�
             
           </td>
           <td class="code leading">
-            <a href="http://play.golang.org/p/kkg4OJN4bq3"><img title="コードを実行する" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
+            <a href="http://play.golang.org/p/AEZppTOeBnu"><img title="コードを実行する" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -106,8 +106,8 @@ Go ではチャネルと <code>select</code> を使ってタイムアウトを�
         <tr>
           <td class="docs">
             <p><code>select</code> を使ってタイムアウトを実装する。
-<code>res := &lt;-c1</code> は結果を待ち受け、&lt;-Time.After<code>は1秒のタイムアウト後に送られる値を受け取る。
-</code>select` は最初に準備できた値を受信するので、操作が許容時間1秒よりも長い時間を使うと、タイムアウトのケースに進む。</p>
+<code>res := &lt;-c1</code> は結果を待ち受け、<code>&lt;-Time.After</code> は1秒のタイムアウト後に送られる値を受け取る。
+<code>select</code> は最初に準備できた値を受信するので、操作が許容時間1秒よりも長い時間を使うと、タイムアウトのケースに進む。</p>
 
           </td>
           <td class="code leading">
